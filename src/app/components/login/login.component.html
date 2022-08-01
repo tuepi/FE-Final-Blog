@@ -47,9 +47,10 @@
                 <a href="#" class="google"><i class="fa fa-google"></i></a>
               </div>
               <div class="divide">hoặc : </div>
-              <form action="#">
-                <input type="text" placeholder="Tên đăng nhập">
-                <input type="password" placeholder="Mật khẩu">
+<!--              phan Login//////////////////////////////////////-->
+              <form [formGroup]="loginForm" (ngSubmit)="login()" ]>
+                <input type="text" placeholder="Tên đăng nhập" id="username" formControlName="username">
+                <input type="password" placeholder="Mật khẩu" id="password" formControlName="password">
                 <button type="submit" class="site-btn">Đăng nhập</button>
               </form>
             </div>
