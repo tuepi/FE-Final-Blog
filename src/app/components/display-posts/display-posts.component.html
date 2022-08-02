@@ -1,0 +1,43 @@
+
+  <div class="breadcrumb__text">
+    <h2><span>Bài viết mới</span></h2>
+    <!--    <div class="breadcrumb__option">-->
+    <!--      <a href="#">Trang chủ</a>-->
+    <!--      <span>Recipes</span>-->
+    <!--    </div>-->
+  </div>
+  <div class="categories__list__post__item" *ngFor="let post of posts; index as i">
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <div class="categories__post__item__pic set-bg"
+             data-setbg="img/categories/categories-list/cl-1.jpg">
+          <div class="post__meta">
+            <h4></h4>
+            <span>{{post.createAt}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="categories__post__item__text">
+          <span class="post__label">nhãn</span>
+          <h3><a href="#">{{post.title}}</a></h3>
+          <ul class="post__widget">
+            <li>từ <span>{{post.user.fullName}}</span></li>
+            <li>{{post.numberOfLike}} Lượt thích</li>
+            <li>20 Bình luận</li>
+          </ul>
+          <p>{{post.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="categories__pagination">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">Trang tiếp</a>
+      </div>
+    </div>
+  </div>
