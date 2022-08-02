@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
     phone: new FormControl('', [Validators.required,Validators.pattern("(03|05|07|08|09)+([0-9]{8})")]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+      // validator: ConfirmedValidator('password', 'confirm_password')
   });
 
   constructor(private authenticationService : AuthenticationService,
@@ -47,11 +48,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+user : User | any;
   register() {
-    const user = this.setNewUser()
-    if (user.password === user.confirmPassword) {
-      this.authenticationService.register(user).subscribe((data) => {
+     this.user = this.setNewUser()
+    if (this.user.password === this.user.confirmPassword) {
+      this.authenticationService.register(this.user).subscribe((data) => {
         this.toast.success({detail: "THÔNG BÁO", summary: "Đăng ký thành công",duration: 2000})
         this.registerForm.reset();
         this.router.navigate(['/login']);
@@ -61,6 +62,13 @@ export class RegisterComponent implements OnInit {
     } else {
       alert("Mật khẩu không trùng khớp");
     }
+  }
+
+  checkConfirm() : boolean {
+    if (this.user.password === this.user.confirmPassword) {
+      return true
+    }
+    return false;
   }
 
   private setNewUser() {

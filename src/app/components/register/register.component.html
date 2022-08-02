@@ -77,20 +77,11 @@
                 </div>
 
                 <input type="password" placeholder="Nhập lại mật khẩu" formControlName="confirmPassword">
-<!--                <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">-->
-<!--                  <div style="color: red" *ngIf="confirmPassword?.errors?.['required']">-->
-<!--                    <small>*Nhập lại mật khẩu không được bỏ trống</small>-->
-<!--                  </div>-->
-<!--                  <div style="color: red" *ngIf="confirmPassword?.errors?.['minlength']">-->
-<!--                    <small>*Nhập lại mật khẩu phải có ít nhất 6 kí tự</small>-->
-<!--                  </div>-->
-<!--                  <div style="color: red" *ngIf="confirmPassword?.errors?.['maxlength']">-->
-<!--                    <small>*Nhập lại mật khẩu tối đa 32 kí tự</small>-->
-<!--                  </div>-->
-<!--                  <div style="color: red" *ngIf="confirmPassword?.errors?.['notMatch']">-->
-<!--                    <small>*Nhập lại mật khẩu không đúng</small>-->
-<!--                  </div>-->
-<!--                </div>-->
+                <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">
+                  <div style="color: red" *ngIf="checkConfirm()">
+                    <small>*Nhập lại mật khẩu không đúng</small>
+                  </div>
+                </div>
                 <button type="submit" class="site-btn">Đăng ký</button>
               </form>
             </div>
