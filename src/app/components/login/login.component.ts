@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
 import {first} from "rxjs";
@@ -11,9 +11,19 @@ import {first} from "rxjs";
 })
 export class LoginComponent implements OnInit {
   loginForm =new FormGroup({
-    username:new FormControl(),
-    password:new FormControl()
+    username: new FormControl('', [Validators.required, Validators.maxLength(32)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
   })
+
+  get username(){
+    return this.loginForm.get('username')
+  }
+
+  get password(){
+    return this.loginForm.get('password')
+  }
+
+
 
   constructor(private acctiveRouter:ActivatedRoute,
               private route:Router,
