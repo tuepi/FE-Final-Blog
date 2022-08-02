@@ -3,6 +3,7 @@ import {User} from "../../models/user";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
+import {NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-register',
@@ -20,9 +21,9 @@ export class RegisterComponent implements OnInit {
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
   });
 
-  constructor(private authenticationService: AuthenticationService,
-              private router: Router
-  ) {}
+  constructor(private authenticationService : AuthenticationService,
+              private router : Router,
+              private toast : NgToastService) {}
 
   get username(){
     return this.registerForm.get('username')
@@ -48,11 +49,10 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    const user = this.setNewUser();
+    const user = this.setNewUser()
     if (user.password === user.confirmPassword) {
       this.authenticationService.register(user).subscribe((data) => {
-        console.log(data);
-        alert("Thành công")
+        this.toast.success({detail: "THÔNG BÁO", summary: "Đăng ký thành công",duration: 3000})
         this.registerForm.reset();
         this.router.navigate(['/login']);
       }, err => {
