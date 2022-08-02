@@ -1,45 +1,72 @@
-<!--&lt;!&ndash; Sign In Section Begin &ndash;&gt;-->
-<!--<div class="signin">-->
-<!--  <div class="search-close-switch" style="margin-left: 1300px; margin-top: 20px" routerLink="/">+</div>-->
-<!--  <div class="signin__warp">-->
-<!--    <div class="signin__content">-->
-<!--      <div class="signin__logo">-->
-<!--        <a routerLink="/"><img src="assets/img/siign-in-logo.png" alt=""></a>-->
-<!--      </div>-->
-<!--      <div class="signin__form">-->
-<!--        <ul class="nav nav-tabs" role="tablist">-->
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="true">-->
-<!--              Đăng nhập-->
-<!--            </a>-->
-<!--          </li>-->
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link" routerLink="/register" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">-->
-<!--              Đăng ký-->
-<!--            </a>-->
-<!--          </li>-->
-<!--          <li class="nav-item">-->
-<!--        </ul>-->
-<!--        <div class="tab-content">-->
-<!--          <div class="tab-pane active" id="tabs-2" role="tabpanel">-->
-<!--            <div class="signin__form__text">-->
-<!--              <p>bằng tài khoản mạng xã hội : </p>-->
-<!--              <div class="signin__form__signup__social">-->
-<!--                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>-->
-<!--                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>-->
-<!--                <a href="#" class="google"><i class="fa fa-google"></i></a>-->
-<!--              </div>-->
-<!--              <div class="divide">hoặc : </div>-->
-<!--&lt;!&ndash;              form đăng nhập&ndash;&gt;-->
-<!--              <form >-->
-<!--                <input type="text" placeholder="Tên đăng nhập">-->
-<!--                <input type="password" placeholder="Mật khẩu">-->
-<!--                <button type="submit" class="site-btn">Đăng nhập</button>-->
-<!--              </form>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+<!-- Sign In Section Begin -->
+<div class="signin">
+  <div class="search-close-switch" style="margin-left: 1300px; margin-top: 20px" routerLink="/">+</div>
+  <div class="signin__warp">
+    <div class="signin__content">
+      <div class="signin__logo">
+        <a routerLink="/"><img src="assets/img/siign-in-logo.png" alt=""></a>
+      </div>
+      <div class="signin__form">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/register" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="false">
+              Đăng ký
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="true">
+              Đăng nhập
+            </a>
+          </li>
+          <li class="nav-item">
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tabs-2" role="tabpanel">
+            <div class="signin__form__text">
+              <p>bằng tài khoản mạng xã hội : </p>
+              <div class="signin__form__signup__social">
+                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="google"><i class="fa fa-google"></i></a>
+              </div>
+              <div class="divide">hoặc :</div>
+              <!--              phan Login//////////////////////////////////////-->
+              <form [formGroup]="loginForm" (ngSubmit)="login()" >
+                  <input type="text" placeholder="Tên đăng nhập" formControlName="username">
+                  <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+                    <div style="color: red; margin-left: 10px" *ngIf="username?.errors?.['required']">
+                      <small>*Tên tài khoản không được bỏ trống</small>
+                    </div>
+                    <div style="color: red" *ngIf="username?.errors?.['minlength']">
+                      <small>*Tên tài khoản phải ít nhất 6 kí tự</small>
+                    </div>
+                    <div style="color: red" *ngIf="username?.errors?.['maxlength']">
+                      <small>*Tên tài khoản tối đa 32 kí tự</small>
+                    </div>
+                  </div>
+
+
+                  <input type="password" placeholder="Mật khẩu" formControlName="password">
+                  <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                    <div style="color: red" *ngIf="password?.errors?.['required']">
+                      <small>*Mật khẩu không được bỏ trống</small>
+                    </div>
+                    <div style="color: red" *ngIf="password?.errors?.['minlength']">
+                      <small>*Mật khẩu phải có ít nhất 6 kí tự</small>
+                    </div>
+                    <div style="color: red" *ngIf="password?.errors?.['maxlength']">
+                      <small>*Mật khẩu tối đa 32 kí tự</small>
+                    </div>
+                  </div>
+                  <button type="submit" class="site-btn">Đăng nhập</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
