@@ -12,6 +12,7 @@ import {ErrorInterceptor} from "./helper/error-interceptor";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgToastModule} from "ng-angular-popup";
 import { DisplayPostsComponent } from './components/display-posts/display-posts.component';
+import { GetAllPublicStatusComponent } from './components/get-all-public-status/get-all-public-status.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DisplayPostsComponent } from './components/display-posts/display-posts.
     LoginComponent,
     RegisterComponent,
     HomepageComponent,
-    DisplayPostsComponent
+    DisplayPostsComponent,
+    GetAllPublicStatusComponent
   ],
   imports: [
     BrowserModule,

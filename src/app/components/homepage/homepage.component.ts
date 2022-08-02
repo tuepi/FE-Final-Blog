@@ -9,25 +9,18 @@ import {Post} from "../../models/post";
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-
-  id: any;
-
-  posts : Post[] | any;
+  isLogin = false;
 
   constructor(private postService : PostService,
               private router : Router) { }
 
   ngOnInit(): void {
-    this.getAllByPublicStatus()
+    this.isLogin = localStorage.getItem('ID') == null ? false : true;
   }
 
-  getAllByPublicStatus() {
-    this.postService.getAllByPublicStatus().subscribe(result => {
-      console.log(result.content)
-      this.posts = result.content;
-    }, error => {
-      console.log("Lỗi");
-    });
+  logout() {
+    localStorage.clear();
+    this.isLogin = false;
+    this.router.navigate(['/'])
   }
-
 }

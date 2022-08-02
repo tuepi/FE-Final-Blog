@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
     phone: new FormControl('', [Validators.required,Validators.pattern("(03|05|07|08|09)+([0-9]{8})")]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+
   });
 
   constructor(private authenticationService : AuthenticationService,
@@ -52,7 +53,7 @@ export class RegisterComponent implements OnInit {
     const user = this.setNewUser()
     if (user.password === user.confirmPassword) {
       this.authenticationService.register(user).subscribe((data) => {
-        this.toast.success({detail: "THÔNG BÁO", summary: "Đăng ký thành công",duration: 3000})
+        this.toast.success({detail: "THÔNG BÁO", summary: "Đăng ký thành công",duration: 2000})
         this.registerForm.reset();
         this.router.navigate(['/login']);
       }, err => {
@@ -79,3 +80,18 @@ export class RegisterComponent implements OnInit {
 
 
 }
+function ConfirmedValidator(controlName: string, matchingControlName: string): any {
+  return (formGroup: FormGroup) => {
+    const control = formGroup.controls[controlName];
+    const matchingControl = formGroup.controls[matchingControlName];
+    if (matchingControl.errors && !matchingControl.errors) {
+      return;
+    }
+    if (control.value !== matchingControl.value) {
+      matchingControl.setErrors({ confirmedValidator: true });
+    } else {
+      matchingControl.setErrors(null);
+    }
+  }
+}
+
