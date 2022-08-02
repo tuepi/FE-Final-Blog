@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {AuthenticationService} from "../../services/authentication.service";
+import {Router} from "@angular/router";
+import {PostService} from "../../services/post.service";
+import {Post} from "../../models/post";
 
 @Component({
   selector: 'app-homepage',
@@ -9,9 +10,24 @@ import {AuthenticationService} from "../../services/authentication.service";
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  id: any;
+
+  posts : Post[] | any;
+
+  constructor(private postService : PostService,
+              private router : Router) { }
 
   ngOnInit(): void {
+    this.getAllByPublicStatus()
+  }
+
+  getAllByPublicStatus() {
+    this.postService.getAllByPublicStatus().subscribe(result => {
+      console.log(result.content)
+      this.posts = result.content;
+    }, error => {
+      console.log("Lỗi");
+    });
   }
 
 }
