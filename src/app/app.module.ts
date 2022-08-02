@@ -22,6 +22,8 @@ import { GetAllPublicStatusComponent } from './components/post/get-all-public-st
     RegisterComponent,
     HomepageComponent,
     DisplayPostsComponent,
+    DetailComponent,
+    DisplayPostsComponent,
     GetAllPublicStatusComponent
   ],
   imports: [
