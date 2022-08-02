@@ -1,4 +1,5 @@
 import {User} from "./user";
+import {Time} from "@angular/common";
 
 export interface Post {
   id?:number,
