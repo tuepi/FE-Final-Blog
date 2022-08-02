@@ -9,12 +9,12 @@
       <div class="signin__form">
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/login" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="false">
+            <a class="nav-link active" routerLink="/login" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="true">
               Đăng nhập
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="true">
+            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">
               Đăng ký
             </a>
           </li>
@@ -77,11 +77,12 @@
                 </div>
 
                 <input type="password" placeholder="Nhập lại mật khẩu" formControlName="confirmPassword">
-                <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">
-                  <div style="color: red" *ngIf="checkConfirm()">
-                    <small>*Nhập lại mật khẩu không đúng</small>
-                  </div>
-                </div>
+<!--                <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">-->
+<!--                  <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="alert alert-danger">-->
+<!--                    <div *ngIf="confirmPassword.errors.required">*Mật khẩu nhập lại không được để trống</div>-->
+<!--                    <div *ngIf="confirmPassword.errors.confirmedValidator">*Mật khẩu nhập lại không khớp</div>-->
+<!--                  </div>-->
+<!--                </div>-->
                 <button type="submit" class="site-btn">Đăng ký</button>
               </form>
             </div>
