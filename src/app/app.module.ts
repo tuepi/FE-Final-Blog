@@ -11,8 +11,9 @@ import {JwtInterceptor} from "./helper/jwt-interceptor";
 import {ErrorInterceptor} from "./helper/error-interceptor";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgToastModule} from "ng-angular-popup";
-import { DisplayPostsComponent } from './components/display-posts/display-posts.component';
-import { GetAllPublicStatusComponent } from './components/get-all-public-status/get-all-public-status.component';
+import { DisplayPostsComponent } from './components/post/display-posts/display-posts.component';
+import { DetailComponent } from './components/post/detail/detail.component';
+import { GetAllPublicStatusComponent } from './components/post/get-all-public-status/get-all-public-status.component';
 
 @NgModule({
   declarations: [

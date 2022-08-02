@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Post} from "../../models/post";
-import {PostService} from "../../services/post.service";
+import {Post} from "../../../models/post";
+import {PostService} from "../../../services/post.service";
 import {Router} from "@angular/router";
 
 @Component({

@@ -20,7 +20,7 @@
       <div class="col-lg-6 col-md-6">
         <div class="categories__post__item__text">
           <span class="post__label">nhãn</span>
-          <h3><a href="#">{{post.title}}</a></h3>
+          <h3><a  [routerLink]="['/detail', post.id]">{{post.title}}</a></h3>
           <ul class="post__widget">
             <li>từ <span>{{post.user.fullName}}</span></li>
             <li>{{post.numberOfLike}} Lượt thích</li>
