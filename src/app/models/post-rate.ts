@@ -3,7 +3,7 @@ import {Rate} from "./rate";
 import {User} from "./user";
 
 export interface PostRate {
-  id?:number,
+  id?:string,
   post:Post,
   rate:Rate,
   user:User

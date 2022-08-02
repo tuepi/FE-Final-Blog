@@ -2,7 +2,7 @@ import {User} from "./user";
 import {Post} from "./post";
 
 export interface Likes {
-  id?:number,
+  id?:string,
   user:User,
   post:Post,
   dateTime?:string

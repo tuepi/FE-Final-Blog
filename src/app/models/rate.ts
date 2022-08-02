@@ -1,4 +1,4 @@
 export interface Rate {
-  id?:number,
-  level?:number
+  id?:string,
+  level?:string
 }
