@@ -6,6 +6,7 @@ import {RegisterComponent} from "./components/register/register.component";
 import {DisplayPostsComponent} from "./components/post/display-posts/display-posts.component";
 import {GetAllPublicStatusComponent} from "./components/post/get-all-public-status/get-all-public-status.component";
 import {DetailComponent} from "./components/post/detail/detail.component";
+import {CreatePostComponent} from "./components/post/create-post/create-post.component";
 
 const routes: Routes = [
   {
@@ -19,7 +20,10 @@ const routes: Routes = [
       {
         path : 'detail/:id',
         component : DetailComponent
-
+      },
+      {
+        path : 'create',
+        component : CreatePostComponent
       }
     ]
   },

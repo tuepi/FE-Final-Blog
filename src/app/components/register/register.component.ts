@@ -18,13 +18,18 @@ export class RegisterComponent implements OnInit {
     fullName: new FormControl('', [ Validators.minLength(6), Validators.maxLength(32)]),
     phone: new FormControl('', [Validators.required,Validators.pattern("(03|05|07|08|09)+([0-9]{8})")]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)])
+  },
 
-  });
+  );
 
   constructor(private authenticationService : AuthenticationService,
               private router : Router,
               private toast : NgToastService) {}
+
+  get f() {
+    return this.registerForm.value
+  }
 
   get username(){
     return this.registerForm.get('username')
@@ -60,7 +65,7 @@ export class RegisterComponent implements OnInit {
         console.log(err);
       });
     } else {
-      alert("Mật khẩu không trùng khớp");
+      this.toast.warning({detail: "CHÚ Ý", summary: "Mật khẩu nhập lại không trùng khớp",duration: 2000})
     }
   }
 
