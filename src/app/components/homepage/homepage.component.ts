@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {PostService} from "../../services/post.service";
 import {Post} from "../../models/post";
+import {NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-homepage',

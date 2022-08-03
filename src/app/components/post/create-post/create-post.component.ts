@@ -34,8 +34,7 @@ export class CreatePostComponent implements OnInit {
     image: new FormControl(),
     content: new FormControl(),
     user: new FormControl(),
-    numberOfLike: new FormControl(),
-    createAt: new FormControl(),
+    numberOfLike: new FormControl()
   })
 
   constructor(private storage: AngularFireStorage,
@@ -88,7 +87,6 @@ export class CreatePostComponent implements OnInit {
       image: this.fb,
       content: this.createForm.value.content,
       status : this.createForm.value.status,
-      createAt : this.jsToday,
       user : {
         id : localStorage.getItem('ID')
       },

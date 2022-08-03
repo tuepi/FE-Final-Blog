@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  currentUserId : any;
+
   login() {
     this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password).pipe(first()).subscribe(data => {
       console.log(data.roles)
