@@ -19,4 +19,8 @@ export class PostService {
   findById(id:any): Observable<Post>{
     return this.httpClient.get<Post>(API_URL +id)
   }
+  deletePost(id:any):Observable<Post>{
+    return this.httpClient.delete<Post>(API_URL+id)
+  }
+
 }
