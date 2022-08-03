@@ -80,9 +80,19 @@
 <!--                <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">-->
 <!--                  <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="alert alert-danger">-->
 <!--                    <div *ngIf="confirmPassword.errors.required">*Mật khẩu nhập lại không được để trống</div>-->
-<!--                    <div *ngIf="confirmPassword.errors.confirmedValidator">*Mật khẩu nhập lại không khớp</div>-->
 <!--                  </div>-->
 <!--                </div>-->
+                <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">
+                  <div style="color: red" *ngIf="password?.errors?.['required']">
+                    <small>*Hãy nhập lại mật khẩu</small>
+                  </div>
+                  <div style="color: red" *ngIf="password?.errors?.['minlength']">
+                    <small>*Mật khẩu nhập lại phải có ít nhất 6 kí tự</small>
+                  </div>
+                  <div style="color: red" *ngIf="password?.errors?.['maxlength']">
+                    <small>*Mật khẩu nhập lại tối đa 12 kí tự</small>
+                  </div>
+                </div>
                 <button type="submit" class="site-btn">Đăng ký</button>
               </form>
             </div>

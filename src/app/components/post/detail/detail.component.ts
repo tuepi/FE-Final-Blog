@@ -22,7 +22,15 @@ export class DetailComponent implements OnInit {
       this.postService.findById(this.id).subscribe((data) => {
         console.log(data);
         this.obj = data;
+        this.displayContent(this.obj.content)
       });
     });
+
+  }
+
+  displayContent(content : any) {
+    // @ts-ignore
+    document.getElementById('content').innerHTML = content;
   }
 }
+

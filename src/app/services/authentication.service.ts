@@ -35,10 +35,10 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem('currentUser');
-    localStorage.removeItem('currentUser');
     localStorage.removeItem('USERNAME');
     localStorage.removeItem('ROLE');
     localStorage.removeItem('ACCESS_TOKEN');
+    localStorage.removeItem('FULLNAME');
     // this.currentUserSubject.next(null);
   }
 

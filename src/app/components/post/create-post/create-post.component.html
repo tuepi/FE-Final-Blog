@@ -1,0 +1,36 @@
+<div class="contact__form">
+  <div class="contact__form__title">
+    <h2>ĐĂNG BÀI VIẾT MỚI</h2>
+    <p>Hãy tạo bài viết và chia sẻ cho mọi người {{fullName}} nhé!!!</p>
+  </div>
+  <form [formGroup]="createForm" (ngSubmit)="savePost()">
+    <input type="text" formControlName="title" placeholder="Tiêu đề">
+    <input type="text" formControlName="description" placeholder="Mô tả ngắn">
+    <div>
+      <select formControlName="status">
+        <option value="1">Public</option>
+        <option value="0">Private</option>
+      </select>
+    </div>
+    <div style="margin: 10px 30px">
+      <div class="form-check-inline" *ngFor="let label of labels; index as i">
+        <input type="checkbox" style="width: 16px; height: 16px;margin-bottom: 0px" id="{{i + 1}}" value="{{label.id}}">
+        <label class="label" style="margin-bottom: 0; margin-left: 3px" for="{{i + 1}}">{{label.name}}</label>
+      </div>
+    </div>
+    <div>
+      <input type="file"
+             id="file"
+             #userPhoto
+             (change)="onFileSelected($event)"
+             name="image"
+             autocomplete="off"
+             formControlName="image"
+      />
+      <img src="{{fb}}" style="height: 80px; width: 80px">
+    </div>
+    <editor formControlName="content" [init]="{plugins :  'link'}"></editor>
+    <br>
+    <button type="submit" class="site-btn" style="width: 150px;margin-left: 300px">Đăng bài</button>
+  </form>
+</div>

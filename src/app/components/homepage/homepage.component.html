@@ -43,7 +43,7 @@
   </div>
   <div class="humberger__menu__subscribe">
     <div class="humberger__menu__title sidebar__item__title">
-      <h6 *ngIf="isLogin">Đăng bài</h6>
+      <h6 *ngIf="isLogin" routerLink="/create">Đăng bài</h6>
       <h6 *ngIf="!isLogin" routerLink="/login">Đăng bài</h6>
     </div>
     <p>Subscribe to our newsletter and get our newest updates right on your inbox.</p>
@@ -112,7 +112,7 @@
                   <li><a routerLink="/register">Đăng ký</a></li>
                 </ul>
                 <ul class="dropdown__menu" *ngIf="isLogin">
-                  <li><a routerLink="/login">Trang cá nhân</a></li>
+                  <li><a>Trang cá nhân</a></li>
                   <li><a (click)="logout()">Đăng xuất</a></li>
                 </ul>
               </li>
@@ -131,8 +131,8 @@
     <div class="row">
       <div class="col-lg-3 col-md-3">
         <div class="header__btn">
-          <a class="primary-btn" *ngIf="isLogin">Đăng bài</a>
-          <a class="primary-btn" routerLink="/login" *ngIf="!isLogin">Đăng bài</a>
+          <a class="primary-btn" *ngIf="isLogin" routerLink="/create">Đăng bài</a>
+          <a class="primary-btn" (click)="requestLogin()" *ngIf="!isLogin">Đăng bài</a>
         </div>
       </div>
       <div class="col-lg-6 col-md-6">
@@ -326,40 +326,32 @@
 <!-- Categories Section Begin -->
 <section class="categories spad">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="categories__item set-bg" data-setbg="assets/img/categories/cat-1.jpg">
-          <div class="categories__hover__text">
-            <h5>Dinner</h5>
-            <p>28 articles</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="categories__item set-bg" data-setbg="assets/img/categories/cat-2.jpg">
-          <div class="categories__hover__text">
-            <h5>Dinner</h5>
-            <p>28 articles</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="categories__item set-bg" data-setbg="assets/img/categories/cat-3.jpg">
-          <div class="categories__hover__text">
-            <h5>Dinner</h5>
-            <p>28 articles</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="categories__item set-bg" data-setbg="assets/img/categories/cat-4.jpg">
-          <div class="categories__hover__text">
-            <h5>Dinner</h5>
-            <p>28 articles</p>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--    <div class="row">-->
+<!--      <div class="col-lg-3 col-md-6 col-sm-6">-->
+<!--        <div class="categories__item set-bg" data-setbg="assets/img/categories/cat-1.jpg">-->
+<!--          <div class="categories__hover__text">-->
+<!--            <h5>Dinner</h5>-->
+<!--            <p>28 articles</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-lg-3 col-md-6 col-sm-6">-->
+<!--        <div class="categories__item set-bg" data-setbg="assets/img/categories/cat-2.jpg">-->
+<!--          <div class="categories__hover__text">-->
+<!--            <h5>Dinner</h5>-->
+<!--            <p>28 articles</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-lg-3 col-md-6 col-sm-6">-->
+<!--        <div class="categories__item set-bg" data-setbg="assets/img/categories/cat-3.jpg">-->
+<!--          <div class="categories__hover__text">-->
+<!--            <h5>Dinner</h5>-->
+<!--            <p>28 articles</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
   <div class="categories__post">
     <div class="container">
@@ -370,28 +362,6 @@
 
         <div class="col-lg-4 col-md-4">
           <div class="sidebar__item">
-            <div class="sidebar__about__item">
-              <div class="sidebar__item__title">
-                <h6>About me</h6>
-              </div>
-              <img src="assets/img/sidebar/sidebar-about.jpg" alt="">
-              <h6>Hi every one! I,m <span>Lena Mollein.</span></h6>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.</p>
-              <a href="#" class="primary-btn">Read more</a>
-            </div>
-            <div class="sidebar__follow__item">
-              <div class="sidebar__item__title">
-                <h6>Follow me</h6>
-              </div>
-              <div class="sidebar__item__follow__links">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-envelope-o"></i></a>
-              </div>
-            </div>
             <div class="sidebar__feature__item">
               <div class="sidebar__item__title">
                 <h6>Feature Posts</h6>
@@ -445,9 +415,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="sidebar__item__banner">
-              <img src="assets/img/sidebar/banner.jpg" alt="">
             </div>
             <div class="sidebar__item__categories">
               <div class="sidebar__item__title">
@@ -550,6 +517,7 @@
   </div>
 </footer>
 <!-- Footer Section End -->
+
 
 <!-- Search Begin -->
 <div class="search-model">
