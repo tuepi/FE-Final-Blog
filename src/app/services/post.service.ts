@@ -10,7 +10,7 @@ const API_URL = environment.apiUrl + "/api/posts/";
   providedIn: 'root'
 })
 export class PostService {
-  currentUserId = localStorage.getItem('ID');
+
   constructor(private httpClient : HttpClient) { }
 
   getAllByPublicStatus(): Observable<any> {
@@ -27,6 +27,10 @@ export class PostService {
   findById(id:any): Observable<Post>{
     return this.httpClient.get<Post>(API_URL +id)
   }
+  deletePost(id:any):Observable<Post>{
+    return this.httpClient.delete<Post>(API_URL+id)
+  }
+
 
   save(post:Post){
     return this.httpClient.post<Post>(API_URL, post)
