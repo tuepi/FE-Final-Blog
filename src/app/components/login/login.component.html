@@ -32,7 +32,7 @@
               <div class="divide">hoặc :</div>
               <!--              phan Login//////////////////////////////////////-->
               <form [formGroup]="loginForm" (ngSubmit)="login()" >
-                  <input type="text" placeholder="Tên đăng nhập" formControlName="username">
+                  <input style="margin: 0 0" type="text" placeholder="Tên đăng nhập" formControlName="username">
                   <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
                     <div style="color: red; margin-left: 10px" *ngIf="username?.errors?.['required']">
                       <small>*Tên tài khoản không được bỏ trống</small>
@@ -46,7 +46,7 @@
                   </div>
 
 
-                  <input type="password" placeholder="Mật khẩu" formControlName="password">
+                  <input style="margin: 20px 0 0 0" type="password" placeholder="Mật khẩu" formControlName="password">
                   <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
                     <div style="color: red" *ngIf="password?.errors?.['required']">
                       <small>*Mật khẩu không được bỏ trống</small>
@@ -58,7 +58,7 @@
                       <small>*Mật khẩu tối đa 32 kí tự</small>
                     </div>
                   </div>
-                  <button type="submit" class="site-btn">Đăng nhập</button>
+                  <button style="margin: 20px 0" type="submit" class="site-btn">Đăng nhập</button>
               </form>
             </div>
           </div>

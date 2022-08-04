@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  currentUserId : any;
+
   login() {
     this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password).pipe(first()).subscribe(data => {
       console.log(data.roles)
@@ -47,7 +49,8 @@ export class LoginComponent implements OnInit {
         this.route.navigate([''])
       }
     }, error => {
-      alert('Sai con me m roi ')
+      this.toast.error({detail: "LỖI", summary: "Đăng nhập thất bại!!!", duration: 2000})
+      this.route.navigate(['/login'])
     })
   }
 }

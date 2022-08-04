@@ -18,6 +18,13 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLogin = localStorage.getItem('ID') == null ? false : true;
+    console.log("ele:  ", document.getElementsByClassName("modal-backdrop").item(0))
+    if (document.getElementById("staticBackdrop") != null) {
+      // @ts-ignore
+      document.getElementsByClassName("modal-backdrop").item(0).hidden = true
+
+      console.log("ele:  ", document.getElementsByClassName("modal-backdrop").item(0))
+    }
   }
 
   logout() {
