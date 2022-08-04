@@ -32,6 +32,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
+import { Top5ByLikesComponent } from './components/post/top5-by-likes/top5-by-likes.component';
+import { ListLabelComponent } from './components/post/list-label/list-label.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import {AngularFireModule} from "@angular/fire/compat";
     DisplayPostsComponent,
     GetAllPublicStatusComponent,
     GetMyPostsComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    Top5ByLikesComponent,
+    ListLabelComponent
   ],
   imports: [
     BrowserModule,

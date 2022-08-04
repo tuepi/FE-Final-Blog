@@ -46,7 +46,9 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('FULLNAME', data.fullName);
       if (data.roles[0].authority == 'ROLE_USER') {
         this.toast.success({detail: "THÔNG BÁO", summary: "Đăng nhập thành công!!!", duration: 2000})
-        this.route.navigate([''])
+        this.route.navigate(['/'])
+      } else {
+        this.route.navigate(['/api/admin/'])
       }
     }, error => {
       this.toast.error({detail: "LỖI", summary: "Đăng nhập thất bại!!!", duration: 2000})

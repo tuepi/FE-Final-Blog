@@ -26,13 +26,18 @@ export class PostService {
   getMyPosts(): Observable<any> {
     return this.httpClient.get<any>(API_URL + 'user/' + this.currentUserId);
   }
+
+  top5ByLikes(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL + 'like');
+  }
+
   findById(id:any): Observable<Post>{
     return this.httpClient.get<Post>(API_URL +id)
   }
+
   deletePost(id:any):Observable<Post>{
     return this.httpClient.delete<Post>(API_URL+id)
   }
-
 
   save(post:Post){
     return this.httpClient.post<Post>(API_URL, post)

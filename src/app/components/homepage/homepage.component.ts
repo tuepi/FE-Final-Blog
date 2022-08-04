@@ -29,6 +29,7 @@ export class HomepageComponent implements OnInit {
 
   logout() {
     localStorage.clear();
+    this.toast.warning({detail: "THÔNG BÁO", summary: "Bạn đã đăng xuất khỏi hệ thống!!!", duration: 2000})
     this.isLogin = false;
     this.router.navigate(['/'])
   }

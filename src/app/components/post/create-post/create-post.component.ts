@@ -18,7 +18,7 @@ import {formatDate} from "@angular/common";
 export class CreatePostComponent implements OnInit {
 
   jsToday : any = '';
-  title = "cloudsSorage";
+  // title = "cloudsSorage";
   selectedFile: File | any;
   fb: any;
   downloadURL: Observable<string> | any;
@@ -26,18 +26,17 @@ export class CreatePostComponent implements OnInit {
 
   today : number = Date.now();
 
-
   fullName = localStorage.getItem('FULLNAME');
   labels: Label[] = []
 
   createForm = new FormGroup({
-    title: new FormControl('', [Validators.required, Validators.maxLength(255)]),
+    title: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
     description: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
     status: new FormControl('', [Validators.required]),
     image: new FormControl(),
     content: new FormControl('', [Validators.required, Validators.maxLength(8000)]),
     user: new FormControl(),
-    createAt: new FormControl(),
+    // createAt: new FormControl(),
     numberOfLike: new FormControl()
   })
 
@@ -49,6 +48,15 @@ export class CreatePostComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllLabels()
+  }
+
+
+  get title(){
+    return this.createForm.get('title')
+  }
+
+  get description(){
+    return this.createForm.get('description')
   }
 
   getAllLabels() {
@@ -97,7 +105,7 @@ export class CreatePostComponent implements OnInit {
         id : localStorage.getItem('ID')
       },
       numberOfLike : 0,
-      createAt : this.today
+      // createAt : this.today
     };
     return post;
   }
