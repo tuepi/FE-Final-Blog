@@ -30,7 +30,7 @@
               </div>
               <!--              form đăng ký-->
               <form [formGroup]="registerForm" (ngSubmit)="register()">
-                <input type="text" placeholder="Tên đăng nhập" formControlName="username">
+                <input type="text" style="margin: 0 0" placeholder="Tên đăng nhập" formControlName="username">
                 <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
                   <div style="color: red; margin-left: 10px" *ngIf="username?.errors?.['required']">
                     <small>*Tên tài khoản không được bỏ trống</small>
@@ -43,7 +43,7 @@
                   </div>
                 </div>
 
-                <input type="text" placeholder="Tên đầy đủ của bạn" formControlName="fullName">
+                <input type="text" style="margin: 20px 0 0 0" placeholder="Tên đầy đủ của bạn" formControlName="fullName">
                 <div *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)">
                   <div style="color: red" *ngIf="username?.errors?.['minlength']">
                     <small>Tên phải ít nhất 6 kí tự</small>
@@ -53,7 +53,7 @@
                   </div>
                 </div>
 
-                <input type="text" placeholder="Số điện thoại" formControlName="phone">
+                <input type="text" style="margin: 20px 0 0 0" placeholder="Số điện thoại" formControlName="phone">
                 <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
                   <div style="color: red" *ngIf="phone?.errors?.['required']">
                     <small>*Số điện thoại không được bỏ trống</small>
@@ -63,7 +63,7 @@
                   </div>
                 </div>
 
-                <input type="password" placeholder="Mật khẩu" formControlName="password">
+                <input type="password" style="margin: 20px 0 0 0" placeholder="Mật khẩu" formControlName="password">
                 <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
                   <div style="color: red" *ngIf="password?.errors?.['required']">
                     <small>*Mật khẩu không được bỏ trống</small>
@@ -76,7 +76,7 @@
                   </div>
                 </div>
 
-                <input type="password" placeholder="Nhập lại mật khẩu" formControlName="confirmPassword">
+                <input type="password" style="margin: 20px 0 0 0" placeholder="Nhập lại mật khẩu" formControlName="confirmPassword">
 <!--                <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">-->
 <!--                  <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="alert alert-danger">-->
 <!--                    <div *ngIf="confirmPassword.errors.required">*Mật khẩu nhập lại không được để trống</div>-->
@@ -93,7 +93,7 @@
                     <small>*Mật khẩu nhập lại tối đa 12 kí tự</small>
                   </div>
                 </div>
-                <button type="submit" class="site-btn">Đăng ký</button>
+                <button style="margin: 20px 0 0 0" type="submit" class="site-btn">Đăng ký</button>
               </form>
             </div>
           </div>

@@ -50,8 +50,9 @@ export class DisplayPostsComponent implements OnInit {
 
   getAllByPublicStatus(){
     // this.postService.getAllByPublicStatus(this.p)
-    this.postService.getAllByPublicStatus().subscribe((response: any) => {
-      this.posts = response.data;
+    // @ts-ignore
+    this.postService.getAllByPublicStatus(this.p).subscribe((response: any) => {
+      this.posts = response;
       this.total = response.total;
     });
   }

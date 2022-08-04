@@ -11,15 +11,17 @@ const API_URL = environment.apiUrl + "/api/posts/";
 })
 export class PostService {
 
+  currentUserId : any = localStorage.getItem('ID')
+
   constructor(private httpClient : HttpClient) { }
 
-  getAllByPublicStatus(): Observable<any> {
-    return this.httpClient.get<any>(API_URL + 'status/1');
+  getAllByPublicStatus(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL);
   }
 
-  getUsers(page: number){
-    return this.httpClient.get(API_URL + '?page=' + page);
-  }
+  // getUsers(page: number){
+  //   return this.httpClient.get(API_URL + '?page=' + page);
+  // }
 
   getMyPosts(): Observable<any> {
     return this.httpClient.get<any>(API_URL + 'user/' + this.currentUserId);

@@ -1,21 +1,19 @@
-<div class="contact__form">
+<div class="contact__form" style="background-color: #dae4ee">
   <div class="contact__form__title">
     <h2>ĐĂNG BÀI VIẾT MỚI</h2>
-    <p>Hãy tạo bài viết và chia sẻ cho mọi người {{fullName}} nhé!!!</p>
+    <p>Hãy tạo bài viết và chia sẻ cho mọi người <a>{{fullName}}</a> nhé!!!</p>
   </div>
   <form [formGroup]="createForm" (ngSubmit)="savePost()">
-    <input type="text" formControlName="title" placeholder="Tiêu đề">
-    <input type="text" formControlName="description" placeholder="Mô tả ngắn">
-    <div>
-      <select formControlName="status">
-        <option value="1">Công khai</option>
-        <option value="0">Chỉ mình tôi</option>
-      </select>
-    </div>
-    <div style="margin: 10px 30px">
+    <input type="text" style="width: 80%; border-color: #ffffff" formControlName="title" placeholder="Tiêu đề">
+    <select formControlName="status" style="margin: 20px">
+      <option selected="selected" value="1">Công khai</option>
+      <option value="0">Chỉ mình tôi</option>
+    </select>
+    <input type="text" style="border-color: #ffffff"  formControlName="description" placeholder="Mô tả ngắn">
+    <div style="margin: 10px 30px; text-align: center">
       <div class="form-check-inline" *ngFor="let label of labels; index as i">
         <input type="checkbox" style="width: 16px; height: 16px;margin-bottom: 0px" id="{{i + 1}}" value="{{label.id}}">
-        <label class="label" style="margin-bottom: 0; margin-left: 3px" for="{{i + 1}}">{{label.name}}</label>
+        <label class="label" style="margin: 0 20px 0 3px" for="{{i + 1}}">{{label.name}}</label>
       </div>
     </div>
     <div>
@@ -26,9 +24,12 @@
              name="image"
              autocomplete="off"
              formControlName="image"
+             style="padding: 10px 3px 3px 0; width: 80%"
       />
-      <img src="{{fb}}" style="height: 80px; width: 80px">
+      <span *ngIf="checkImage"><img src="{{fb}}" style="height: 80px; width: 80px; margin-left: 30px"></span>
     </div>
+    <hr style="border-color: #ffffff">
+    <p style="margin: 0 0 0 20px">Nội dung bài viết</p>
     <editor formControlName="content" [init]="{plugins :  'link'}"></editor>
     <br>
     <button type="submit" class="site-btn" style="width: 150px;margin-left: 300px">Đăng bài</button>

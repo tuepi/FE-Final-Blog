@@ -23,6 +23,7 @@ export class CreatePostComponent implements OnInit {
   selectedFile: File | any;
   fb: any;
   downloadURL: Observable<string> | any;
+  checkImage = false;
 
   fullName = localStorage.getItem('FULLNAME');
   labels: Label[] = []
@@ -68,6 +69,7 @@ export class CreatePostComponent implements OnInit {
           this.downloadURL.subscribe(url => {
             if (url) {
               this.fb = url;
+              this.checkImage = this.fb !== null ? true : false;
             }
             console.log(this.fb);
           });

@@ -6,16 +6,16 @@
     <!--      <span>Recipes</span>-->
     <!--    </div>-->
   </div>
-  <div class="categories__list__post__item" *ngFor="let post of posts | paginate: { itemsPerPage: 8, currentPage: p, totalItems: total }">
+  <div class="categories__list__post__item" *ngFor="let post of posts | paginate: { itemsPerPage: 3, currentPage: p, totalItems: total }">
     <div class="row">
       <div class="col-lg-6 col-md-6">
         <div class="categories__post__item__pic set-bg"
              data-setbg="img/categories/categories-list/cl-1.jpg">
           <img src="{{post.image}}">
-          <div class="post__meta">
-            <h4></h4>
-            <span>{{post.createAt}}</span>
-          </div>
+<!--          <div class="post__meta">-->
+<!--            <h4></h4>-->
+<!--            <span>{{post.createAt}}</span>-->
+<!--          </div>-->
         </div>
       </div>
       <div class="col-lg-6 col-md-6">
