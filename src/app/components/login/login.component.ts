@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
       }
     }, error => {
       this.toast.error({detail: "LỖI", summary: "Đăng nhập thất bại!!!", duration: 2000})
+      this.route.navigate(['/login'])
     })
   }
 }
