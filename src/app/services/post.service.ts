@@ -16,7 +16,7 @@ export class PostService {
   constructor(private httpClient : HttpClient) { }
 
   getAllByPublicStatus(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(API_URL);
+    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/guest');
   }
 
   // getUsers(page: number){

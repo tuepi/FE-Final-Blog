@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         this.route.navigate([''])
       }
     }, error => {
-      alert('Sai con me m roi ')
+      this.toast.error({detail: "LỖI", summary: "Đăng nhập thất bại!!!", duration: 2000})
     })
   }
 }
