@@ -32,6 +32,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
+import {EditPostComponent} from "./components/post/edit-post/edit-post.component";
+
 
 @NgModule({
   declarations: [
@@ -43,8 +45,12 @@ import {AngularFireModule} from "@angular/fire/compat";
     DetailComponent,
     DisplayPostsComponent,
     GetAllPublicStatusComponent,
+    EditPostComponent,
+
+    GetAllPublicStatusComponent,
     GetMyPostsComponent,
-    CreatePostComponent
+    CreatePostComponent,
+
   ],
   imports: [
     BrowserModule,

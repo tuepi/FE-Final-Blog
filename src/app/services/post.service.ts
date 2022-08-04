@@ -16,7 +16,7 @@ export class PostService {
   constructor(private httpClient : HttpClient) { }
 
   getAllByPublicStatus(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/guest');
+    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/posts');
   }
 
   // getUsers(page: number){
@@ -34,8 +34,17 @@ export class PostService {
   }
 
 
+  updatePost(id: number, post: Post): Observable<Post> {
+    return this.httpClient.put<Post>(API_URL + id ,post)
+  }
+  createPost(post : any) : Observable<Post>{
+    return this.httpClient.post<Post>(API_URL,post)
+  }
+
   save(post:Post){
     return this.httpClient.post<Post>(API_URL, post)
   }
-
+  deleteTour(id : any) : Observable<any> {
+    return this.httpClient.delete(API_URL + `/${id}`);
+  }
 }

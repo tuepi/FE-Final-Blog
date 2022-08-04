@@ -7,6 +7,7 @@ import {DisplayPostsComponent} from "./components/post/display-posts/display-pos
 import {GetAllPublicStatusComponent} from "./components/post/get-all-public-status/get-all-public-status.component";
 import {DetailComponent} from "./components/post/detail/detail.component";
 import {CreatePostComponent} from "./components/post/create-post/create-post.component";
+import {EditPostComponent} from "./components/post/edit-post/edit-post.component";
 
 const routes: Routes = [
   {
@@ -24,6 +25,9 @@ const routes: Routes = [
       {
         path : 'create',
         component : CreatePostComponent
+      },{
+        path : 'edit/:id',
+        component : EditPostComponent
       }
     ]
   },
@@ -34,7 +38,7 @@ const routes: Routes = [
   {
     path : 'register',
     component : RegisterComponent
-  },
+  }
 ];
 
 @NgModule({
