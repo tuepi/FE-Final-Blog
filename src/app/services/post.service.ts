@@ -11,7 +11,7 @@ const API_URL = environment.apiUrl + "/api/posts/";
 })
 export class PostService {
 
-  currentUserId : any = localStorage.getItem('ID')
+  currentUserId = localStorage.getItem('ID');
 
   constructor(private httpClient : HttpClient) { }
 
