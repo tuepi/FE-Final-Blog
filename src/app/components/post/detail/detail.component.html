@@ -1,94 +1,299 @@
-
-<!-- Typography Section Begin -->
-<section class="typography spad">
-  <div class="container">
-    <div class="typography__text">
-      <div class="row">
-        <div class="col-lg-8 col-md-8">
-          <div class="breadcrumb__text">
-            <h2>{{obj.title}}</h2>
-            <div class="breadcrumb__option">
-              <a href="#">Tác giả: {{obj.user.fullName}} </a>
-              <span>Ngày đăng :{{obj.createAt}}</span>
-            </div>
-          </div>
-          <div class="typography__top__text">
-<!--            <p>Mô tả: {{obj.description}}</p>-->
-          </div>
-          <div class="typography__desc">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-6">
-                <img src="{{obj.image}}" alt="">
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="typography__desc__text">
-                  <p>Mô tả: {{obj.description}}</p>
+<app-navbar></app-navbar>
+<!-- Hero Section Begin -->
+<section class="hero">
+  <div class="hero__slider owl-carousel">
+    <div class="hero__item">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6 p-0">
+            <div class="hero__inside__item hero__inside__item--wide set-bg"
+                 data-setbg="assets/img/hero/hero-1.jpg">
+              <div class="hero__inside__item__text">
+                <div class="hero__inside__item--meta">
+                  <span>08</span>
+                  <p>Aug</p>
+                </div>
+                <div class="hero__inside__item--text">
+                  <ul class="label">
+                    <li>Vegan</li>
+                    <li>Desserts</li>
+                  </ul>
+                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br /> White Peach Mug
+                    Cobbler With Cardamom</h4>
+                  <ul class="widget">
+                    <li>by <span>Admin</span></li>
+                    <li>3 min read</li>
+                    <li>20 Comment</li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
-          <div class="typography__last__text" id="content">
+          <div class="col-lg-3 col-md-6  p-0">
+            <div class="hero__inside__item hero__inside__item--small set-bg"
+                 data-setbg="assets/img/hero/hero-2.jpg">
+              <div class="hero__inside__item__text">
+                <div class="hero__inside__item--meta">
+                  <span>08</span>
+                  <p>Aug</p>
+                </div>
+                <div class="hero__inside__item--text">
+                  <ul class="label">
+                    <li>Vegan</li>
+                    <li>Desserts</li>
+                  </ul>
+                  <h5>How to Make a Milkshake With Any <br />Ice Cream, Any Toppings...</h5>
+                </div>
+              </div>
+            </div>
+            <div class="hero__inside__item hero__inside__item--small set-bg"
+                 data-setbg="assets/img/hero/hero-3.jpg">
+              <div class="hero__inside__item__text">
+                <div class="hero__inside__item--meta">
+                  <span>08</span>
+                  <p>Aug</p>
+                </div>
+                <div class="hero__inside__item--text">
+                  <ul class="label">
+                    <li>Vegan</li>
+                    <li>Desserts</li>
+                  </ul>
+                  <h5>Vintage Copper Preserve Pan with <br />Brass Handles, Mid 19th Century</h5>
+                </div>
+              </div>
+            </div>
           </div>
-          <button *ngIf="postOwner"  data-toggle="modal" data-target="#staticBackdrop">xóa</button>
-          <button *ngIf="postOwner">sửa</button>
-<!--          COMMENT-->
-<div class="single-post spad">
-  <div class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="col-lg-8">
-        <div class="single-post__comment">
-          <div class="single-post__comment__item">
-            <div class="single-post__comment__item__text">
-              <h5>Brandon Kelley</h5>
-              <span>15 Aug 2017</span>
-              <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore
-                magnam.</p>
-              <ul>
-                <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                <li><a href="#"><i class="fa fa-share-square-o"></i></a></li>
-              </ul>
+          <div class="col-lg-3 col-md-6  p-0">
+            <div class="hero__inside__item set-bg" data-setbg="assets/img/hero/hero-4.jpg">
+              <div class="hero__inside__item__text">
+                <div class="hero__inside__item--meta">
+                  <span>08</span>
+                  <p>Aug</p>
+                </div>
+                <div class="hero__inside__item--text">
+                  <ul class="label">
+                    <li>Vegan</li>
+                    <li>Desserts</li>
+                  </ul>
+                  <h5>Marinated Lentil Salad with Zucch <br />ini and Tomatoes</h5>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="single-post__leave__comment">
-          <div class="widget__title">
-            <h4>Leave a comment</h4>
+      </div>
+    </div>
+    <div class="hero__item">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6 p-0">
+            <div class="hero__inside__item hero__inside__item--wide set-bg"
+                 data-setbg="assets/img/hero/hero-1.jpg">
+              <div class="hero__inside__item__text">
+                <div class="hero__inside__item--meta">
+                  <span>08</span>
+                  <p>Aug</p>
+                </div>
+                <div class="hero__inside__item--text">
+                  <ul class="label">
+                    <li>Vegan</li>
+                    <li>Desserts</li>
+                  </ul>
+                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br /> White Peach Mug
+                    Cobbler With Cardamom</h4>
+                  <ul class="widget">
+                    <li>by <span>Admin</span></li>
+                    <li>3 min read</li>
+                    <li>20 Comment</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-          <form action="#">
-            <textarea placeholder="Message"></textarea>
-            <button type="submit" class="site-btn">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Bạn Có Chắc Chắn Muốn Xóa
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Không xóa</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deletePost(obj.id)">Xóa</button>
-      </div>
-    </div>
-  </div>
-</div>
+          <div class="col-lg-3 col-md-6 p-0">
+            <div class="hero__inside__item hero__inside__item--small set-bg"
+                 data-setbg="assets/img/hero/hero-3.jpg">
+              <div class="hero__inside__item__text">
+                <div class="hero__inside__item--meta">
+                  <span>08</span>
+                  <p>Aug</p>
+                </div>
+                <div class="hero__inside__item--text">
+                  <ul class="label">
+                    <li>Vegan</li>
+                    <li>Desserts</li>
+                  </ul>
+                  <h5>How to Make a Milkshake With Any <br />Ice Cream, Any Toppings...</h5>
+                </div>
+              </div>
+            </div>
+            <div class="hero__inside__item hero__inside__item--small set-bg"
+                 data-setbg="img/hero/hero-2.jpg">
+              <div class="hero__inside__item__text">
+                <div class="hero__inside__item--meta">
+                  <span>08</span>
+                  <p>Aug</p>
+                </div>
+                <div class="hero__inside__item--text">
+                  <ul class="label">
+                    <li>Vegan</li>
+                    <li>Desserts</li>
+                  </ul>
+                  <h5>Vintage Copper Preserve Pan with <br />Brass Handles, Mid 19th Century</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 p-0">
+            <div class="hero__inside__item set-bg" data-setbg="img/hero/hero-4.jpg">
+              <div class="hero__inside__item__text">
+                <div class="hero__inside__item--meta">
+                  <span>08</span>
+                  <p>Aug</p>
+                </div>
+                <div class="hero__inside__item--text">
+                  <ul class="label">
+                    <li>Vegan</li>
+                    <li>Desserts</li>
+                  </ul>
+                  <h5>Marinated Lentil Salad with Zucch <br />ini and Tomatoes</h5>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+<!-- Hero Section End -->
+
+<!-- Categories Section Begin -->
+<section class="categories spad" style="background-color: #fffbf569">
+  <div class="container">
+  </div>
+  <div class="categories__post">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-8">
+          <!-- Typography Section Begin -->
+          <section class="typography spad">
+            <div class="container">
+              <div class="typography__text">
+                <div class="row">
+                  <div class="col-lg-8 col-md-8">
+                    <div class="breadcrumb__text">
+                      <h2>{{obj.title}}</h2>
+                      <div class="breadcrumb__option">
+                        <a href="#">Tác giả: {{obj.user.fullName}} </a>
+                        <span>Ngày đăng :{{obj.createAt}}</span>
+                      </div>
+                    </div>
+                    <div class="typography__top__text">
+                      <!--            <p>Mô tả: {{obj.description}}</p>-->
+                    </div>
+                    <div class="typography__desc">
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                          <img src="{{obj.image}}" alt="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                          <div class="typography__desc__text">
+                            <p>Mô tả: {{obj.description}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="typography__last__text" id="content">
+                    </div>
+                    <button *ngIf="postOwner" data-toggle="modal" data-target="#staticBackdrop">xóa</button>
+                    <button *ngIf="postOwner" [routerLink]="['/edit/',obj.id]">sửa</button>
+                    <!--          COMMENT-->
+                    <div class="single-post spad">
+                      <div class="container">
+                        <div class="row d-flex justify-content-center">
+                          <div class="col-lg-8">
+                            <div class="single-post__comment">
+                              <div class="single-post__comment__item">
+                                <div class="single-post__comment__item__text">
+                                  <h5>Brandon Kelley</h5>
+                                  <span>15 Aug 2017</span>
+                                  <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+                                    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore
+                                    magnam.</p>
+                                  <ul>
+                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-share-square-o"></i></a></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="single-post__leave__comment">
+                              <div class="widget__title">
+                                <h4>Leave a comment</h4>
+                              </div>
+                              <form action="#">
+                                <textarea placeholder="Message"></textarea>
+                                <button type="submit" class="site-btn">Submit</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="true" tabindex="-1"
+                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            Bạn Có Chắc Chắn Muốn Xóa
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deletePost(obj.id)">Xóa
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <div class="col-lg-4 col-md-4">
+          <app-top5-by-likes></app-top5-by-likes>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Categories Section End -->
+<app-footer></app-footer>
+
+
+<!-- Search Begin -->
+<div class="search-model">
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="search-close-switch">+</div>
+    <form class="search-model-form">
+      <input type="text" id="search-input" placeholder="Search here.....">
+    </form>
+  </div>
+</div>
+<!-- Search End -->
+
+
 
 
 

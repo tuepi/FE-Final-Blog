@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PostService} from "../../../services/post.service";
+import {Post} from "../../../models/post";
 
 @Component({
   selector: 'app-detail',
@@ -9,7 +10,7 @@ import {PostService} from "../../../services/post.service";
 })
 export class DetailComponent implements OnInit {
   postOwner = false;
-  obj: any;
+  obj: Post  | any;
   id: any
 
   constructor(private acctiveRouter: ActivatedRoute,
@@ -18,15 +19,11 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.getBlog()
-    this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
-    console.log(this.obj);
   }
 
   deletePost(id: any) {
     this.postService.deletePost(id).subscribe(() => {
-
       this.router.navigate(['/'])
     }, error => {
       console.log(error);
@@ -40,6 +37,7 @@ export class DetailComponent implements OnInit {
       this.postService.findById(this.id).subscribe((data) => {
         console.log("data: ", data);
         this.obj = data;
+
         this.displayContent(this.obj.content)
         this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
         console.log("obj: ", this.obj)

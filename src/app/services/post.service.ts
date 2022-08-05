@@ -11,7 +11,7 @@ const API_URL = environment.apiUrl + "/api/posts/";
 })
 export class PostService {
 
-  currentUserId : any = localStorage.getItem('ID')
+  currentUserId = localStorage.getItem('ID')
 
   constructor(private httpClient : HttpClient) { }
 
@@ -22,10 +22,6 @@ export class PostService {
   getAllForAdmin(): Observable<Post[]> {
     return this.httpClient.get<Post[]>(environment.apiUrl + '/api/admin');
   }
-
-  // getUsers(page: number){
-  //   return this.httpClient.get(API_URL + '?page=' + page);
-  // }
 
   getMyPosts(): Observable<Post[]> {
     return this.httpClient.get<Post[]>(API_URL + 'user/' + this.currentUserId);
@@ -51,4 +47,8 @@ export class PostService {
     return this.httpClient.post<Post>(API_URL, post)
   }
 
+
+  updatePost(postId: any, post: Post) {
+    return this.httpClient.put<Post>(API_URL + postId, post)
+  }
 }
