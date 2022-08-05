@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+a, span, h2, h4, h6, h5{
+  font-family: "Calibri Light" !important;
+  margin-right: 10px !important;
+}
+
+a{
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+li {
+  margin: 0px !important;
+}
+
+md-toast.md-success-toast-theme div.md-toast-content{
+  color: white !important;
+  background-color: purple !important;
+}
+
+.toast.success {
+  background-color: #000680;
+}
+
+.custom-box-shadow{
+  -webkit-box-shadow: 4px 4px 28px -4px rgba(0,0,0,0.19);
+  -moz-box-shadow: 4px 4px 28px -4px rgba(0,0,0,0.19);
+  box-shadow: 4px 4px 28px -4px rgba(0,0,0,0.19);
+}

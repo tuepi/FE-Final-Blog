@@ -1,0 +1,34 @@
+<div class="sidebar__item">
+  <div class="sidebar__feature__item">
+    <div class="sidebar__item__title">
+      <h6>Bài viết hay</h6>
+    </div>
+    <div class="sidebar__feature__item__list">
+      <div class="sidebar__feature__item__list__single" *ngFor="let p of top5Posts; index as i">
+        <div class="post__meta">
+          <img src="{{p.image}}">
+        </div>
+        <div class="post__text">
+          <span>Dinner</span>
+          <h5><a [routerLink]="['/detail', p.id]">{{p.title}}</a></h5>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="sidebar__item__categories">
+    <div class="sidebar__item__title">
+      <h6>Categories</h6>
+    </div>
+    <ul>
+      <li><a href="#">Recipes <span>128</span></a></li>
+      <li><a href="#">Dinner <span>32</span></a></li>
+      <li><a href="#">Dessert <span>86</span></a></li>
+      <li class="p-left"><a href="#">Smothie <span>25</span></a></li>
+      <li class="p-left"><a href="#">Drinks <span>36</span></a></li>
+      <li class="p-left"><a href="#">Cakes <span>15</span></a></li>
+      <li><a href="#">Vegan <span>63</span></a></li>
+      <li><a href="#">Weightloss <span>27</span></a></li>
+    </ul>
+  </div>
+</div>
