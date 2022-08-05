@@ -13,7 +13,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {NgToastModule} from "ng-angular-popup";
 import { DisplayPostsComponent } from './components/post/display-posts/display-posts.component';
 import { GetAllPublicStatusComponent } from './components/post/get-all-public-status/get-all-public-status.component';
-import { GetMyPostsComponent } from './components/post/get-my-posts/get-my-posts.component';
+import { GetMyPostsComponent } from './components/user/get-my-posts/get-my-posts.component';
 import {DetailComponent} from "./components/post/detail/detail.component";
 import { CreatePostComponent } from './components/post/create-post/create-post.component';
 import {EditorModule} from "@tinymce/tinymce-angular";
@@ -34,6 +34,8 @@ import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
 import { Top5ByLikesComponent } from './components/post/top5-by-likes/top5-by-likes.component';
 import { ListLabelComponent } from './components/post/list-label/list-label.component';
+import { GetAllComponent } from './components/admin/get-all/get-all.component';
+import { GetPublicAndMyPrivateComponent } from './components/user/get-public-and-my-private/get-public-and-my-private.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { ListLabelComponent } from './components/post/list-label/list-label.comp
     GetMyPostsComponent,
     CreatePostComponent,
     Top5ByLikesComponent,
-    ListLabelComponent
+    ListLabelComponent,
+    GetAllComponent,
+    GetPublicAndMyPrivateComponent
   ],
   imports: [
     BrowserModule,

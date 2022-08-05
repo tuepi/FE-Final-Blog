@@ -9,7 +9,7 @@ import {Post} from "../../../models/post";
 })
 export class Top5ByLikesComponent implements OnInit {
 
-  posts : Post[] = []
+  top5Posts : Post[] | any
 
   constructor(private postService : PostService) { }
 
@@ -18,9 +18,9 @@ export class Top5ByLikesComponent implements OnInit {
   }
 
   top5ByLikes() {
-    this.postService.getMyPosts().subscribe(data => {
+    this.postService.top5ByLikes().subscribe(data => {
         console.log(data)
-        this.posts = data;
+        this.top5Posts = data;
       },
       error => {
         console.log(error);

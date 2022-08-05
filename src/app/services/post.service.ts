@@ -19,24 +19,32 @@ export class PostService {
     return this.httpClient.get<Post[]>(environment.apiUrl + '/api/guest');
   }
 
+  getAllForAdmin(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/admin');
+  }
+
   // getUsers(page: number){
   //   return this.httpClient.get(API_URL + '?page=' + page);
   // }
 
-  getMyPosts(): Observable<any> {
-    return this.httpClient.get<any>(API_URL + 'user/' + this.currentUserId);
+  getMyPosts(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL + 'user/' + this.currentUserId);
+  }
+
+  getPublicAndMyPrivate(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL + 'public/user/' + this.currentUserId);
   }
 
   top5ByLikes(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(API_URL + 'like');
+    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/guest/like');
   }
 
   findById(id:any): Observable<Post>{
-    return this.httpClient.get<Post>(API_URL +id)
+    return this.httpClient.get<Post>(environment.apiUrl + '/api/guest/' + id)
   }
 
   deletePost(id:any):Observable<Post>{
-    return this.httpClient.delete<Post>(API_URL+id)
+    return this.httpClient.delete<Post>(API_URL + id)
   }
 
   save(post:Post){

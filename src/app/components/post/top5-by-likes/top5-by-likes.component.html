@@ -4,45 +4,16 @@
       <h6>Bài viết hay</h6>
     </div>
     <div class="sidebar__feature__item__list">
-      <div class="sidebar__feature__item__list__single" *ngFor="let post of posts; index as i">
+      <div class="sidebar__feature__item__list__single" *ngFor="let p of top5Posts; index as i">
         <div class="post__meta">
-          <img src="{{post.image}}">
+          <img src="{{p.image}}">
         </div>
         <div class="post__text">
           <span>Dinner</span>
-          <h5><a [routerLink]="['/detail', post.id]">{{post.title}}</a></h5>
+          <h5><a [routerLink]="['/detail', p.id]">{{p.title}}</a></h5>
         </div>
       </div>
-<!--      <div class="sidebar__feature__item__list__single">-->
-<!--        <div class="post__meta">-->
-<!--          <h4>05</h4>-->
-<!--          <span>Aug</span>-->
-<!--        </div>-->
-<!--        <div class="post__text">-->
-<!--          <span>Smoothie</span>-->
-<!--          <h5><a href="#">The $8 French Rosé I Buy in Bulk Every Summer</a></h5>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="sidebar__feature__item__list__single">-->
-<!--        <div class="post__meta">-->
-<!--          <h4>26</h4>-->
-<!--          <span>jul</span>-->
-<!--        </div>-->
-<!--        <div class="post__text">-->
-<!--          <span>Desert</span>-->
-<!--          <h5><a href="#">Ina Garten's Skillet-Roasted Lemon Chicken</a></h5>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="sidebar__feature__item__list__single">-->
-<!--        <div class="post__meta">-->
-<!--          <h4>16</h4>-->
-<!--          <span>jul</span>-->
-<!--        </div>-->
-<!--        <div class="post__text">-->
-<!--          <span>Vegan</span>-->
-<!--          <h5><a href="#">The Best Weeknight Baked Potatoes, 3 Creative Ways</a></h5>-->
-<!--        </div>-->
-<!--      </div>-->
+
     </div>
   </div>
   <div class="sidebar__item__categories">

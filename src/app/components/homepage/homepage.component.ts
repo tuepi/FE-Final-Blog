@@ -11,6 +11,8 @@ import {NgToastService} from "ng-angular-popup";
 })
 export class HomepageComponent implements OnInit {
   isLogin = false;
+  fullName : any;
+  avatar : any;
 
   constructor(private postService : PostService,
               private router : Router,
@@ -18,18 +20,20 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLogin = localStorage.getItem('ID') == null ? false : true;
-    console.log("ele:  ", document.getElementsByClassName("modal-backdrop").item(0))
-    if (document.getElementById("staticBackdrop") != null) {
-      // @ts-ignore
-      document.getElementsByClassName("modal-backdrop").item(0).hidden = true
-
-      console.log("ele:  ", document.getElementsByClassName("modal-backdrop").item(0))
-    }
+    this.fullName = localStorage.getItem('FULLNAME')
+    this.avatar = localStorage.getItem('AVATAR')
+    // console.log("ele:  ", document.getElementsByClassName("modal-backdrop").item(0))
+    // if (document.getElementById("staticBackdrop") != null) {
+    //   // @ts-ignore
+    //   document.getElementsByClassName("modal-backdrop").item(0).hidden = true
+    //
+    //   console.log("ele:  ", document.getElementsByClassName("modal-backdrop").item(0))
+    // }
   }
 
   logout() {
     localStorage.clear();
-    this.toast.warning({detail: "THÔNG BÁO", summary: "Bạn đã đăng xuất khỏi hệ thống!!!", duration: 2000})
+    this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã đăng xuất khỏi hệ thống!!!", duration: 2000})
     this.isLogin = false;
     this.router.navigate(['/'])
   }
