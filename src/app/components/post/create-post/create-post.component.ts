@@ -3,7 +3,7 @@ import {finalize, Observable} from "rxjs";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {LabelService} from "../../../services/label.service";
 import {Label} from "../../../models/label";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Post} from "../../../models/post";
 import {PostService} from "../../../services/post.service";
 import {Router} from "@angular/router";
@@ -17,24 +17,26 @@ import {formatDate} from "@angular/common";
 })
 export class CreatePostComponent implements OnInit {
 
-  today = new Date();
   jsToday : any = '';
-  title = "cloudsSorage";
+  // title = "cloudsSorage";
   selectedFile: File | any;
   fb: any;
   downloadURL: Observable<string> | any;
   checkImage = false;
 
+  today : number = Date.now();
+
   fullName = localStorage.getItem('FULLNAME');
   labels: Label[] = []
 
   createForm = new FormGroup({
-    title: new FormControl(),
-    description: new FormControl(),
-    status: new FormControl(),
+    title: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
+    description: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
+    status: new FormControl('', [Validators.required]),
     image: new FormControl(),
-    content: new FormControl(),
+    content: new FormControl('', [Validators.required, Validators.maxLength(8000)]),
     user: new FormControl(),
+    // createAt: new FormControl(),
     numberOfLike: new FormControl()
   })
 
@@ -46,6 +48,15 @@ export class CreatePostComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllLabels()
+  }
+
+
+  get title(){
+    return this.createForm.get('title')
+  }
+
+  get description(){
+    return this.createForm.get('description')
   }
 
   getAllLabels() {
@@ -82,23 +93,26 @@ export class CreatePostComponent implements OnInit {
       });
   }
 
+
   private setNewPost() {
     const post: Post = {
-      title: this.createForm.value.title,
-      description: this.createForm.value.description,
+      title : this.createForm.value.title,
+      description : this.createForm.value.description,
       image: this.fb,
       content: this.createForm.value.content,
       status : this.createForm.value.status,
       user : {
         id : localStorage.getItem('ID')
       },
-      numberOfLike : 0
+      numberOfLike : 0,
+      // createAt : this.today
     };
     return post;
   }
 
   savePost() {
     const post = this.setNewPost()
+    console.log(post)
     this.postService.save(post).subscribe((data) => {
       console.log(data);
       this.toast.success({detail: "THÔNG BÁO", summary: "Đăng bài thành công!!!", duration: 2000})

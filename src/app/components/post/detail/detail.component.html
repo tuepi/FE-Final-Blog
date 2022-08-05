@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-8">
           <div class="breadcrumb__text">
-            <h2>Tieu de{{obj.title}}</h2>
+            <h2>{{obj.title}}</h2>
             <div class="breadcrumb__option">
               <a href="#">Tác giả: {{obj.user.fullName}} </a>
               <span>Ngày đăng :{{obj.createAt}}</span>
@@ -48,7 +48,7 @@
                         <button *ngIf="postOwner"  data-toggle="modal" data-target="#staticBackdrop"> xoa</button>
                         <button *ngIf="adminCheck"  data-toggle="modal" data-target="#staticBackdrop"> xoa</button>
 <!--                        DROPDOWN                     -->
-                    
+
 
 
 <!--                        DROPDOWN                     -->

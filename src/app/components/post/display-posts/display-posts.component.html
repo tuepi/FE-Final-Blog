@@ -20,12 +20,12 @@
       </div>
       <div class="col-lg-6 col-md-6">
         <div class="categories__post__item__text">
-          <span class="post__label">nhãn</span>
-          <h3><a  [routerLink]="['/detail', post.id]">{{post.title}}</a></h3>
+<!--          <span class="post__label">Nhãn</span>-->
+          <h3><strong><a [routerLink]="['/detail', post.id]">{{post.title}}</a></strong></h3>
           <ul class="post__widget">
             <li>từ <span>{{post.user.fullName}}</span></li>
-            <li>{{post.numberOfLike}} Lượt thích</li>
-            <li>20 Bình luận</li>
+            <li>   {{post.numberOfLike}} Lượt thích</li>
+<!--            <li>20 Bình luận</li>-->
           </ul>
           <p>{{post.description}}</p>
         </div>
@@ -33,13 +33,3 @@
     </div>
   </div>
   <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
-<!--  <div class="row">-->
-<!--    <div class="col-lg-12">-->
-<!--      <div class="categories__pagination">-->
-<!--        <a href="#">1</a>-->
-<!--        <a href="#">2</a>-->
-<!--        <a href="#">3</a>-->
-<!--        <a href="#">Trang tiếp</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->

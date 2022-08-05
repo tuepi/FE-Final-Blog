@@ -40,16 +40,21 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password).pipe(first()).subscribe(data => {
       console.log(data.roles)
       localStorage.setItem('ACCESS_TOKEN', data.accessToken);
-      localStorage.setItem('ROLE', data.roles);
+      localStorage.setItem('ROLE', data.roles[0].authority);
       localStorage.setItem('ID', data.id);
       localStorage.setItem('USERNAME', data.username);
       localStorage.setItem('FULLNAME', data.fullName);
+      localStorage.setItem('AVATAR', data.avatar);
       if (data.roles[0].authority == 'ROLE_USER') {
-        this.toast.success({detail: "THÔNG BÁO", summary: "Đăng nhập thành công!!!", duration: 2000})
-        this.route.navigate([''])
+        this.toast.success({detail: "THÔNG BÁO", summary: "Đăng nhập thành công!!!", duration: 2000});
+        this.route.navigate(['/user']);
+      } else {
+        this.toast.success({detail: "THÔNG BÁO", summary: "Đăng nhập Admin thành công!!!", duration: 2000})
+        this.route.navigate(['/admin']);
       }
     }, error => {
-      alert('Sai con me m roi ')
+      this.toast.error({detail: "LỖI", summary: "Đăng nhập thất bại!!!", duration: 2000})
+      this.route.navigate(['/login'])
     })
   }
 }

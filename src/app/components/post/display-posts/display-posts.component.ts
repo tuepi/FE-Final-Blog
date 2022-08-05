@@ -36,7 +36,7 @@ export class DisplayPostsComponent implements OnInit {
               private router : Router) { }
 
   ngOnInit(): void {
-    this.getAllByPublicStatus()
+    // this.getAllByPublicStatus()
   }
 
   // getAllByPublicStatus() {
@@ -48,14 +48,13 @@ export class DisplayPostsComponent implements OnInit {
   //   });
   // }
 
-  getAllByPublicStatus(){
-    // this.postService.getAllByPublicStatus(this.p)
-    // @ts-ignore
-    this.postService.getAllByPublicStatus(this.p).subscribe((response: any) => {
-      this.posts = response;
-      this.total = response.total;
-    });
-  }
+  // getAllByPublicStatus(){
+  //   // @ts-ignore
+  //   this.postService.getAllByPublicStatus(this.p).subscribe((response: any) => {
+  //     this.posts = response;
+  //     this.total = response.total;
+  //   });
+  // }
 
   /**
    * Write code on Method
@@ -65,7 +64,7 @@ export class DisplayPostsComponent implements OnInit {
 
   pageChangeEvent(event: number){
     this.p = event;
-    this.getAllByPublicStatus();
+    // this.getAllByPublicStatus();
   }
 
 }

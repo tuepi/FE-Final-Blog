@@ -11,28 +11,41 @@ const API_URL = environment.apiUrl + "/api/posts/";
 })
 export class PostService {
 
-  currentUserId : any = localStorage.getItem('ID')
+  currentUserId = localStorage.getItem('ID');
 
   constructor(private httpClient : HttpClient) { }
 
   getAllByPublicStatus(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(API_URL);
+    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/guest');
+  }
+
+  getAllForAdmin(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/admin');
   }
 
   // getUsers(page: number){
   //   return this.httpClient.get(API_URL + '?page=' + page);
   // }
 
-  getMyPosts(): Observable<any> {
-    return this.httpClient.get<any>(API_URL + 'user/' + this.currentUserId);
-  }
-  findById(id:any): Observable<Post>{
-    return this.httpClient.get<Post>(API_URL +id)
-  }
-  deletePost(id:any):Observable<Post>{
-    return this.httpClient.delete<Post>(API_URL+id)
+  getMyPosts(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL + 'user/' + this.currentUserId);
   }
 
+  getPublicAndMyPrivate(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL + 'public/user/' + this.currentUserId);
+  }
+
+  top5ByLikes(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/guest/like');
+  }
+
+  findById(id:any): Observable<Post>{
+    return this.httpClient.get<Post>(environment.apiUrl + '/api/guest/' + id)
+  }
+
+  deletePost(id:any):Observable<Post>{
+    return this.httpClient.delete<Post>(API_URL + id)
+  }
 
   save(post:Post){
     return this.httpClient.post<Post>(API_URL, post)
