@@ -8,6 +8,7 @@ import {PostService} from "../../../services/post.service";
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  adminCheck=false;
   postOwner = false;
   obj: any;
   id: any
@@ -18,7 +19,7 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.getBlog()
     this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
     console.log(this.obj);
@@ -26,7 +27,6 @@ export class DetailComponent implements OnInit {
 
   deletePost(id: any) {
     this.postService.deletePost(id).subscribe(() => {
-
       this.router.navigate(['/'])
     }, error => {
       console.log(error);
