@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {NgToastService} from "ng-angular-popup";
 import {UserService} from "../../services/user.service";
 import {user} from "@angular/fire/auth";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-register',
@@ -14,12 +15,16 @@ import {user} from "@angular/fire/auth";
 })
 export class RegisterComponent implements OnInit {
 
-  usernames : [] = []
+  usernames : [] = [];
+  selectedFile: File | any;
+  fb: any;
+  downloadURL: Observable<string> | any;
+  checkImage = false;
 
   registerForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.maxLength(32)]),
     fullName: new FormControl('', [ Validators.minLength(6), Validators.maxLength(32)]),
-    phone: new FormControl('', [Validators.required,Validators.pattern("(03|05|07|08|09)+([0-9]{8})")]),
+    numberPhone: new FormControl('', [Validators.required,Validators.pattern("(03|05|07|08|09)+([0-9]{8})")]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)])
   },
@@ -51,7 +56,7 @@ export class RegisterComponent implements OnInit {
   }
 
   get phone(){
-    return this.registerForm.get('phone')
+    return this.registerForm.get('numberPhone')
   }
 
 
@@ -104,7 +109,10 @@ export class RegisterComponent implements OnInit {
       fullName: this.registerForm.value.fullName,
       password: this.registerForm.value.password,
       confirmPassword: this.registerForm.value.confirmPassword,
-      phone: this.registerForm.value.phone
+      numberPhone: this.registerForm.value.numberPhone,
+      address: this.registerForm.value.address,
+      email: this.registerForm.value.email,
+      avatar: this.fb,
     };
     return user;
   }

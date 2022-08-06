@@ -49,7 +49,7 @@
                   <li><a routerLink="/register">Đăng ký</a></li>
                 </ul>
                 <ul class="dropdown__menu" *ngIf="isLogin">
-                  <li><a>Trang cá nhân</a></li>
+                  <li><a [routerLink]="['/update/',currentUserId]">Trang cá nhân</a></li>
                   <li><a (click)="logout()">Đăng xuất</a></li>
                 </ul>
               </li>
@@ -69,7 +69,7 @@
       <div class="col-lg-3 col-md-3">
         <div class="header__btn">
           <a class="primary-btn" *ngIf="isLogin" routerLink="/create">Đăng bài</a>
-          <a class="primary-btn" (click)="requestLogin()" *ngIf="!isLogin">Đăng bài</a>
+          <a class="primary-btn" *ngIf="isLogin" routerLink="['/update/',obj.id]">Sua User</a>
         </div>
       </div>
       <div class="col-lg-6 col-md-6">

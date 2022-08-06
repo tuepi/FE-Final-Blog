@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
     "@tinymce/tinymce-angular": "^7.0.0",
-    "firebase": "^9.9.1",
+    "firebase": "^9.9.2",
     "ng-angular-popup": "^0.1.2",
     "ngx-pagination": "^6.0.2",
     "rxjs": "~7.5.0",

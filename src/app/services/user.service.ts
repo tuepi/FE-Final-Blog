@@ -15,4 +15,12 @@ export class UserService {
   getAll(): Observable<[]> {
     return this.httpClient.get<[]>(environment.apiUrl + '/api/guest/users');
   }
+  updateUser(userId : any , user : User){
+    return this.httpClient.put<User>(environment.apiUrl + '/users/' + userId, user)
+  }
+  findById(id:any): Observable<User>{
+    return this.httpClient.get<User>(environment.apiUrl + '/users/' + id)
+  }
+
+
 }

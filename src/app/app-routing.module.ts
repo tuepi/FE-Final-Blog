@@ -13,6 +13,7 @@ import {
   GetPublicAndMyPrivateComponent
 } from "./components/user/get-public-and-my-private/get-public-and-my-private.component";
 import {EditPostComponent} from "./components/post/edit-post/edit-post.component";
+import {UpdateUserComponent} from "./components/user/update-user/update-user.component";
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: GetAllComponent,
+  },
+  {
+    path: 'update/:id',
+    component: UpdateUserComponent,
   }
 ];
 

@@ -16,7 +16,7 @@ export class PostService {
   constructor(private httpClient : HttpClient) { }
 
   getAllByPublicStatus(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/guest');
+    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/posts');
   }
 
   getAllForAdmin(): Observable<Post[]> {
