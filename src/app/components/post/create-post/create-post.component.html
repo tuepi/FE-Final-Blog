@@ -1,5 +1,4 @@
 <app-navbar></app-navbar>
-
 <!-- Hero Section Begin -->
 <section class="hero">
   <div class="hero__slider owl-carousel">
@@ -176,22 +175,37 @@
   <div class="categories__post">
     <div class="container">
       <div class="row">
-        <div class="col-lg-2 col-md-2">
-        </div>
+        <div class="col-lg-2 col-md-2"></div>
         <div class="col-lg-8 col-md-8 custom-box-shadow">
 
           <div class="contact__form">
             <div class="contact__form__title">
-              <h2 style="text-align: center; margin: 30px 30px">ĐĂNG BÀI VIẾT MỚI</h2>
+              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)"><span>ĐĂNG BÀI VIẾT MỚI</span></h2>
               <p>Hãy tạo bài viết và chia sẻ cho mọi người <a>{{fullName}}</a> nhé!!!</p>
             </div>
             <form [formGroup]="createForm" (ngSubmit)="savePost()">
-              <span>TIÊU ĐỀ:</span><input type="text" style="width: 80%;" formControlName="title" placeholder="Tiêu đề">
-              <select formControlName="status" style="margin: 20px">
+              <div class="sidebar__item__title" style="margin: 0 0">
+                <h6>TIÊU ĐỀ:</h6>
+              </div>
+              <input type="text" style="width: 80%; margin: 0 0" formControlName="title" placeholder="Tiêu đề">
+              <select formControlName="status" style="margin: 20px" [value]="1">
                 <option selected="selected" value="1">Công khai</option>
                 <option value="0">Chỉ mình tôi</option>
               </select>
-              <span>MÔ TẢ</span><input type="text"  formControlName="description" placeholder="Mô tả ngắn">
+              <div *ngIf="title?.invalid && (title?.dirty || title?.touched)">
+                <div style="color: red; margin-left: 10px" *ngIf="title?.errors?.['required']">
+                  <small>*Tiêu đề không được bỏ trống</small>
+                </div>
+              </div>
+              <div class="sidebar__item__title" style="margin: 0 0">
+                <h6>MÔ TẢ:</h6>
+              </div>
+              <input type="text"  formControlName="description" placeholder="Mô tả ngắn" style="margin: 0 0">
+              <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+                <div style="color: red; margin-left: 10px" *ngIf="description?.errors?.['required']">
+                  <small>*Mô tả không được bỏ trống</small>
+                </div>
+              </div>
               <div style="margin: 10px 30px; text-align: center">
                 <div class="form-check-inline" *ngFor="let label of labels; index as i">
                   <input type="checkbox" style="width: 16px; height: 16px;margin-bottom: 0px" id="{{i + 1}}" value="{{label.id}}">
@@ -211,20 +225,23 @@
                 <span *ngIf="checkImage"><img src="{{fb}}" style="height: 80px; width: 80px; margin-left: 30px"></span>
               </div>
               <hr style="border-color: #ffffff">
-              <p style="margin: 0 0 0 20px">NỘI DUNG BÀI VIẾT</p>
+              <div class="sidebar__item__title" style="margin: 0 0">
+                      <h6>NỘI DUNG BÀI VIẾT:</h6>
+              </div>
               <editor formControlName="content" [init]="{plugins :  'link'}"></editor>
+              <div *ngIf="content?.invalid && (content?.dirty || content?.touched)">
+                <div style="color: red; margin-left: 10px" *ngIf="content?.errors?.['required']">
+                  <small>*Nội dung không được bỏ trống</small>
+                </div>
+              </div>
               <br>
-              <button type="submit" class="site-btn" style="width: 150px;margin-left: 300px">Đăng bài</button>
+              <button type="submit" class="site-btn" style="width: 150px; margin: 30px 0px 50px 300px">Đăng bài</button>
             </form>
           </div>
 
         </div>
         <div class="col-lg-2 col-md-2">
         </div>
-
-        <!--        <div class="col-lg-4 col-md-4">-->
-        <!--          <app-top5-by-likes></app-top5-by-likes>-->
-        <!--        </div>-->
       </div>
     </div>
   </div>

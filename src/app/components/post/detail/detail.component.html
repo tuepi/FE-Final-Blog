@@ -18,7 +18,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br /> White Peach Mug
+                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br/> White Peach Mug
                     Cobbler With Cardamom</h4>
                   <ul class="widget">
                     <li>by <span>Admin</span></li>
@@ -42,7 +42,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>How to Make a Milkshake With Any <br />Ice Cream, Any Toppings...</h5>
+                  <h5>How to Make a Milkshake With Any <br/>Ice Cream, Any Toppings...</h5>
                 </div>
               </div>
             </div>
@@ -58,7 +58,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>Vintage Copper Preserve Pan with <br />Brass Handles, Mid 19th Century</h5>
+                  <h5>Vintage Copper Preserve Pan with <br/>Brass Handles, Mid 19th Century</h5>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>Marinated Lentil Salad with Zucch <br />ini and Tomatoes</h5>
+                  <h5>Marinated Lentil Salad with Zucch <br/>ini and Tomatoes</h5>
                 </div>
               </div>
             </div>
@@ -99,7 +99,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br /> White Peach Mug
+                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br/> White Peach Mug
                     Cobbler With Cardamom</h4>
                   <ul class="widget">
                     <li>by <span>Admin</span></li>
@@ -123,7 +123,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>How to Make a Milkshake With Any <br />Ice Cream, Any Toppings...</h5>
+                  <h5>How to Make a Milkshake With Any <br/>Ice Cream, Any Toppings...</h5>
                 </div>
               </div>
             </div>
@@ -139,7 +139,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>Vintage Copper Preserve Pan with <br />Brass Handles, Mid 19th Century</h5>
+                  <h5>Vintage Copper Preserve Pan with <br/>Brass Handles, Mid 19th Century</h5>
                 </div>
               </div>
             </div>
@@ -156,7 +156,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>Marinated Lentil Salad with Zucch <br />ini and Tomatoes</h5>
+                  <h5>Marinated Lentil Salad with Zucch <br/>ini and Tomatoes</h5>
                 </div>
               </div>
             </div>
@@ -242,27 +242,42 @@
                       </div>
                     </div>
                     <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="true" tabindex="-1"
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="true"
+                         tabindex="-1"
                          aria-labelledby="staticBackdropLabel" aria-hidden="true">
                       <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content" style="background-color: #ffffff">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel"><div class="sidebar__item__title" style="margin: 0 0">
+                              <h6>XÁC NHẬN</h6>
+                            </div></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
-                            Bạn Có Chắc Chắn Muốn Xóa
+                            Bạn chắc chắn muốn xóa không?
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deletePost(obj.id)">Xóa
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">HỦY</button>
+                            <button type="button" class="btn site-btn" data-dismiss="modal"
+                                    (click)="deletePost(obj.id)" style="padding: 7px 12px">XÓA
                             </button>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4">
+                    <ul *ngIf="postOwner">
+                      <div class="dropdown">
+                        <a href="#"><i class="fa fa-caret-down"></i></a>
+                        <ul class="dropdown__menu">
+                          <li><a [routerLink]="['/edit/', obj.id]">Sửa</a></li>
+                          <li><a data-toggle="modal" data-target="#staticBackdrop">Xóa</a></li>
+                        </ul>
+                      </div>
+                    </ul>
                   </div>
                 </div>
               </div>

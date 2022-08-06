@@ -183,15 +183,21 @@
 
           <div class="contact__form">
             <div class="contact__form__title">
-              <h2 style="text-align: center; margin: 30px 30px">CHỈNH SỬA BÀI VIẾT</h2>
+              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)">CHỈNH SỬA BÀI VIẾT</h2>
             </div>
             <form [formGroup]="postForm" (ngSubmit)="editPost()">
-              <span>TIÊU ĐỀ:</span><input type="text" style="width: 80%;" formControlName="title" placeholder="Tiêu đề" value="{{postId.title}}">
+              <div class="sidebar__item__title" style="margin: 0 0">
+                <h6>TIÊU ĐỀ:</h6>
+              </div>
+              <input type="text" style="width: 80%;" formControlName="title" placeholder="Tiêu đề" value="{{postId.title}}">
               <select formControlName="status" style="margin: 20px">
                 <option selected="selected" value="1">Công khai</option>
                 <option value="0">Chỉ mình tôi</option>
               </select>
-              <span>MÔ TẢ</span><input type="text" formControlName="description" placeholder="Mô tả ngắn" value="{{postId.description}}">
+              <div class="sidebar__item__title" style="margin: 0 0">
+                <h6>MÔ TẢ:</h6>
+              </div>
+              <input type="text" formControlName="description" placeholder="Mô tả ngắn" value="{{postId.description}}">
               <div style="margin: 10px 30px;  text-align: center">
                 <div class="form-check-inline" *ngFor="let label of labels; index as i">
                   <input type="checkbox" style="width: 16px; height: 16px;margin-bottom: 0px" id="{{i + 1}}" value="{{label.id}}">
@@ -212,7 +218,9 @@
                 <img src="{{fb}}" valuestyle="height: 80px; width: 80px" >
               </div>
               <hr style="border-color: #ffffff">
-              <p style="margin: 0 0 0 20px">NỘI DUNG BÀI VIẾT</p>
+              <div class="sidebar__item__title" style="margin: 0 0">
+                <h6>NỘI DUNG BÀI VIẾT:</h6>
+              </div>
               <editor formControlName="content" [init]="{plugins :  'link'}" [initialValue]="content"></editor>
               <br>
               <button type="submit" class="site-btn" style="width: 150px; margin: 30px 0px 50px 300px">Lưu</button>

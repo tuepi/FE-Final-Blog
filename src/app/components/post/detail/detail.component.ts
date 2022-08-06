@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PostService} from "../../../services/post.service";
 import {Post} from "../../../models/post";
+import {NgToastModule, NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-detail',
@@ -15,7 +16,8 @@ export class DetailComponent implements OnInit {
 
   constructor(private acctiveRouter: ActivatedRoute,
               private postService: PostService,
-              private router: Router) {
+              private router: Router,
+              private toast : NgToastService) {
   }
 
   ngOnInit(): void {
@@ -24,7 +26,8 @@ export class DetailComponent implements OnInit {
 
   deletePost(id: any) {
     this.postService.deletePost(id).subscribe(() => {
-      this.router.navigate(['/'])
+      this.router.navigate(['/user']) //sửa chỗ này của mạnh
+      this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã xóa bài!!!", duration: 1500})
     }, error => {
       console.log(error);
     });
