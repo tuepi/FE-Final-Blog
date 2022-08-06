@@ -13,6 +13,8 @@ import {
   GetPublicAndMyPrivateComponent
 } from "./components/user/get-public-and-my-private/get-public-and-my-private.component";
 import {EditPostComponent} from "./components/post/edit-post/edit-post.component";
+import {DeletePostComponent} from "./components/post/delete-post/delete-post.component";
+import {ChangePasswordComponent} from "./components/user/change-password/change-password.component";
 
 const routes: Routes = [
   {
@@ -51,6 +53,14 @@ const routes: Routes = [
   {
     path: 'admin',
     component: GetAllComponent,
+  },
+  {
+    path : 'delete/:id',
+    component : DeletePostComponent
+  },
+  {
+    path : 'change-password',
+    component : ChangePasswordComponent
   }
 ];
 

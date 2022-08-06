@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Post} from "../../../models/post";
 import {PostService} from "../../../services/post.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-display-posts',
@@ -27,16 +28,20 @@ export class DisplayPostsComponent implements OnInit {
 
 
   id: any;
+  adminCheck = false;
+  obj : Post | any;
 
   @Input()
   posts : Post[] | any;
   p : number = 1;
   total: number = 0;
   constructor(private postService : PostService,
-              private router : Router) { }
+              private activatedRoute : ActivatedRoute,
+              private router : Router,
+              private toast : NgToastService) { }
 
   ngOnInit(): void {
-    // this.getAllByPublicStatus()
+    this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
   }
 
   // getAllByPublicStatus() {

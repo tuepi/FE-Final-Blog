@@ -39,6 +39,9 @@ import { GetPublicAndMyPrivateComponent } from './components/user/get-public-and
 import { EditPostComponent } from './components/post/edit-post/edit-post.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TopPostComponent } from './components/post/top-post/top-post.component';
+import { DeletePostComponent } from './components/post/delete-post/delete-post.component';
+import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,10 @@ import { FooterComponent } from './components/footer/footer.component';
     GetPublicAndMyPrivateComponent,
     EditPostComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    TopPostComponent,
+    DeletePostComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

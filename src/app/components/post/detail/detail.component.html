@@ -172,16 +172,17 @@
 <section class="categories spad" style="background-color: #fffbf569">
   <div class="container">
   </div>
-  <div class="categories__post">
-    <div class="container">
+  <div class="categories__post" style="padding: 20px">
+<!--    <div class="container">-->
       <div class="row">
-        <div class="col-lg-8 col-md-8">
+        <div class="col-lg-1 col-md-1"></div>
+        <div class="col-lg-7 col-md-7 custom-box-shadow">
           <!-- Typography Section Begin -->
           <section class="typography spad">
             <div class="container">
               <div class="typography__text">
                 <div class="row">
-                  <div class="col-lg-8 col-md-8">
+                  <div class="col-lg-10 col-md-10">
                     <div class="breadcrumb__text">
                       <h2>{{obj.title}}</h2>
                       <div class="breadcrumb__option">
@@ -268,7 +269,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-4 col-md-4">
+                  <div class="col-lg-2 col-md-2">
                     <ul *ngIf="postOwner">
                       <div class="dropdown">
                         <a href="#"><i class="fa fa-caret-down"></i></a>
@@ -286,11 +287,13 @@
 
         </div>
 
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-3 col-md-3 custom-box-shadow">
+
           <app-top5-by-likes></app-top5-by-likes>
+
         </div>
       </div>
-    </div>
+<!--    </div>-->
   </div>
 </section>
 <!-- Categories Section End -->

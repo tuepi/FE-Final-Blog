@@ -43,6 +43,10 @@ export class PostService {
     return this.httpClient.delete<Post>(API_URL + id)
   }
 
+  deletePostByAdmin(id:any):Observable<Post>{
+    return this.httpClient.delete<Post>(environment.apiUrl + '/api/admin/' + id)
+  }
+
   save(post:Post){
     return this.httpClient.post<Post>(API_URL, post)
   }

@@ -1,16 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AuthenticationService} from "../../services/authentication.service";
-import {first} from "rxjs";
+import {AuthenticationService} from "../../../services/authentication.service";
 import {NgToastService} from "ng-angular-popup";
+import {first} from "rxjs";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-change-password',
+  templateUrl: './change-password.component.html',
+  styleUrls: ['./change-password.component.css']
 })
-export class LoginComponent implements OnInit {
+export class ChangePasswordComponent implements OnInit {
+
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.maxLength(32)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
@@ -59,4 +60,5 @@ export class LoginComponent implements OnInit {
       this.route.navigate(['/login'])
     })
   }
+
 }
