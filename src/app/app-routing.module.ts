@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import {LoginComponent} from "./components/login/login.component";
 import {RegisterComponent} from "./components/register/register.component";
@@ -12,57 +12,45 @@ import {GetMyPostsComponent} from "./components/user/get-my-posts/get-my-posts.c
 import {
   GetPublicAndMyPrivateComponent
 } from "./components/user/get-public-and-my-private/get-public-and-my-private.component";
+import {EditPostComponent} from "./components/post/edit-post/edit-post.component";
 
 const routes: Routes = [
   {
-    path : '',
-    component : HomepageComponent,
-    children : [
-      {
-        path : '',
-        component : GetAllPublicStatusComponent
-      },
-      {
-        path : 'detail/:id',
-        component : DetailComponent
-      },
-      {
-        path : 'create',
-        component : CreatePostComponent
-      }
-    ]
+    path: '',
+    component: HomepageComponent
+  },
+
+  {
+    path: 'create',
+    component: CreatePostComponent
   },
   {
-    path : 'user',
-    component : HomepageComponent,
-    children : [
-      {
-        path: '',
-        component: GetPublicAndMyPrivateComponent
-      },
-      {
-        path: 'my-posts',
-        component: GetMyPostsComponent
-      }
-    ]
+    path: 'detail/:id',
+    component: DetailComponent
   },
   {
-    path : 'login',
-    component : LoginComponent
+    path: 'edit/:id',
+    component: EditPostComponent
   },
   {
-    path : 'register',
-    component : RegisterComponent
+    path: 'user',
+    component: GetPublicAndMyPrivateComponent,
   },
   {
-    path : 'admin',
-    component : HomepageComponent,
-    children : [
-      {
-        path: '',
-        component: GetAllComponent
-      }
-    ]
+    path: 'my-posts',
+    component: GetMyPostsComponent //gán vào trang cá nhân
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'admin',
+    component: GetAllComponent,
   }
 ];
 
@@ -70,4 +58,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

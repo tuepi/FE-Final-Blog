@@ -21,3 +21,9 @@ md-toast.md-success-toast-theme div.md-toast-content{
 .toast.success {
   background-color: #000680;
 }
+
+.custom-box-shadow{
+  -webkit-box-shadow: 4px 4px 28px -4px rgba(0,0,0,0.19);
+  -moz-box-shadow: 4px 4px 28px -4px rgba(0,0,0,0.19);
+  box-shadow: 4px 4px 28px -4px rgba(0,0,0,0.19);
+}

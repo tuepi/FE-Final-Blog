@@ -59,6 +59,10 @@ export class CreatePostComponent implements OnInit {
     return this.createForm.get('description')
   }
 
+  get content(){
+    return this.createForm.get('content')
+  }
+
   getAllLabels() {
     this.labelService.getAllLabels().subscribe((data) => {
       this.labels = data;
