@@ -12,7 +12,7 @@
 <!--      <li>Vegan</li>-->
 <!--      <li>Desserts</li>-->
     </ul>
-    <h3><strong><a [routerLink]="['/detail/', topPost.id]">{{topPost.title}}</a></strong></h3>
+    <h3><strong><a [routerLink]="['/detail/', topPost.id]" style="color: #f4952f">{{topPost.title}}</a></strong></h3>
     <ul class="post__widget">
       <li>từ <span>{{topPost.user.fullName}}</span></li>
       <li>{{topPost.numberOfLike}} lượt thích</li>
@@ -21,9 +21,9 @@
     <p style="width: 80%; margin: 40px 100px">{{topPost.description}}</p>
     <a [routerLink]="['/detail/', topPost.id]" class="primary-btn">Đọc tiếp</a>
     <div class="post__social">
-      <a href="#"><i class="fa fa-heart"></i> <span>{{topPost.numberOfLike}}</span></a>
-<!--      <a href="#"><i class="fa fa-comment"></i> <span>{{length}}</span></a>-->
-      <a href="#"><i class="fa fa-share-square-o"></i> <span></span></a>
+      <a href="#"><i class="fa fa-heart" style="color: #f4952f"></i> <span>{{topPost.numberOfLike}}</span></a>
+      <a href="#"><i class="fa fa-comment" style="color: #f4952f"></i> <span>{{length}}</span></a>
+<!--      <a href="#"><i class="fa fa-share-square-o" style="color: #f4952f"></i> <span></span></a>-->
     </div>
   </div>
 </div>
