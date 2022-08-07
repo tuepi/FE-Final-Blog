@@ -29,11 +29,13 @@ export class DisplayPostsComponent implements OnInit {
   id: any;
 
   @Input()
-  posts : Post[] | any;
-  p : number = 1;
+  posts: Post[] | any;
+  p: number = 1;
   total: number = 0;
-  constructor(private postService : PostService,
-              private router : Router) { }
+
+  constructor(private postService: PostService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     // this.getAllByPublicStatus()
@@ -62,9 +64,15 @@ export class DisplayPostsComponent implements OnInit {
    * @return response()
    */
 
-  pageChangeEvent(event: number){
+  pageChangeEvent(event: number) {
     this.p = event;
     // this.getAllByPublicStatus();
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
+
 
 }
