@@ -3,6 +3,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PostService} from "../../../services/post.service";
 import {Post} from "../../../models/post";
 import {NgToastModule, NgToastService} from "ng-angular-popup";
+import {CommentsService} from "../../../services/comments.service";
+import {Comment} from "../../../models/comment";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-detail',
@@ -11,12 +14,20 @@ import {NgToastModule, NgToastService} from "ng-angular-popup";
 })
 export class DetailComponent implements OnInit {
   adminCheck=false;
+  isLogin = false;
   postOwner = false;
   obj: Post  | any;
-  id: any
+  id: any;
+  comments : Comment[] = []
+
+  commentForm = new FormGroup({
+    content: new FormControl(),
+  })
+
 
   constructor(private acctiveRouter: ActivatedRoute,
               private postService: PostService,
+              private commentsService: CommentsService,
               private router: Router,
               private toast : NgToastService) {
   }
@@ -25,7 +36,7 @@ export class DetailComponent implements OnInit {
     this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.getBlog()
     this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
-    console.log(this.obj);
+    this.isLogin = localStorage.getItem('ID') == null ? false : true;
   }
 
   deletePost(id: any) {
@@ -37,25 +48,57 @@ export class DetailComponent implements OnInit {
     });
   }
 
+  //lấy ds cmt
    getBlog() {
     this.acctiveRouter.paramMap.subscribe((param) => {
       this.id = param.get('id');
-      console.log(param);
+      this.commentsService.getAllByPostId(this.id).subscribe(list =>
+        this.comments = list);
       this.postService.findById(this.id).subscribe((data) => {
-        console.log("data: ", data);
         this.obj = data;
         this.displayContent(this.obj.content)
         this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
-        console.log("obj: ", this.obj)
-        console.log("postowner: ", this.postOwner)
       });
     });
-
   }
 
   displayContent(content : any) {
     // @ts-ignore
     document.getElementById('content').innerHTML = content;
+  }
+
+  setNewComment() {
+    const comment = {
+      content : this.commentForm.value.content,
+      user : {
+        id : localStorage.getItem('ID')
+      },
+      post : {
+        id : this.id
+      }
+    }
+    return comment
+  }
+
+  createComment() {
+    const comment = this.setNewComment()
+    console.log('comt',comment);
+    this.commentsService.save(comment).subscribe((data) => {
+      this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã bình luận!!!", duration: 2000})
+      // this.router.navigate(['/detail', this.id]);
+      window.location.reload()
+      this.commentForm.reset()
+    }, error => {
+      console.log(error)
+    })
+
+  }
+
+  requestLogin() {
+    if (!this.isLogin) {
+      this.toast.warning({detail: "YÊU CẦU", summary: "Bạn cần đăng nhập!!!", duration: 2000})
+      this.router.navigate(['/login'])
+    }
   }
 }
 
