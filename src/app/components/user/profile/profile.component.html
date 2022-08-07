@@ -35,8 +35,8 @@
         <app-get-my-posts></app-get-my-posts>
       </div>
       <div class="col-lg-2 custom-edit-button">
-        <a href="#" class="primary-btn" style="width: 155px"><i class="fa fa-pencil" [routerLink]="['/update/',id]" *ngIf="isOwner"></i> Chỉnh sửa</a>
-        <a href="#" class="primary-btn" style="width: 155px"><i class="fa fa-lock" [routerLink]="['/change-password/',id]" *ngIf="isOwner"></i>  Đổi mật khẩu</a>
+        <a *ngIf="isOwner" class="primary-btn" style="width: 155px"><i class="fa fa-pencil" [routerLink]="['/update/',id]"></i> Chỉnh sửa</a>
+        <a *ngIf="isOwner" class="primary-btn" style="width: 155px"><i class="fa fa-lock" [routerLink]="['/change-password/',id]"></i>  Đổi mật khẩu</a>
       </div>
     </div>
   </div>

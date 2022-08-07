@@ -23,7 +23,7 @@
         <!--          <span class="post__label">Nhãn</span>-->
         <h3><strong><a [routerLink]="['/detail', post.id]">{{post.title}}</a></strong></h3>
         <ul class="post__widget">
-          <li>từ <span>{{post.user.fullName}}</span></li>
+          <li>từ <span [routerLink]="['/profile/',post.user.id]">{{post.user.fullName}}</span></li>
           <li>   {{post.numberOfLike}} Lượt thích</li>
           <!--            <li>20 Bình luận</li>-->
         </ul>

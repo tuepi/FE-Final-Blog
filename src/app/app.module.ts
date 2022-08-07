@@ -45,6 +45,7 @@ import { DeletePostComponent } from './components/post/delete-post/delete-post.c
 import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
 import { CommentComponent } from './components/post/comment/comment.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
+import { RatingComponent } from './components/post/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { ProfileComponent } from './components/user/profile/profile.component';
     DeletePostComponent,
     ChangePasswordComponent,
     CommentComponent,
-    ProfileComponent
+    ProfileComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,

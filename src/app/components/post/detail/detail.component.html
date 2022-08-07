@@ -186,7 +186,7 @@
                   <div class="breadcrumb__text">
                     <h2 style="color: #f4952f">{{obj.title}}</h2>
                     <div class="breadcrumb__option">
-                      <a href="#">Tác giả: {{obj.user.fullName}} </a>
+                      <a [routerLink]="['/profile/',obj.user.id]">Tác giả: {{obj.user.fullName}} </a>
                       <span>Ngày đăng :{{obj.createAt}}</span>
                     </div>
                   </div>
@@ -224,7 +224,7 @@
                       <img src="{{cmt.user.avatar}}" alt="">
                     </div>
                     <div class="single-post__comment__item__text">
-                      <a href="#"><h6>{{cmt.user.fullName}}</h6></a>
+                      <a [routerLink]="['/profile/',cmt.user.id]"><h6>{{cmt.user.fullName}}</h6></a>
                       <span>{{cmt.createAt}}</span>
                       <p>{{cmt.content}}</p>
                     </div>
@@ -271,17 +271,6 @@
                     </div>
                   </div>
                 </div>
-<!--                <div class="col-lg-2 col-md-2">-->
-<!--                  <ul *ngIf="postOwner">-->
-<!--                    <div class="dropdown">-->
-<!--                      <a href="#"><i class="fa fa-caret-down"></i></a>-->
-<!--                      <ul class="dropdown__menu">-->
-<!--                        <li><a [routerLink]="['/edit/', obj.id]">Sửa</a></li>-->
-<!--                        <li><a data-toggle="modal" data-target="#staticBackdrop">Xóa</a></li>-->
-<!--                      </ul>-->
-<!--                    </div>-->
-<!--                  </ul>-->
-<!--                </div>-->
               </div>
             </div>
           </div>

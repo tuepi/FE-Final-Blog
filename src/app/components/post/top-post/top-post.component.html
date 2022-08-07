@@ -14,7 +14,7 @@
     </ul>
     <h3><strong><a [routerLink]="['/detail/', topPost.id]" style="color: #f4952f">{{topPost.title}}</a></strong></h3>
     <ul class="post__widget">
-      <li>từ <span>{{topPost.user.fullName}}</span></li>
+      <li>từ <span [routerLink]="['/profile/',topPost.user.id]">{{topPost.user.fullName}}</span></li>
       <li>{{topPost.numberOfLike}} lượt thích</li>
 <!--      <li>20 Comment</li>-->
     </ul>
