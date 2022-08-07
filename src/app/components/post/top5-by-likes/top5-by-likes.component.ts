@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from "../../../services/post.service";
 import {Post} from "../../../models/post";
+import {LabelService} from "../../../services/label.service";
+import {Label} from "../../../models/label";
 
 @Component({
   selector: 'app-top5-by-likes',
@@ -10,11 +12,14 @@ import {Post} from "../../../models/post";
 export class Top5ByLikesComponent implements OnInit {
 
   top5Posts : Post[] | any
+  labels : Label[] | any
 
-  constructor(private postService : PostService) { }
+  constructor(private postService : PostService,
+              private labelService : LabelService) { }
 
   ngOnInit(): void {
     this.top5ByLikes()
+    this.getAllLabels()
   }
 
   top5ByLikes() {
@@ -25,6 +30,12 @@ export class Top5ByLikesComponent implements OnInit {
       error => {
         console.log(error);
       });
+  }
+
+  getAllLabels() {
+    this.labelService.getAllLabels().subscribe((data) => {
+      this.labels = data;
+    })
   }
 
 }

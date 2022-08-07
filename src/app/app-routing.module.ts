@@ -59,13 +59,13 @@ const routes: Routes = [
     component : DeletePostComponent
   },
   {
-    path : 'change-password',
+    path : 'change-password/:id',
     component : ChangePasswordComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

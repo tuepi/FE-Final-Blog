@@ -23,6 +23,7 @@ export class CreatePostComponent implements OnInit {
   fb: any;
   downloadURL: Observable<string> | any;
   checkImage = false;
+  isNull = false;
 
   today : number = Date.now();
 
@@ -48,11 +49,18 @@ export class CreatePostComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllLabels()
+    if (this.title != null) {
+      this.isNull = true
+    }
   }
 
 
   get title(){
     return this.createForm.get('title')
+  }
+
+  get status(){
+    return this.createForm.get('status')
   }
 
   get description(){

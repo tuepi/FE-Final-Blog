@@ -50,6 +50,7 @@
                 </ul>
                 <ul class="dropdown__menu" *ngIf="isLogin">
                   <li><a>Trang cá nhân</a></li>
+                  <li><a [routerLink]="['/change-password/',currentUserId]">Đổi mật khẩu</a></li>
                   <li><a (click)="logout()">Đăng xuất</a></li>
                 </ul>
               </li>

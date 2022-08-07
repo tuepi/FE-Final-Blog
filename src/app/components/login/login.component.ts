@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password).pipe(first()).subscribe(data => {
-      console.log(data.roles)
       localStorage.setItem('ACCESS_TOKEN', data.accessToken);
       localStorage.setItem('ROLE', data.roles[0].authority);
       localStorage.setItem('ID', data.id);
@@ -51,7 +50,6 @@ export class LoginComponent implements OnInit {
         this.route.navigate(['/user']);
       } else {
         this.toast.success({detail: "THÔNG BÁO", summary: "Đăng nhập Admin thành công!!!", duration: 2000})
-        this.route.navigate(['/admin']);
         this.route.navigate(['/admin']);
       }
     }, error => {

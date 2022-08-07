@@ -69,6 +69,29 @@ export class DisplayPostsComponent implements OnInit {
 
   pageChangeEvent(event: number){
     this.p = event;
+    // kéo xuống khoảng cách 500px thì xuất hiện nút Top-up
+    var offset = 500;
+// thời gian di trượt 0.75s ( 1000 = 1s )
+    var duration = 750;
+    // @ts-ignore
+    $(function(){
+      // @ts-ignore
+      $(window).scroll(function () {
+        // @ts-ignore
+        if ($(this).scrollTop() > offset)
+          { // @ts-ignore
+            $('#top-up').fadeIn(duration);
+          }else
+          { // @ts-ignore
+            $('#top-up').fadeOut(duration);
+          }
+      });
+      // @ts-ignore
+      $('#top-up').click(function () {
+        // @ts-ignore
+        $('body,html').animate({scrollTop: 0}, duration);
+      });
+    });
     // this.getAllByPublicStatus();
   }
 

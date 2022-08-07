@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
   isLogin = false;
   fullName : any;
   avatar : any;
+  currentUserId : any;
 
   constructor(private router : Router,
               private toast : NgToastService) { }
@@ -19,6 +20,7 @@ export class NavbarComponent implements OnInit {
     this.isLogin = localStorage.getItem('ID') == null ? false : true;
     this.fullName = localStorage.getItem('FULLNAME')
     this.avatar = localStorage.getItem('AVATAR')
+    this.currentUserId = localStorage.getItem('ID')
   }
 
   logout() {

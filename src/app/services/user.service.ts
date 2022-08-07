@@ -15,4 +15,8 @@ export class UserService {
   getAll(): Observable<[]> {
     return this.httpClient.get<[]>(environment.apiUrl + '/api/guest/users');
   }
+
+  changePassword(id : any, oldPassword : any, user : User) : Observable<User> {
+    return this.httpClient.put<User>(environment.apiUrl + '/users/change-password/' + id + '?oldPassword=' + oldPassword, user);
+  }
 }

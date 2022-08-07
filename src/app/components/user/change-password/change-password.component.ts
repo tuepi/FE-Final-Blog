@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {NgToastService} from "ng-angular-popup";
 import {first} from "rxjs";
+import {UserService} from "../../../services/user.service";
+import {User} from "../../../models/user";
 
 @Component({
   selector: 'app-change-password',
@@ -11,54 +13,68 @@ import {first} from "rxjs";
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
+  currentUserId = localStorage.getItem('ID')
+  username = localStorage.getItem('USERNAME')
 
-  loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.maxLength(32)]),
+  changeForm = new FormGroup({
+    id : new FormControl(),
+    oldPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
   })
 
-  get username() {
-    return this.loginForm.get('username')
+  get oldPassword() {
+    return this.changeForm.get('oldPassword')
   }
 
   get password() {
-    return this.loginForm.get('password')
+    return this.changeForm.get('password')
   }
 
+  get confirmPassword() {
+    return this.changeForm.get('confirmPassword')
+  }
 
   constructor(private activatedRoute: ActivatedRoute,
               private route: Router,
               private authenticationService: AuthenticationService,
+              private userService: UserService,
               private toast: NgToastService) {
   }
 
   ngOnInit(): void {
   }
 
-  currentUserId : any;
+  private setNewUser() {
 
-  login() {
-    this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password).pipe(first()).subscribe(data => {
-      console.log(data.roles)
-      localStorage.setItem('ACCESS_TOKEN', data.accessToken);
-      localStorage.setItem('ROLE', data.roles[0].authority);
-      localStorage.setItem('ID', data.id);
-      localStorage.setItem('USERNAME', data.username);
-      localStorage.setItem('FULLNAME', data.fullName);
-      localStorage.setItem('AVATAR', data.avatar);
-      if (data.roles[0].authority == 'ROLE_USER') {
-        this.toast.success({detail: "THÔNG BÁO", summary: "Đăng nhập thành công!!!", duration: 2000});
-        this.route.navigate(['/user']);
-        this.route.navigate(['/user']);
-      } else {
-        this.toast.success({detail: "THÔNG BÁO", summary: "Đăng nhập Admin thành công!!!", duration: 2000})
-        this.route.navigate(['/admin']);
-        this.route.navigate(['/admin']);
-      }
-    }, error => {
-      this.toast.error({detail: "LỖI", summary: "Đăng nhập thất bại!!!", duration: 2000})
-      this.route.navigate(['/login'])
-    })
+    const user: User = {
+      id : this.currentUserId,
+      password: this.changeForm.value.password,
+      confirmPassword: this.changeForm.value.confirmPassword
+    };
+    return user;
   }
 
+  changePassword() {
+        const user = this.setNewUser();
+        if (this.changeForm.value.oldPassword != this.changeForm.value.password) {
+          if (this.changeForm.value.password == this.changeForm.value.confirmPassword) {
+            this.userService.changePassword(this.currentUserId, this.changeForm.value.oldPassword, user).subscribe(data => {
+              if (data.id != null) {
+                this.toast.success({detail: "THÔNG BÁO", summary: "Thay đổi mật khẩu thành công", duration: 1500});
+                this.authenticationService.logout();
+                this.route.navigate(['/login']);
+              } else {
+                this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu cũ không đúng!", duration: 1500})
+              }
+            }, error => {
+              console.log(error)
+            });
+          } else {
+            this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu nhập lại không giống!", duration: 1500})
+          }
+        } else {
+          this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu mới giống mật khẩu cũ!", duration: 1500})
+        }
+  }
 }
