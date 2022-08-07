@@ -49,9 +49,7 @@
                   <li><a routerLink="/register">Đăng ký</a></li>
                 </ul>
                 <ul class="dropdown__menu" *ngIf="isLogin">
-                  <li><a>Trang cá nhân</a></li>
-                  <li><a [routerLink]="['/change-password/',currentUserId]">Đổi mật khẩu</a></li>
-                  <li><a [routerLink]="['/update/',currentUserId]">Chỉnh sửa thông tin</a></li>
+                  <li><a [routerLink]="['/profile/',currentUserId]">Trang cá nhân</a></li>
                   <li><a (click)="logout()">Đăng xuất</a></li>
                 </ul>
               </li>
@@ -80,19 +78,12 @@
         </div>
       </div>
       <div class="col-lg-3 col-md-3" id="profile" *ngIf="isLogin">
-        <!--        <div class="header__social">-->
-        <!--          <a href="#"><i class="fa fa-facebook"></i></a>-->
-        <!--          <a href="#"><i class="fa fa-twitter"></i></a>-->
-        <!--          <a href="#"><i class="fa fa-youtube-play"></i></a>-->
-        <!--          <a href="#"><i class="fa fa-instagram"></i></a>-->
-        <!--          <a href="#"><i class="fa fa-envelope-o"></i></a>-->
-        <!--        </div>-->
         <div class="footer__instagram__avatar" style="width: 400px">
           <div class="footer__instagram__avatar--pic">
             <img src="{{avatar}}" alt="">
           </div>
           <div class="footer__instagram__avatar--text" style="padding: 10px">
-            <h5>{{fullName}}</h5>
+            <h5 [routerLink]="['/profile', currentUserId]">{{fullName}}</h5>
 <!--            <span>23 bài viết</span>-->
           </div>
         </div>

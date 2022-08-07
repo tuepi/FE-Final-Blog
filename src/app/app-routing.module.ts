@@ -16,6 +16,7 @@ import {EditPostComponent} from "./components/post/edit-post/edit-post.component
 import {UpdateUserComponent} from "./components/user/update-user/update-user.component";
 import {DeletePostComponent} from "./components/post/delete-post/delete-post.component";
 import {ChangePasswordComponent} from "./components/user/change-password/change-password.component";
+import {ProfileComponent} from "./components/user/profile/profile.component";
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path: 'update/:id',
     component: UpdateUserComponent,
+  },
+  {
+    path: 'profile/:id',
+    component: ProfileComponent,
   }
 ];
 

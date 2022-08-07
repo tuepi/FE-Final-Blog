@@ -44,6 +44,7 @@ import { TopPostComponent } from './components/post/top-post/top-post.component'
 import { DeletePostComponent } from './components/post/delete-post/delete-post.component';
 import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
 import { CommentComponent } from './components/post/comment/comment.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { CommentComponent } from './components/post/comment/comment.component';
     TopPostComponent,
     DeletePostComponent,
     ChangePasswordComponent,
-    CommentComponent
+    CommentComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

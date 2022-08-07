@@ -13,6 +13,10 @@ li {
   margin: 0px !important;
 }
 
+i {
+  color:  #f4952f;
+}
+
 md-toast.md-success-toast-theme div.md-toast-content{
   color: white !important;
   background-color: purple !important;

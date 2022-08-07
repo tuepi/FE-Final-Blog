@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<!-- Single Post Section Begin -->
+<section class="single-post spad">
+  <div class="single-post__hero set-bg" data-setbg="https://travelerknow.com/anh-bia-thien-nhien-dep-cho-facebook/imager_11996.jpg" style="height: 400px; width: 80%">
+    <img src="https://i.pinimg.com/originals/af/d3/75/afd375e0402379b2c5bde05e436d4cb1.png" style=" width: 98%; height: 400px; margin-left: 160px; border-radius: 1%">
+  </div>
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <div class="single-post__title" style="background: none" >
+          <div class="single-post__title__meta" style="padding: 5px 5px;height: 160px; width: 160px;   border-radius: 50%">
+            <img src="{{user.avatar}}" style="height: 150px; width: 150px; border-radius: 50%">
+          </div>
+          <div class="single-post__title__text" style="margin-top: 60px">
+            <h2>{{user.fullName}}</h2>
+          </div>
+<!--          <ul class="widget">-->
+          <span><i class="fa fa-phone"></i>  {{user.numberPhone}}  </span>
+            <span><i class="fa fa-envelope"></i>  {{user.email}}  </span>
+            <span><i class="fa fa-location-arrow"></i>  {{user.address}}</span>
+<!--          </ul>-->
+        </div>
+        <div class="single-post__social__item">
+          <ul>
+            <li><a href="https://www.facebook.com/profile.php?id=100015308408198"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+          </ul>
+        </div>
+        <div class="single-post__top__text">
+          <p></p>
+        </div>
+        <app-get-my-posts></app-get-my-posts>
+      </div>
+      <div class="col-lg-2 custom-edit-button">
+        <a href="#" class="primary-btn" style="width: 155px"><i class="fa fa-pencil" [routerLink]="['/update/',id]" *ngIf="isOwner"></i> Chỉnh sửa</a>
+        <a href="#" class="primary-btn" style="width: 155px"><i class="fa fa-lock" [routerLink]="['/change-password/',id]" *ngIf="isOwner"></i>  Đổi mật khẩu</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Single Post Section End -->
+<app-footer></app-footer>
