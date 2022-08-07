@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgToastService} from "ng-angular-popup";
 import {Router} from "@angular/router";
+import firebase from "firebase/compat";
+import User = firebase.User;
 
 @Component({
   selector: 'app-navbar',

@@ -36,6 +36,7 @@ import { Top5ByLikesComponent } from './components/post/top5-by-likes/top5-by-li
 import { ListLabelComponent } from './components/post/list-label/list-label.component';
 import { GetAllComponent } from './components/admin/get-all/get-all.component';
 import { GetPublicAndMyPrivateComponent } from './components/user/get-public-and-my-private/get-public-and-my-private.component';
+import {UpdateUserComponent} from "./components/user/update-user/update-user.component";
 import { EditPostComponent } from './components/post/edit-post/edit-post.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -58,6 +59,8 @@ import { ChangePasswordComponent } from './components/user/change-password/chang
     Top5ByLikesComponent,
     ListLabelComponent,
     GetAllComponent,
+    GetPublicAndMyPrivateComponent,
+    UpdateUserComponent,
     GetPublicAndMyPrivateComponent,
     EditPostComponent,
     NavbarComponent,

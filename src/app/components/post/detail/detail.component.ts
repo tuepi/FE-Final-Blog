@@ -10,6 +10,7 @@ import {NgToastModule, NgToastService} from "ng-angular-popup";
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  adminCheck=false;
   postOwner = false;
   obj: Post  | any;
   id: any
@@ -21,7 +22,10 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.getBlog()
+    this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
+    console.log(this.obj);
   }
 
   deletePost(id: any) {
@@ -40,7 +44,6 @@ export class DetailComponent implements OnInit {
       this.postService.findById(this.id).subscribe((data) => {
         console.log("data: ", data);
         this.obj = data;
-
         this.displayContent(this.obj.content)
         this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
         console.log("obj: ", this.obj)

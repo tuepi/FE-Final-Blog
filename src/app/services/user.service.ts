@@ -19,4 +19,12 @@ export class UserService {
   changePassword(id : any, oldPassword : any, user : User) : Observable<User> {
     return this.httpClient.put<User>(environment.apiUrl + '/users/change-password/' + id + '?oldPassword=' + oldPassword, user);
   }
+  updateUser(userId : any , user : User){
+    return this.httpClient.put<User>(environment.apiUrl + '/users/' + userId, user)
+  }
+  findById(id:any): Observable<User>{
+    return this.httpClient.get<User>(environment.apiUrl + '/users/' + id)
+  }
+
+
 }
