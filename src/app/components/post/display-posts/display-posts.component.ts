@@ -69,6 +69,7 @@ export class DisplayPostsComponent implements OnInit {
 
   pageChangeEvent(event: number){
     this.p = event;
+    window.scrollTo(0,0);
 //     kéo xuống khoảng cách 500px thì xuất hiện nút Top-up
 //     var offset = 500;
 // // thời gian di trượt 0.75s ( 1000 = 1s )
@@ -94,5 +95,4 @@ export class DisplayPostsComponent implements OnInit {
 //     });
     // this.getAllByPublicStatus();
   }
-
 }

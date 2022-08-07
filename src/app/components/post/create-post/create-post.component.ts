@@ -33,7 +33,7 @@ export class CreatePostComponent implements OnInit {
   createForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
     description: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
-    status: new FormControl('', [Validators.required]),
+    status: new FormControl('1', [Validators.required]),
     image: new FormControl(),
     content: new FormControl('', [Validators.required, Validators.maxLength(8000)]),
     user: new FormControl(),

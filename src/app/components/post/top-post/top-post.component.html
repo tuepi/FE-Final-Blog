@@ -21,10 +21,9 @@
     <p style="width: 80%; margin: 40px 100px">{{topPost.description}}</p>
     <a [routerLink]="['/detail/', topPost.id]" class="primary-btn">Đọc tiếp</a>
     <div class="post__social">
-      <span>Share</span>
-      <a href="#"><i class="fa fa-facebook"></i> <span>82</span></a>
-      <a href="#"><i class="fa fa-twitter"></i> <span>24</span></a>
-      <a href="#"><i class="fa fa-envelope-o"></i> <span>08</span></a>
+      <a href="#"><i class="fa fa-heart"></i> <span>{{topPost.numberOfLike}}</span></a>
+<!--      <a href="#"><i class="fa fa-comment"></i> <span>{{length}}</span></a>-->
+      <a href="#"><i class="fa fa-share-square-o"></i> <span></span></a>
     </div>
   </div>
 </div>

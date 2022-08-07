@@ -16,16 +16,12 @@ export class PostService {
   constructor(private httpClient : HttpClient) { }
 
   getAllByPublicStatus(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/posts');
+    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/guest');
   }
 
   getAllForAdmin(): Observable<Post[]> {
     return this.httpClient.get<Post[]>(environment.apiUrl + '/api/admin');
   }
-
-  // getUsers(page: number){
-  //   return this.httpClient.get(API_URL + '?page=' + page);
-  // }
 
   getMyPosts(): Observable<Post[]> {
     return this.httpClient.get<Post[]>(API_URL + 'user/' + this.currentUserId);

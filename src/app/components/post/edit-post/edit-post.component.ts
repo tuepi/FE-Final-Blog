@@ -20,7 +20,7 @@ export class EditPostComponent implements OnInit {
     title: new FormControl(''),
     image: new FormControl(''),
     createAt: new FormControl(''),
-    status: new FormControl(''),
+    status: new FormControl('1'),
     content: new FormControl(''),
     description: new FormControl(''),
     numberOfLike: new FormControl(''),
