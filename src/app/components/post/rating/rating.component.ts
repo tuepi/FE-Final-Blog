@@ -12,4 +12,11 @@ export class RatingComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  calcRate(r : any) {
+    const f = ~~r,//Tương tự Math.floor(r)
+      id = 'star' + f + (r % f ? 'half' : '')
+    // @ts-ignore
+    id && (document.getElementById(id).checked = !0)
+  }
+
 }
