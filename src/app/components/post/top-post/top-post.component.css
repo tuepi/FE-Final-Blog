@@ -1,0 +1,4 @@
+li::after, span::after {
+  content: " " !important;
+
+}

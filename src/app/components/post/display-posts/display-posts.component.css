@@ -1,0 +1,3 @@
+li::after {
+    content: "" !important;
+}

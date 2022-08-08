@@ -9,7 +9,7 @@ import {HomepageComponent} from './components/homepage/homepage.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {JwtInterceptor} from "./helper/jwt-interceptor";
 import {ErrorInterceptor} from "./helper/error-interceptor";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgToastModule} from "ng-angular-popup";
 import { DisplayPostsComponent } from './components/post/display-posts/display-posts.component';
 import { GetAllPublicStatusComponent } from './components/post/get-all-public-status/get-all-public-status.component';
@@ -75,28 +75,29 @@ import { RatingComponent } from './components/post/rating/rating.component';
     ProfileComponent,
     RatingComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    NgToastModule,
-    EditorModule,
-    MatInputModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatRadioModule,
-    MatCheckboxModule,
-    MatSlideToggleModule,
-    MatButtonModule,
-    MatProgressSpinnerModule,
-    MatProgressBarModule,
-    MatPaginatorModule,
-    NgxPaginationModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        NgToastModule,
+        EditorModule,
+        MatInputModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatRadioModule,
+        MatCheckboxModule,
+        MatSlideToggleModule,
+        MatButtonModule,
+        MatProgressSpinnerModule,
+        MatProgressBarModule,
+        MatPaginatorModule,
+        NgxPaginationModule,
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+        FormsModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
