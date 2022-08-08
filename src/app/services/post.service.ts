@@ -58,5 +58,9 @@ export class PostService {
     return this.httpClient.put<Post>(API_URL + postId, post)
   }
 
+  search(title: string) {
+    return this.httpClient.get<Post[]>(environment.apiUrl + '/api/guest/title?title=' + title);
+  }
+
 
 }

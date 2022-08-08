@@ -15,6 +15,9 @@ import {User} from "../../../models/user";
 export class ChangePasswordComponent implements OnInit {
   currentUserId = localStorage.getItem('ID')
   username = localStorage.getItem('USERNAME')
+  oldPasswordValue: any
+  passwordValue: any
+  confirmPasswordValue: any
 
   changeForm = new FormGroup({
     id : new FormControl(),
@@ -56,17 +59,19 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   changePassword() {
-        const user = this.setNewUser();
+    const user = this.setNewUser();
+    this.userService.checkOldPassword(this.currentUserId, this.oldPasswordValue).subscribe(data => {
+      if (data.id != null) {
         if (this.changeForm.value.oldPassword != this.changeForm.value.password) {
           if (this.changeForm.value.password == this.changeForm.value.confirmPassword) {
             this.userService.changePassword(this.currentUserId, this.changeForm.value.oldPassword, user).subscribe(data => {
               if (data.id != null) {
                 this.toast.success({detail: "THÔNG BÁO", summary: "Thay đổi mật khẩu thành công", duration: 1500});
-                this.authenticationService.logout();
+                localStorage.clear();
                 this.route.navigate(['/login']);
-              } else {
-                this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu cũ không đúng!", duration: 1500})
               }
+
+
             }, error => {
               console.log(error)
             });
@@ -76,5 +81,32 @@ export class ChangePasswordComponent implements OnInit {
         } else {
           this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu mới giống mật khẩu cũ!", duration: 1500})
         }
+
+
+      } else {
+        this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu cũ không đúng!", duration: 1500})
+      }
+    })
   }
-}
+
+
+  checkForm() {
+    if(this.oldPasswordValue != null && this.passwordValue != null && this.confirmPasswordValue != null) {
+      return false
+    }
+    return true
+  }
+
+  checkOldPassword() {
+    this.userService.checkOldPassword(this.currentUserId, this.oldPasswordValue).subscribe(data => {
+      if (data.id != null) {
+        this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu cũ đúng!", duration: 1500})
+        localStorage.clear();
+        this.route.navigate(['/login']);
+      } else {
+        this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu cũ không đúng!", duration: 1500})
+      }
+    })
+    }
+  }
+

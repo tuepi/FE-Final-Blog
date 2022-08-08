@@ -41,6 +41,12 @@ export class Top5ByLikesComponent implements OnInit {
     })
   }
 
+  getPostByLabel(labelId: any) {
+    this.postLabelService.getAllPostLabel(labelId).subscribe((data) => {
+      this.listPostByLabel = data;
+    } )
+  }
+
 
 
 }

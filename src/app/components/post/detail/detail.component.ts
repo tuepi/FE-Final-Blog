@@ -22,7 +22,8 @@ export class DetailComponent implements OnInit {
   userId: any;
   postId: any;
   likedCheck = false;
-
+  toDay: any;
+  nowTime: any;
   commentForm = new FormGroup({
     content: new FormControl(),
   })
@@ -61,6 +62,7 @@ export class DetailComponent implements OnInit {
         this.comments = list);
       this.postService.findById(this.id).subscribe((data) => {
         this.obj = data;
+        this.getTime();
         this.displayContent(this.obj.content)
         this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
       });
@@ -104,6 +106,11 @@ export class DetailComponent implements OnInit {
       this.toast.warning({detail: "YÊU CẦU", summary: "Bạn cần đăng nhập!!!", duration: 2000})
       this.router.navigate(['/login'])
     }
+  }
+
+  getTime() {
+    this.toDay = this.obj.createAt.toString().split('T')[0]
+    this.nowTime = this.obj.createAt.toString().split('T')[1]
   }
 
   likePost() {

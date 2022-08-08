@@ -13,7 +13,7 @@ export class HomepageComponent implements OnInit {
   // isLogin = false;
   // fullName : any;
   // avatar : any;
-
+  post: Post[] = [];
 
   constructor(private postService : PostService,
               private router : Router,
@@ -39,6 +39,8 @@ export class HomepageComponent implements OnInit {
   //   }
   // }
 
-
+  getList($event: any) {
+    this.post.push($event)
+  }
 
 }

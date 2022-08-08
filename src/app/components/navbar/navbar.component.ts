@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {NgToastService} from "ng-angular-popup";
 import {Router} from "@angular/router";
 import firebase from "firebase/compat";
 import User = firebase.User;
+import {PostService} from "../../services/post.service";
+import * as events from "events";
 
 @Component({
   selector: 'app-navbar',
@@ -14,9 +16,12 @@ export class NavbarComponent implements OnInit {
   fullName : any;
   avatar : any;
   currentUserId : any;
+  listTitle: any = [];
+  title: any
 
   constructor(private router : Router,
-              private toast : NgToastService) { }
+              private toast : NgToastService,
+              private postService: PostService) { }
 
   ngOnInit(): void {
     this.isLogin = localStorage.getItem('ID') == null ? false : true;
@@ -38,5 +43,21 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(['/login'])
     }
   }
+
+  @Output()
+  onSearch = new EventEmitter();
+
+  findPostByTitle() {
+     this.postService.search(this.title).subscribe(data => {
+       this.onSearch.emit(data);
+      this.listTitle = data;
+      this.onSearch.emit(this.listTitle)
+    }, error => {
+      console.log(error)
+    }
+     )
+  }
+
+
 
 }

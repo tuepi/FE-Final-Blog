@@ -186,7 +186,7 @@
               <div class="sidebar__item__title" style="margin: 0 0">
                 <h6>TIÊU ĐỀ:</h6>
               </div>
-              <input type="text" style="width: 80%; margin: 0 0" formControlName="title" placeholder="Tiêu đề">
+              <input type="text" style="width: 80%; margin: 0 0" formControlName="title" [(ngModel)]="titleValue" placeholder="Tiêu đề">
               <select formControlName="status" style="margin: 20px; border-color: #e1e1e1" value="1">
                 <option selected="selected" value="1">Công khai</option>
                 <option value="0">Chỉ mình tôi</option>
@@ -199,7 +199,7 @@
               <div class="sidebar__item__title" style="margin: 0 0">
                 <h6>MÔ TẢ:</h6>
               </div>
-              <input type="text"  formControlName="description" placeholder="Mô tả ngắn" style="margin: 0 0">
+              <input type="text"  formControlName="description" placeholder="Mô tả ngắn" style="margin: 0 0" [(ngModel)]="descriptionValue">
               <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
                 <div style="color: red; margin-left: 10px" *ngIf="description?.errors?.['required']">
                   <small>*Mô tả không được bỏ trống</small>
@@ -227,14 +227,14 @@
               <div class="sidebar__item__title" style="margin: 0 0">
                       <h6>NỘI DUNG BÀI VIẾT:</h6>
               </div>
-              <editor formControlName="content" [init]="{plugins :  'link'}"></editor>
+              <editor formControlName="content" [init]="{plugins :  'link'}" [(ngModel)]="contentValue"></editor>
               <div *ngIf="content?.invalid && (content?.dirty || content?.touched)">
                 <div style="color: red; margin-left: 10px" *ngIf="content?.errors?.['required']">
                   <small>*Nội dung không được bỏ trống</small>
                 </div>
               </div>
               <br>
-              <button type="submit" class="site-btn" style="width: 150px; margin: 30px 0px 50px 300px">Đăng bài</button>
+              <button [disabled]="checkForm() ? 'disabled' : null" type="submit" class="site-btn" style="width: 150px; margin: 30px 0px 50px 300px">Đăng bài</button>
             </form>
           </div>
 
