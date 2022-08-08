@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-lg-2 col-md-1 col-6 order-md-1 order-1">
           <div class="header__humberger">
-            <i class="fa fa-trash" style="color: #f4952f"> REJECT</i>
+            <a routerLink="/"><i class="fa fa-trash" style="color: #f4952f" > REJECT</i></a>
           </div>
         </div>
         <div class="col-lg-8 col-md-10 order-md-2 order-3">
@@ -48,6 +48,7 @@
                   <li><a routerLink="/login">Đăng nhập</a></li>
                   <li><a routerLink="/register">Đăng ký</a></li>
                 </ul>
+
                 <ul class="dropdown__menu" *ngIf="isLogin">
                   <li><a [routerLink]="['/profile/',currentUserId]">Trang cá nhân</a></li>
                   <li><a (click)="logout()">Đăng xuất</a></li>
@@ -56,11 +57,12 @@
             </ul>
           </nav>
         </div>
-        <div class="col-lg-2 col-md-1 col-6 order-md-3 order-2">
-          <div class="header__search">
-            <i class="fa fa-search search-switch"></i>
-          </div>
+          <div class="header__search col-lg-2 col-md-1 col-6 order-md-3 order-2" >
+            <input type="text" [(ngModel)]="title" >
+            <i class="fa fa-search search-switch" (click)="findPostByTitle()"></i>
+
         </div>
+
       </div>
     </div>
   </div>

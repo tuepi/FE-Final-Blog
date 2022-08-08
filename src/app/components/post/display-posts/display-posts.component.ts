@@ -69,7 +69,6 @@ export class DisplayPostsComponent implements OnInit {
 
   pageChangeEvent(event: number){
     this.p = event;
-    // this.getAllByPublicStatus();
     window.scroll({
       top: 1120,
       left: 0,
