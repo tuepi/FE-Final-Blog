@@ -14,6 +14,7 @@ export class HomepageComponent implements OnInit {
   // fullName : any;
   // avatar : any;
 
+
   constructor(private postService : PostService,
               private router : Router,
               private toast : NgToastService) { }
@@ -37,4 +38,7 @@ export class HomepageComponent implements OnInit {
   //     this.router.navigate(['/login'])
   //   }
   // }
+
+
+
 }

@@ -20,8 +20,9 @@
     <div class="sidebar__item__title">
       <h6>Loại bài viết</h6>
     </div>
-    <ul>
-      <li *ngFor="let label of labels"><a href="#">{{label.name}} <span>128</span></a></li>
+    <ul *ngFor="let item of listLabel">
+      <li><a href="#">{{item[1]}} <span>{{item[2]}}</span></a></li>
+
     </ul>
   </div>
 </div>

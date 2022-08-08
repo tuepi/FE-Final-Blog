@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {Post} from "../models/post";
+import {PostLabelService} from "./post-label.service";
 
 const API_URL = environment.apiUrl + "/api/posts/";
 
@@ -13,7 +14,8 @@ export class PostService {
 
   currentUserId = localStorage.getItem('ID')
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient,
+  ) { }
 
   getAllByPublicStatus(): Observable<Post[]> {
     return this.httpClient.get<Post[]>(environment.apiUrl + '/api/guest');
@@ -55,4 +57,6 @@ export class PostService {
   updatePost(postId: any, post: Post) {
     return this.httpClient.put<Post>(API_URL + postId, post)
   }
+
+
 }
