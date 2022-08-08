@@ -34,15 +34,14 @@ export class DetailComponent implements OnInit {
               private commentsService: CommentsService,
               private router: Router,
               private toast: NgToastService) {
+    this.likedChecker()
   }
 
   ngOnInit(): void {
-
     this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.getBlog()
     this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
     this.isLogin = localStorage.getItem('ID') == null ? false : true;
-    this.likedChecker()
   }
 
   deletePost(id: any) {

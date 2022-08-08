@@ -4,6 +4,7 @@ import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {Post} from "../models/post";
 import {PostLabelService} from "./post-label.service";
+import {Likes} from "../models/likes";
 
 const API_URL = environment.apiUrl + "/api/posts/";
 
@@ -60,6 +61,17 @@ export class PostService {
 
   search(title: string) {
     return this.httpClient.get<Post[]>(environment.apiUrl + '/api/guest/title?title=' + title);
+  }
+
+  likePost(postId:any, userId :any) : Observable<any>{
+    return this.httpClient.post(environment.apiUrl +`/api/likes?postId=${postId}&userId=${userId}`,postId,userId);
+  }
+  countLike(postId:any): Observable<any>{
+    return this.httpClient.put(API_URL+`/update-like-by-post-id/`+postId ,postId);
+  }
+
+  likedCheck(postId:any, userId :any) : Observable<any>{
+    return this.httpClient.get(environment.apiUrl +`/api/likes?postId=${postId}&userId=${userId}`);
   }
 
 
