@@ -25,8 +25,8 @@ export class PostService {
     return this.httpClient.get<Post[]>(environment.apiUrl + '/api/admin');
   }
 
-  getMyPosts(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(API_URL + 'user/' + this.currentUserId);
+  getMyPosts(id : any): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL + 'user/' + id);
   }
 
   getPublicAndMyPrivate(): Observable<Post[]> {

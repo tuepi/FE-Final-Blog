@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   id : any
   user : User | any
   isOwner = false
+  currentUserId = localStorage.getItem('ID')
 
   constructor(private userService : UserService,
               private activatedRoute : ActivatedRoute) { }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Post} from "../../../models/post";
 import {PostService} from "../../../services/post.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class GetMyPostsComponent implements OnInit {
 
-
+  @Input()
   id: any;
 
   posts: Post[] | any;
@@ -25,7 +25,7 @@ export class GetMyPostsComponent implements OnInit {
   }
 
   getMyPosts() {
-    this.postService.getMyPosts().subscribe(data => {
+    this.postService.getMyPosts(this.id).subscribe(data => {
         console.log(data)
         this.posts = data;
       },

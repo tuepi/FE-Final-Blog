@@ -23,7 +23,7 @@
         </div>
         <div class="single-post__social__item">
           <ul>
-            <li><a href="https://www.facebook.com/profile.php?id=100015308408198"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100015308408198" target="_blank"><i class="fa fa-facebook"></i></a></li>
             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
             <li><a href="#"><i class="fa fa-instagram"></i></a></li>
             <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
@@ -32,11 +32,11 @@
         <div class="single-post__top__text">
           <p></p>
         </div>
-        <app-get-my-posts></app-get-my-posts>
+        <app-get-my-posts [id]="id"></app-get-my-posts>
       </div>
       <div class="col-lg-2 custom-edit-button">
-        <a *ngIf="isOwner" class="primary-btn" style="width: 155px"><i class="fa fa-pencil" [routerLink]="['/update/',id]"></i> Chỉnh sửa</a>
-        <a *ngIf="isOwner" class="primary-btn" style="width: 155px"><i class="fa fa-lock" [routerLink]="['/change-password/',id]"></i>  Đổi mật khẩu</a>
+        <a *ngIf="isOwner" class="primary-btn" style="width: 155px"><i class="fa fa-pencil" [routerLink]="['/update/',currentUserId]"></i> Chỉnh sửa</a>
+        <a *ngIf="isOwner" class="primary-btn" style="width: 155px"><i class="fa fa-lock" [routerLink]="['/change-password/',currentUserId]"></i>  Đổi mật khẩu</a>
       </div>
     </div>
   </div>
