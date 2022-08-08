@@ -24,6 +24,10 @@ export class CreatePostComponent implements OnInit {
   downloadURL: Observable<string> | any;
   checkImage = false;
   isNull = false;
+  titleValue: any;
+  descriptionValue: any;
+  contentValue: any;
+
 
   today : number = Date.now();
 
@@ -45,7 +49,9 @@ export class CreatePostComponent implements OnInit {
               private postService : PostService,
               private router : Router,
               private labelService: LabelService,
-              private toast: NgToastService) {}
+              private toast: NgToastService) {
+    this.checkForm()
+  }
 
   ngOnInit(): void {
     this.getAllLabels()
@@ -133,5 +139,12 @@ export class CreatePostComponent implements OnInit {
       console.log(error)
     })
 
+  }
+
+  checkForm() {
+    if(this.titleValue != null && this.descriptionValue != null && this.contentValue != null) {
+      return false
+    }
+    return true
   }
 }
