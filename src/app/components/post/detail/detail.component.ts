@@ -13,12 +13,15 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  adminCheck=false;
+  adminCheck = false;
   isLogin = false;
   postOwner = false;
-  obj: Post  | any;
+  obj: Post | any;
   id: any;
-  comments : Comment[] = []
+  comments: Comment[] = []
+  userId: any;
+  postId: any;
+  likedCheck = false;
 
   commentForm = new FormGroup({
     content: new FormControl(),
@@ -29,14 +32,16 @@ export class DetailComponent implements OnInit {
               private postService: PostService,
               private commentsService: CommentsService,
               private router: Router,
-              private toast : NgToastService) {
+              private toast: NgToastService) {
   }
 
   ngOnInit(): void {
+
     this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.getBlog()
     this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
     this.isLogin = localStorage.getItem('ID') == null ? false : true;
+    this.likedChecker()
   }
 
   deletePost(id: any) {
@@ -49,7 +54,7 @@ export class DetailComponent implements OnInit {
   }
 
   //lấy ds cmt
-   getBlog() {
+  getBlog() {
     this.acctiveRouter.paramMap.subscribe((param) => {
       this.id = param.get('id');
       this.commentsService.getAllByPostId(this.id).subscribe(list =>
@@ -62,19 +67,19 @@ export class DetailComponent implements OnInit {
     });
   }
 
-  displayContent(content : any) {
+  displayContent(content: any) {
     // @ts-ignore
     document.getElementById('content').innerHTML = content;
   }
 
   setNewComment() {
     const comment = {
-      content : this.commentForm.value.content,
-      user : {
-        id : localStorage.getItem('ID')
+      content: this.commentForm.value.content,
+      user: {
+        id: localStorage.getItem('ID')
       },
-      post : {
-        id : this.id
+      post: {
+        id: this.id
       }
     }
     return comment
@@ -82,7 +87,7 @@ export class DetailComponent implements OnInit {
 
   createComment() {
     const comment = this.setNewComment()
-    console.log('comt',comment);
+    console.log('comt', comment);
     this.commentsService.save(comment).subscribe((data) => {
       this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã bình luận!!!", duration: 2000})
       // this.router.navigate(['/detail', this.id]);
@@ -100,6 +105,32 @@ export class DetailComponent implements OnInit {
       this.router.navigate(['/login'])
     }
   }
+
+  likePost() {
+    this.userId = localStorage.getItem('ID')
+    this.postId = this.obj.id
+    this.postService.likePost(this.postId, this.userId).subscribe((countLike) => {
+      this.getBlog();
+      console.log(this.postId, this.userId)
+
+      // window.location.reload();
+      // this.totalLike = countLike;
+    })
+  }
+
+  likedChecker() {
+    this.userId = localStorage.getItem('ID')
+    this.postService.likedCheck(this.obj.id, this.userId).subscribe((liked) => {
+      console.log("data: " , liked)
+      if (liked == null) {
+        this.likedCheck = false
+      } else {
+        this.likedCheck = true
+      }
+      console.log("liked ", this.likedCheck)
+    })
+  }
 }
+
 
 
