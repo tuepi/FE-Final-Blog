@@ -73,6 +73,7 @@ const routes: Routes = [
     component: ProfileComponent,
   },
 
+
 ];
 
 @NgModule({
