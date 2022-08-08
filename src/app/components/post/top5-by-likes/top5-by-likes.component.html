@@ -10,9 +10,11 @@
         </div>
         <div class="post__text">
           <span>Dinner</span>
-          <h5><a [routerLink]="['/detail', p.id]">{{p.title}}</a></h5>
+          <h5><a [routerLink]="['/detail', p.id]">{{p.title}} </a></h5>
         </div>
       </div>
+
+
 
     </div>
   </div>
@@ -21,7 +23,7 @@
       <h6>Loại bài viết</h6>
     </div>
     <ul *ngFor="let item of listLabel">
-      <li><a href="#">{{item[1]}} <span>{{item[2]}}</span></a></li>
+      <li><a href="#">{{item[1]}} <span>{{item[2]}}</span> </a></li>
 
     </ul>
   </div>

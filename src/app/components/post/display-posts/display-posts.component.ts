@@ -71,7 +71,7 @@ export class DisplayPostsComponent implements OnInit {
     this.p = event;
     // this.getAllByPublicStatus();
     window.scroll({
-      top: 0,
+      top: 1120,
       left: 0,
       behavior: 'smooth'
     });
