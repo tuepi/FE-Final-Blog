@@ -44,4 +44,7 @@ export class GetAllPublicStatusComponent implements OnInit {
   //   this.getAllByPublicStatus();
   // }
 
+  listBySearch() {
+
+  }
 }

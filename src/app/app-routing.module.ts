@@ -57,12 +57,12 @@ const routes: Routes = [
     component: GetAllComponent,
   },
   {
-    path : 'delete/:id',
-    component : DeletePostComponent
+    path: 'delete/:id',
+    component: DeletePostComponent
   },
   {
-    path : 'change-password/:id',
-    component : ChangePasswordComponent
+    path: 'change-password/:id',
+    component: ChangePasswordComponent
   },
   {
     path: 'update/:id',
@@ -71,7 +71,8 @@ const routes: Routes = [
   {
     path: 'profile/:id',
     component: ProfileComponent,
-  }
+  },
+
 ];
 
 @NgModule({

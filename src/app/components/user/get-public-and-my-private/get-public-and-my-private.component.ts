@@ -29,4 +29,7 @@ export class GetPublicAndMyPrivateComponent implements OnInit {
       });
   }
 
+  listBySearch($event: any) {
+    this.posts = $event;
+  }
 }

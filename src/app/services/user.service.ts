@@ -26,5 +26,9 @@ export class UserService {
     return this.httpClient.get<User>(environment.apiUrl + '/users/' + id)
   }
 
+  checkOldPassword(id : any, oldPassword : any) : Observable<User> {
+    return this.httpClient.get<User>(environment.apiUrl + '/users/check-password/' + id + '?password=' + oldPassword);
+  }
+
 
 }

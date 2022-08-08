@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {NgToastService} from "ng-angular-popup";
 import {Router} from "@angular/router";
 import firebase from "firebase/compat";
 import User = firebase.User;
 import {PostService} from "../../services/post.service";
+import * as events from "events";
 
 @Component({
   selector: 'app-navbar',
@@ -43,17 +44,20 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  @Output()
+  onSearch = new EventEmitter();
+
   findPostByTitle() {
      this.postService.search(this.title).subscribe(data => {
+       this.onSearch.emit(data);
       this.listTitle = data;
-         console.log(this.title)
-       console.log(this.listTitle)
+      this.onSearch.emit(this.listTitle)
     }, error => {
       console.log(error)
     }
      )
-
-
   }
+
+
 
 }

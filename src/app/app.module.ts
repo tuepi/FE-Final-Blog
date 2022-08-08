@@ -73,7 +73,7 @@ import { RatingComponent } from './components/post/rating/rating.component';
     ChangePasswordComponent,
     CommentComponent,
     ProfileComponent,
-    RatingComponent
+    RatingComponent,
   ],
     imports: [
         BrowserModule,
