@@ -39,6 +39,7 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("cmt : ", this.comments)
     this.getBlog()
     this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
@@ -65,7 +66,8 @@ export class DetailComponent implements OnInit {
     this.acctiveRouter.paramMap.subscribe((param) => {
       this.id = param.get('id');
       this.commentsService.getAllByPostId(this.id).subscribe(list =>
-        this.comments = list);
+        this.comments = list
+      );
       this.postService.findById(this.id).subscribe((data) => {
         this.obj = data;
         this.getTime();
@@ -87,7 +89,7 @@ export class DetailComponent implements OnInit {
         id: localStorage.getItem('ID')
       },
       post: {
-        id: this.id
+        id: this.obj.id
       }
     }
     return comment
@@ -95,7 +97,6 @@ export class DetailComponent implements OnInit {
 
   createComment() {
     const comment = this.setNewComment()
-    console.log('comt', comment);
     this.commentsService.save(comment).subscribe((data) => {
       this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã bình luận!!!", duration: 2000})
       // this.router.navigate(['/detail', this.id]);
@@ -125,15 +126,12 @@ export class DetailComponent implements OnInit {
     this.postService.likePost(this.postId, this.userId).subscribe((countLike) => {
       this.likedChecker()
       this.getBlog();
-      console.log(this.postId, this.userId)
-      console.log("like",this.likedCheck)
       // window.location.reload();
       // this.totalLike = countLike;
     })
   }
 
   likedChecker() {
-    console.log(this.likedCheck)
     this.userId = localStorage.getItem('ID')
     this.postService.likedCheck(this.obj.id, this.userId).subscribe((liked) => {
       console.log("data: " , liked)
