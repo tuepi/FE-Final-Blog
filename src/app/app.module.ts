@@ -9,7 +9,7 @@ import {HomepageComponent} from './components/homepage/homepage.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {JwtInterceptor} from "./helper/jwt-interceptor";
 import {ErrorInterceptor} from "./helper/error-interceptor";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgToastModule} from "ng-angular-popup";
 import { DisplayPostsComponent } from './components/post/display-posts/display-posts.component';
 import { GetAllPublicStatusComponent } from './components/post/get-all-public-status/get-all-public-status.component';
@@ -33,7 +33,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
 import { Top5ByLikesComponent } from './components/post/top5-by-likes/top5-by-likes.component';
-import { ListLabelComponent } from './components/post/list-label/list-label.component';
+
 import { GetAllComponent } from './components/admin/get-all/get-all.component';
 import { GetPublicAndMyPrivateComponent } from './components/user/get-public-and-my-private/get-public-and-my-private.component';
 import {UpdateUserComponent} from "./components/user/update-user/update-user.component";
@@ -60,7 +60,7 @@ import { RatingComponent } from './components/post/rating/rating.component';
     GetMyPostsComponent,
     CreatePostComponent,
     Top5ByLikesComponent,
-    ListLabelComponent,
+    // ListLabelComponent,
     GetAllComponent,
     GetPublicAndMyPrivateComponent,
     UpdateUserComponent,
@@ -95,7 +95,8 @@ import { RatingComponent } from './components/post/rating/rating.component';
     MatPaginatorModule,
     NgxPaginationModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    FormsModule
   ],
   providers: [
     {
