@@ -14,7 +14,6 @@ export class Top5ByLikesComponent implements OnInit {
 
   top5Posts : Post[] | any
   listLabel: any = []
-  listPostByLabel : any = []
 
   constructor(private postService : PostService,
               private labelService: LabelService,
@@ -27,7 +26,6 @@ export class Top5ByLikesComponent implements OnInit {
 
   top5ByLikes() {
     this.postService.top5ByLikes().subscribe(data => {
-        console.log(data)
         this.top5Posts = data;
       },
       error => {
@@ -41,11 +39,9 @@ export class Top5ByLikesComponent implements OnInit {
     })
   }
 
-  getPostByLabel(labelId: any) {
-    this.postLabelService.getAllPostLabel(labelId).subscribe((data) => {
-      this.listPostByLabel = data;
-    } )
-  }
+setLabel(labelId: any) {
+    localStorage.setItem('labelId', labelId)
+}
 
 
 
