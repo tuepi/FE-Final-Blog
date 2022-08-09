@@ -17,6 +17,7 @@ import {UpdateUserComponent} from "./components/user/update-user/update-user.com
 import {DeletePostComponent} from "./components/post/delete-post/delete-post.component";
 import {ChangePasswordComponent} from "./components/user/change-password/change-password.component";
 import {ProfileComponent} from "./components/user/profile/profile.component";
+import {GetByLabelComponent} from "./components/post/get-by-label/get-by-label.component";
 
 const routes: Routes = [
   {
@@ -72,7 +73,10 @@ const routes: Routes = [
     path: 'profile/:id',
     component: ProfileComponent,
   },
-
+  {
+    path: 'by-label/:id',
+    component: GetByLabelComponent,
+  },
 
 ];
 

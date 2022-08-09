@@ -46,6 +46,7 @@ import { ChangePasswordComponent } from './components/user/change-password/chang
 import { CommentComponent } from './components/post/comment/comment.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RatingComponent } from './components/post/rating/rating.component';
+import { GetByLabelComponent } from './components/post/get-by-label/get-by-label.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { RatingComponent } from './components/post/rating/rating.component';
     CommentComponent,
     ProfileComponent,
     RatingComponent,
+    GetByLabelComponent,
   ],
     imports: [
         BrowserModule,
