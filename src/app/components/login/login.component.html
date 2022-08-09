@@ -4,7 +4,7 @@
   <div class="signin__warp">
     <div class="signin__content">
       <div class="signin__logo">
-        <a routerLink="/"><img src="assets/img/siign-in-logo.png" alt=""></a>
+
       </div>
       <div class="signin__form">
         <ul class="nav nav-tabs" role="tablist">
@@ -23,16 +23,11 @@
         <div class="tab-content">
           <div class="tab-pane active" id="tabs-2" role="tabpanel">
             <div class="signin__form__text">
-              <p>bằng tài khoản mạng xã hội : </p>
               <div class="signin__form__signup__social">
-                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                <a href="#" class="google"><i class="fa fa-google"></i></a>
+                <img src="assets/img/logo.png" alt="">
               </div>
-              <div class="divide">hoặc :</div>
-              <!--              phan Login//////////////////////////////////////-->
               <form [formGroup]="loginForm" (ngSubmit)="login()" >
-                  <input style="margin: 0 0" type="text" placeholder="Tên đăng nhập" formControlName="username">
+                  <input style="margin: 0 0" type="text" placeholder="Tên đăng nhập" (input)="checkForm()"  [(ngModel)]="usernameValue" formControlName="username">
                   <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
                     <div style="color: red; margin-left: 10px" *ngIf="username?.errors?.['required']">
                       <small>*Tên tài khoản không được bỏ trống</small>
@@ -44,9 +39,7 @@
                       <small>*Tên tài khoản tối đa 32 kí tự</small>
                     </div>
                   </div>
-
-
-                  <input style="margin: 20px 0 0 0" type="password" placeholder="Mật khẩu" formControlName="password">
+                  <input style="margin: 20px 0 0 0" type="password" placeholder="Mật khẩu" (input)="checkForm()"   [(ngModel)]="passwordValue" formControlName="password">
                   <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
                     <div style="color: red" *ngIf="password?.errors?.['required']">
                       <small>*Mật khẩu không được bỏ trống</small>
@@ -58,7 +51,7 @@
                       <small>*Mật khẩu tối đa 32 kí tự</small>
                     </div>
                   </div>
-                  <button style="margin: 50px 0 0" type="submit" class="site-btn">XÁC NHẬN</button>
+                  <button style="margin: 50px 0 0" type="submit" class="site-btn" [disabled]="checkForm() ? 'dis abled' : null">XÁC NHẬN</button>
               </form>
             </div>
           </div>

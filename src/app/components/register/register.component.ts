@@ -20,6 +20,11 @@ export class RegisterComponent implements OnInit {
   fb: any;
   downloadURL: Observable<string> | any;
   checkImage = false;
+  usernameValue: any
+  fullNameValue: any
+  numberPhone: any
+  passwordValue: any
+  confirmPasswordValue: any
 
   registerForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.maxLength(32)]),
@@ -94,6 +99,8 @@ export class RegisterComponent implements OnInit {
 
   }
 
+
+
   private checkUsername(username : any, usernames : []) : boolean {
     const check = true;
     for (let i = 0; i < usernames.length; i++) {
@@ -118,8 +125,38 @@ export class RegisterComponent implements OnInit {
     return user;
   }
 
+  checkForm() {
+    if(this.checkErrorForm() && this.checkFormRegister()) {
+      return false;
+    }
+    return true;
+
+  }
+
+  checkFormRegister() {
+    if (this.usernameValue == null || this.fullNameValue == null || this.numberPhone == null ||
+      this.passwordValue == null || this.confirmPasswordValue == null
+      || this.usernameValue == "" || this.fullNameValue == "" || this.numberPhone == "" ||
+      this.passwordValue == "" || this.confirmPasswordValue == ""
+      || this.usernameValue == undefined || this.fullNameValue == undefined || this.numberPhone == undefined ||
+      this.passwordValue == undefined || this.confirmPasswordValue == undefined
+
+    ) {
+      return false
+    }
+    return true
+  }
+  checkErrorForm() {
+    if (this.registerForm.invalid == false && (this.registerForm.dirty == true || this.registerForm.touched == true)) {
+      return true
+    }
+    return false
+  }
+
+
 
 }
+
 function ConfirmedValidator(controlName: string, matchingControlName: string): any {
   return (formGroup: FormGroup) => {
     const control = formGroup.controls[controlName];
