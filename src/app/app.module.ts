@@ -33,7 +33,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
 import { Top5ByLikesComponent } from './components/post/top5-by-likes/top5-by-likes.component';
-import { ListLabelComponent } from './components/post/list-label/list-label.component';
+
 import { GetAllComponent } from './components/admin/get-all/get-all.component';
 import { GetPublicAndMyPrivateComponent } from './components/user/get-public-and-my-private/get-public-and-my-private.component';
 import {UpdateUserComponent} from "./components/user/update-user/update-user.component";
@@ -60,7 +60,7 @@ import { RatingComponent } from './components/post/rating/rating.component';
     GetMyPostsComponent,
     CreatePostComponent,
     Top5ByLikesComponent,
-    ListLabelComponent,
+    // ListLabelComponent,
     GetAllComponent,
     GetPublicAndMyPrivateComponent,
     UpdateUserComponent,
@@ -98,6 +98,7 @@ import { RatingComponent } from './components/post/rating/rating.component';
         AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
         FormsModule
     ],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

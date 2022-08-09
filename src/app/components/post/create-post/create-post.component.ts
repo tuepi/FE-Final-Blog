@@ -16,6 +16,7 @@ import {formatDate} from "@angular/common";
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
+  listLabelValue : any = [];
 
   jsToday : any = '';
   // title = "cloudsSorage";
@@ -32,7 +33,8 @@ export class CreatePostComponent implements OnInit {
   today : number = Date.now();
 
   fullName = localStorage.getItem('FULLNAME');
-  labels: Label[] = []
+  labels: any[] = [];
+  labelSelected: number[] = [];
 
   createForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
@@ -58,6 +60,16 @@ export class CreatePostComponent implements OnInit {
     if (this.title != null) {
       this.isNull = true
     }
+  }
+
+  changeLabel(event: any, label: number) {
+    console.log(event.target.checked);
+    if (event.target.checked) {
+      this.labelSelected = [...this.labelSelected, label];
+    } else {
+      this.labelSelected = this.labelSelected.filter(el => el != label);
+    }
+    return this.labelSelected;
   }
 
 
@@ -130,12 +142,13 @@ export class CreatePostComponent implements OnInit {
 
   savePost() {
     const post = this.setNewPost()
-    console.log(post)
+
     this.postService.save(post).subscribe((data) => {
-      console.log(data);
+      this.sendLabel(data.id)
       this.toast.success({detail: "THÔNG BÁO", summary: "Đăng bài thành công!!!", duration: 2000})
       this.router.navigate(['/']);
     }, error => {
+      this.toast.error({detail: "THÔNG BÁO", summary: "Lỗi khi đăng bài!!!", duration: 2000})
       console.log(error)
     })
 
@@ -147,4 +160,17 @@ export class CreatePostComponent implements OnInit {
     }
     return true
   }
+
+  checkBox( event: any) {
+    this.listLabelValue.push(event.value)
+  }
+
+  sendLabel(id: any) {
+   this.postService.getAllLabels(id, this.listLabelValue).subscribe((data) => {
+   },error => {
+      console.log(error)
+
+   })
+  }
+
 }
