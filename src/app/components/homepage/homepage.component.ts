@@ -17,7 +17,9 @@ export class HomepageComponent implements OnInit {
 
   constructor(private postService : PostService,
               private router : Router,
-              private toast : NgToastService) { }
+              private toast : NgToastService) {
+
+  }
 
   ngOnInit(): void {
     // this.isLogin = localStorage.getItem('ID') == null ? false : true;
@@ -42,5 +44,7 @@ export class HomepageComponent implements OnInit {
   getList($event: any) {
     this.post.push($event)
   }
+
+
 
 }
