@@ -207,7 +207,7 @@
                   </div>
                   <div class="typography__last__text" id="content">
                   </div>
-                  <hr>
+                  <hr #comment>
 
                   <div class="post__social" style="margin-left: 450px; padding: 0 0 40px 0">
 
@@ -216,7 +216,7 @@
                       <i *ngIf="!likedCheck" class="fa fa-heart-o" style="color: #f4952f" ></i>
                     </a><span>{{obj.numberOfLike}} </span>
 
-                    <a href="#"><i class="fa fa-comment-o" style="color: #f4952f" ></i></a><span>{{comments.length}} </span>
+                    <a (click)="scrollToElement(comment)"><i class="fa fa-comment-o" style="color: #f4952f" ></i></a><span>{{comments.length}} </span>
 <!--                    <button (click)="likedChecker()">check</button>-->
 <!--                    <a href="#"><i class="fa fa-share-square-o"></i></a><span></span>-->
                     <a *ngIf="postOwner" [routerLink]="['/edit/',obj.id]"><i

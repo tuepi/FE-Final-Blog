@@ -141,6 +141,11 @@ export class DetailComponent implements OnInit {
       console.log("liked ", this.likedCheck)
     })
   }
+
+  scrollToElement( $element: any ): void {
+    console.log($element);
+    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
 }
 
 
