@@ -16,6 +16,7 @@ import {formatDate} from "@angular/common";
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
+  listLabelValue : any = [];
 
   jsToday : any = '';
   // title = "cloudsSorage";
@@ -32,7 +33,8 @@ export class CreatePostComponent implements OnInit {
   today : number = Date.now();
 
   fullName = localStorage.getItem('FULLNAME');
-  labels: Label[] = []
+  labels: any[] = [];
+  labelSelected: number[] = [];
 
   createForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
@@ -57,6 +59,15 @@ export class CreatePostComponent implements OnInit {
     this.getAllLabels()
     if (this.title != null) {
       this.isNull = true
+    }
+  }
+
+  changeLabel(event: any, label: number) {
+    console.log(event.target.checked);
+    if (event.target.checked) {
+      this.labelSelected = [...this.labelSelected, label];
+    } else {
+      this.labelSelected = this.labelSelected.filter(el => el != label);
     }
   }
 
@@ -147,4 +158,9 @@ export class CreatePostComponent implements OnInit {
     }
     return true
   }
+
+  checkBox( event: any) {
+    this.listLabelValue.push(event.value)
+  }
+
 }
