@@ -235,6 +235,7 @@
                       <p>{{cmt.content}}</p>
                     </div>
                   </div>
+                  <app-rating></app-rating>
                   <!--                    </div>-->
                   <div class="single-post__leave__comment">
 <!--                    <div class="widget__title">-->
@@ -243,8 +244,8 @@
                     <form [formGroup]="commentForm" (ngSubmit)="createComment()">
                       <textarea formControlName="content" placeholder="Viết bình luận..."
                                 style="height: 80px"></textarea>
-                      <button type="submit" class="site-btn" *ngIf="isLogin">Đăng</button>
-                      <button type="submit" class="site-btn" *ngIf="!isLogin" (click)="requestLogin()">Đăng</button>
+                      <button type="submit" class="site-btn" *ngIf="!isLogin">Đăng</button>
+                      <button class="site-btn" *ngIf="isLogin" (click)="requestLogin()">Đăng</button>
                     </form>
                   </div>
 

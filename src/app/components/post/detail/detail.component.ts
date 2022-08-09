@@ -13,7 +13,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  adminCheck = false;
+  adminCheck=false;
   isLogin = false;
   postOwner = false;
   obj: Post | any;
@@ -33,14 +33,19 @@ export class DetailComponent implements OnInit {
               private postService: PostService,
               private commentsService: CommentsService,
               private router: Router,
-              private toast: NgToastService) {
-    this.likedChecker()
+              private toast : NgToastService) {
   }
 
   ngOnInit(): void {
-    this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.getBlog()
+    this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
+    this.likedChecker()
+  }
+
+
+
+  checkLogin() {
     this.isLogin = localStorage.getItem('ID') == null ? false : true;
   }
 

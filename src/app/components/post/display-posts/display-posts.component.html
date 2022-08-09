@@ -21,13 +21,13 @@
     <div class="col-lg-6 col-md-6">
       <div class="categories__post__item__text">
         <!--          <span class="post__label">Nhãn</span>-->
-        <h3><strong><a [routerLink]="['/detail', post.id]">{{post.title}}</a></strong></h3>
+        <h3><strong><a class="title-small" [routerLink]="['/detail', post.id]">{{post.title}}</a></strong></h3>
         <ul class="post__widget">
           <li>từ <span [routerLink]="['/profile/',post.user.id]">{{post.user.fullName}}</span></li>
           <li>   {{post.numberOfLike}} Lượt thích</li>
           <!--            <li>20 Bình luận</li>-->
         </ul>
-        <p>{{post.description}}</p>
+        <p class="description-small">{{post.description}}</p>
       </div>
       <button *ngIf="adminCheck" type="button" [routerLink]="['/delete/', post.id]" class="btn site-btn" data-toggle="modal" data-target="#deleteByAdmin" style="padding: 7px 12px">
         XÓA

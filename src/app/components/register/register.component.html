@@ -53,7 +53,7 @@
                   </div>
                 </div>
 
-                <input type="text" style="margin: 20px 0 0 0" placeholder="Số điện thoại" formControlName="phone">
+                <input type="text" style="margin: 20px 0 0 0" placeholder="Số điện thoại" formControlName="numberPhone">
                 <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
                   <div style="color: red" *ngIf="phone?.errors?.['required']">
                     <small>*Số điện thoại không được bỏ trống</small>

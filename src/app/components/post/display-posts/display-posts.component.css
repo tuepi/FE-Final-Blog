@@ -1,3 +1,21 @@
 li::after {
     content: "" !important;
 }
+
+.description-small {
+  display:-webkit-box;
+  -webkit-line-clamp:5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+.title-small {
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}

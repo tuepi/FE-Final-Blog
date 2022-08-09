@@ -75,6 +75,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     const user = this.setNewUser()
+    console.log(user)
     if (this.checkUsername(user.username, this.usernames)) {
       if (user.password === user.confirmPassword) {
         this.authenticationService.register(user).subscribe((data) => {
