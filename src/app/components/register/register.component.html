@@ -43,13 +43,13 @@
 
                 <input type="text" style="margin: 20px 0 0 0"  [(ngModel)]="fullNameValue"  placeholder="Tên đầy đủ của bạn" formControlName="fullName">
                 <div *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)">
-                  <div style="color: red; margin-left: 10px" *ngIf="username?.errors?.['required']">
+                  <div style="color: red; margin-left: 10px" *ngIf="fullName?.errors?.['required']">
                     <small>*Tên không được bỏ trống</small>
                   </div>
-                  <div style="color: red" *ngIf="username?.errors?.['minlength']">
+                  <div style="color: red" *ngIf="fullName?.errors?.['minlength']">
                     <small>Tên phải ít nhất 6 kí tự</small>
                   </div>
-                  <div style="color: red" *ngIf="username?.errors?.['maxlength']">
+                  <div style="color: red" *ngIf="fullName?.errors?.['maxlength']">
                     <small>Tên tối đa 32 kí tự</small>
                   </div>
                 </div>
