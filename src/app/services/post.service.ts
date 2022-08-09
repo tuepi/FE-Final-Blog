@@ -50,9 +50,14 @@ export class PostService {
     return this.httpClient.delete<Post>(environment.apiUrl + '/api/admin/' + id)
   }
 
-  save(post:Post){
+  save(post:Post) {
     return this.httpClient.post<Post>(API_URL, post)
   }
+
+  // sendListLabel(id: any, listLabel : String []) {
+  //   let post = this.httpClient.post<any>(environment.apiUrl + '/api/posts/send-list-label/' + id);
+  //   return post;
+  // }
 
 
   updatePost(postId: any, post: Post) {
@@ -73,6 +78,13 @@ export class PostService {
   likedCheck(postId:any, userId :any) : Observable<any>{
     return this.httpClient.get(environment.apiUrl +`/api/likes?postId=${postId}&userId=${userId}`);
   }
+
+  getAllLabels(id: any, listLabel : String []) {
+    return this.httpClient.post(environment.apiUrl + '/api/posts/send-list-label/' + id,listLabel );
+    // return this.httpClient.request(`${environment.apiUrl}/api/posts/send-list-label/${id}`);
+  }
+
+
 
 
 }

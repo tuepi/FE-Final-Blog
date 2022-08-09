@@ -98,29 +98,7 @@ import { RatingComponent } from './components/post/rating/rating.component';
         AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
         FormsModule
     ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    NgToastModule,
-    EditorModule,
-    MatInputModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatRadioModule,
-    MatCheckboxModule,
-    MatSlideToggleModule,
-    MatButtonModule,
-    MatProgressSpinnerModule,
-    MatProgressBarModule,
-    MatPaginatorModule,
-    NgxPaginationModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-    FormsModule
-  ],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

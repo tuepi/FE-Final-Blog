@@ -69,6 +69,7 @@ export class CreatePostComponent implements OnInit {
     } else {
       this.labelSelected = this.labelSelected.filter(el => el != label);
     }
+    return this.labelSelected;
   }
 
 
@@ -141,12 +142,13 @@ export class CreatePostComponent implements OnInit {
 
   savePost() {
     const post = this.setNewPost()
-    console.log(post)
+
     this.postService.save(post).subscribe((data) => {
-      console.log(data);
+      this.sendLabel(data.id)
       this.toast.success({detail: "THÔNG BÁO", summary: "Đăng bài thành công!!!", duration: 2000})
       this.router.navigate(['/']);
     }, error => {
+      this.toast.error({detail: "THÔNG BÁO", summary: "Lỗi khi đăng bài!!!", duration: 2000})
       console.log(error)
     })
 
@@ -161,6 +163,14 @@ export class CreatePostComponent implements OnInit {
 
   checkBox( event: any) {
     this.listLabelValue.push(event.value)
+  }
+
+  sendLabel(id: any) {
+   this.postService.getAllLabels(id, this.listLabelValue).subscribe((data) => {
+   },error => {
+      console.log(error)
+
+   })
   }
 
 }
