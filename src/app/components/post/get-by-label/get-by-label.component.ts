@@ -22,7 +22,6 @@ export class GetByLabelComponent implements OnInit {
     this.postLabelService.getAllPostLabel(labelId).subscribe((data) => {
       this.scanData(data)
       console.log(this.listPostByLabel)
-
       localStorage.removeItem('labelId')
     } )
   }
