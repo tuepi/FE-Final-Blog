@@ -10,22 +10,6 @@ import {NgToastService} from "ng-angular-popup";
   styleUrls: ['./display-posts.component.css']
 })
 export class DisplayPostsComponent implements OnInit {
-  //
-  // p : number = 1;
-  // total: number = 0;
-  //
-  // @Input() posts: Post[] | any;
-  //
-  // constructor() { }
-  //
-  // ngOnInit(): void {
-  // }
-  //
-  // pageChangeEvent(event: number){
-  //   this.p = event;
-  //   // getAllByPublicStatus();
-  // }
-
 
   id: any;
   adminCheck = false;

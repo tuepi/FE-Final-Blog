@@ -152,9 +152,10 @@ export class DetailComponent implements OnInit {
     });
   }
 
+  //tự động lăn cmt
   scrollToElement( $element: any ): void {
     console.log($element);
-    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    $element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
   }
 }
 
