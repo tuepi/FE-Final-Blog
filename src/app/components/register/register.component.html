@@ -41,6 +41,10 @@
                   <div style="color: red" *ngIf="username?.errors?.['maxlength']">
                     <small>*Tên tài khoản tối đa 32 kí tự</small>
                   </div>
+                  <div style="color: red" *ngIf="username?.errors?.['pattern']">
+                    <small>*Tên tài khoản không được có khoảng trắng hay kí tự đặc biệt </small>
+                  </div>
+
                 </div>
 
                 <input type="text" style="margin: 20px 0 0 0" placeholder="Tên đầy đủ của bạn" formControlName="fullName">

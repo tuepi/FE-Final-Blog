@@ -22,8 +22,10 @@ export class RegisterComponent implements OnInit {
   checkImage = false;
 
   registerForm: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.maxLength(32)]),
-    fullName: new FormControl('', [ Validators.minLength(6), Validators.maxLength(32)]),
+    username: new FormControl('', [Validators.required, Validators.maxLength(32), Validators.pattern("[/^\S*$/]|[^%,*]*/")]),
+      // username: new FormControl('', [Validators.required, Validators.maxLength(32), Validators.pattern(/^(?=.*\s)|"^[^%,*]*$"/)]),
+
+      fullName: new FormControl('', [ Validators.minLength(6), Validators.maxLength(32)]),
     numberPhone: new FormControl('', [Validators.required,Validators.pattern("(03|05|07|08|09)+([0-9]{8})")]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)])
