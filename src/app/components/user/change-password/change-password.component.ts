@@ -89,14 +89,6 @@ export class ChangePasswordComponent implements OnInit {
     })
   }
 
-
-  checkForm() {
-    if(this.oldPasswordValue != null && this.passwordValue != null && this.confirmPasswordValue != null) {
-      return false
-    }
-    return true
-  }
-
   checkOldPassword() {
     this.userService.checkOldPassword(this.currentUserId, this.oldPasswordValue).subscribe(data => {
       if (data.id != null) {
@@ -108,5 +100,30 @@ export class ChangePasswordComponent implements OnInit {
       }
     })
     }
+
+  checkForm() {
+    if(this.checkErrorForm() && this.checkFormChangePass()) {
+      return false;
+    }
+    return true;
+
+  }
+
+  checkFormChangePass() {
+    if (this.oldPasswordValue == null || this.passwordValue == null || this.confirmPasswordValue == null
+      || this.oldPasswordValue == "" || this.passwordValue == "" || this.confirmPasswordValue == ""
+      || this.oldPasswordValue == undefined || this.passwordValue == undefined || this.confirmPasswordValue == undefined
+
+    ) {
+      return false
+    }
+    return true
+  }
+  checkErrorForm() {
+    if (this.changeForm.invalid == false && (this.changeForm.dirty == true || this.changeForm.touched == true)) {
+      return true
+    }
+    return false
+  }
   }
 

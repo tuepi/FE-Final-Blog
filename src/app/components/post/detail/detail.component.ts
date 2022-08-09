@@ -13,7 +13,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  adminCheck = false;
+  adminCheck=false;
   isLogin = false;
   postOwner = false;
   obj: Post | any;
@@ -33,14 +33,21 @@ export class DetailComponent implements OnInit {
               private postService: PostService,
               private commentsService: CommentsService,
               private router: Router,
-              private toast: NgToastService) {
-    this.likedChecker()
+              private toast : NgToastService) {
+
+
   }
 
   ngOnInit(): void {
-    this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.getBlog()
+    this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
+    this.likePost()
+  }
+
+
+
+  checkLogin() {
     this.isLogin = localStorage.getItem('ID') == null ? false : true;
   }
 
@@ -116,25 +123,34 @@ export class DetailComponent implements OnInit {
     this.userId = localStorage.getItem('ID')
     this.postId = this.obj.id
     this.postService.likePost(this.postId, this.userId).subscribe((countLike) => {
+      this.likedChecker()
       this.getBlog();
       console.log(this.postId, this.userId)
-
+      console.log("like",this.likedCheck)
       // window.location.reload();
       // this.totalLike = countLike;
     })
   }
 
   likedChecker() {
+    console.log(this.likedCheck)
     this.userId = localStorage.getItem('ID')
     this.postService.likedCheck(this.obj.id, this.userId).subscribe((liked) => {
       console.log("data: " , liked)
       if (liked == null) {
-        this.likedCheck = false
+       return  this.likedCheck = false
       } else {
-        this.likedCheck = true
+        return this.likedCheck = true
       }
-      console.log("liked ", this.likedCheck)
     })
+  }
+
+  toComment() {
+    window.scroll({
+      top: 1120,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 }
 

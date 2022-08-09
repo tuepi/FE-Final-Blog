@@ -14,6 +14,8 @@ export class TopPostComponent implements OnInit {
   topPost: Post | any
   top5Posts: Post[] | any
   length: any
+  toDay: any;
+  nowTime: any;
 
   constructor(private postService: PostService,
               private commentsService: CommentsService) {
@@ -23,6 +25,11 @@ export class TopPostComponent implements OnInit {
     this.top5ByLikes()
 
   }
+  getTime() {
+    this.toDay = this.topPost.createAt.toString().split('T')[0]
+    this.nowTime = this.topPost.createAt.toString().split('T')[1]
+  }
+
 
   top5ByLikes() {
     this.postService.top5ByLikes().subscribe(data => {
@@ -30,7 +37,7 @@ export class TopPostComponent implements OnInit {
         this.topPost = data[0]
         this.commentsService.getAllByPostId(data[0].id).subscribe(list =>
           this.length = list.length);
-
+        this.getTime()
       },
       error => {
         console.log(error);

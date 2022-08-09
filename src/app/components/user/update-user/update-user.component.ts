@@ -61,9 +61,7 @@ export class UpdateUserComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(parammap =>{
       this.userId = parammap.get('id');
-      console.log("user",this.userId);
       this.userService.findById(this.userId).subscribe(data => {
-        console.log("aaa",data);
         this.fb = data.avatar;
         this.updateForm.patchValue({
           // id: this.userId,
@@ -130,13 +128,12 @@ export class UpdateUserComponent implements OnInit {
       status: 0,
     }
     this.userService.updateUser(this.userId, this.user).subscribe( data => {
-      console.log('aaaa',data);
       localStorage.removeItem('FULLNAME');
       localStorage.removeItem('AVATAR');
       localStorage.setItem('FULLNAME', this.user.fullName);
       localStorage.setItem('AVATAR', this.user.avatar);
-      this.toast.success({detail:"Thong Bao",summary:"Sua Thanh Cong",duration:3000});
-      this.router.navigateByUrl("/")
+      this.toast.success({detail:"Thong Bao",summary:"Sua Thanh Cong",duration:2000});
+      this.router.navigate(["/profile", this.userId])
     },error => {
       console.log(error);
     })
