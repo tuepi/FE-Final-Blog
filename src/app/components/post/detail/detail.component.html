@@ -182,7 +182,7 @@
           <div class="container">
             <div class="typography__text">
               <div class="row">
-                <div class="col-lg-10 col-md-10">
+                <div class="col-lg-11 col-md-11" style="padding: 0 50px">
                   <div class="breadcrumb__text">
                     <h2 style="color: #f4952f">{{obj.title}}</h2>
                     <div class="breadcrumb__option">
@@ -210,42 +210,47 @@
                   <hr>
 
                   <div class="post__social" style="margin-left: 450px; padding: 0 0 40px 0">
-
-                    <a (click)="likePost()" >
-                      <i *ngIf="likedCheck" class="fa fa-heart" style="color: #f4952f" ></i>
-                      <i *ngIf="!likedCheck" class="fa fa-heart-o" style="color: #f4952f" ></i>
-                    </a><span>{{obj.numberOfLike}} </span>
-
-                    <a href="#"><i class="fa fa-comment-o" style="color: #f4952f" ></i></a><span>{{comments.length}} </span>
-<!--                    <button (click)="likedChecker()">check</button>-->
-<!--                    <a href="#"><i class="fa fa-share-square-o"></i></a><span></span>-->
-                    <a *ngIf="postOwner" [routerLink]="['/edit/',obj.id]"><i
-                      class="fa fa-pencil-square-o" style="color: #f4952f"></i></a><span></span>
-                    <a *ngIf="postOwner" data-toggle="modal" data-target="#staticBackdrop"><i class="fa fa-trash" style="color: #f4952f"></i></a><span></span>
+                    <span (click)="likePost()">
+                      <a>
+                        <i *ngIf="likedCheck" class="fa fa-heart" style="color: #f4952f" title="Bỏ thích"></i>
+                        <i *ngIf="!likedCheck" class="fa fa-heart-o" style="color: #f4952f" title="Thích"></i>
+                      </a>
+                      {{obj.numberOfLike}}
+                    </span>
+                    <span>
+                      <a href="#"><i class="fa fa-comment-o" style="color: #f4952f"></i>
+                      </a>{{comments.length}}
+                    </span>
+                    <!--                    <button (click)="likedChecker()">check</button>-->
+                    <!--                    <a href="#"><i class="fa fa-share-square-o"></i></a><span></span>-->
+                    <span title="Chỉnh sửa"><a *ngIf="postOwner" [routerLink]="['/edit/',obj.id]"><i class="fa fa-pencil-square-o" style="color: #f4952f"></i></a></span>
+                    <span title="Xóa"><a *ngIf="postOwner" data-toggle="modal" data-target="#staticBackdrop"><i class="fa fa-trash" style="color: #f4952f"></i></a></span>
                   </div>
-                  <!--          COMMENT-->
-                  <!--                    <div class="single-post__comment">-->
+                  <!--  COMMENT-->
+                  <!--  <div class="single-post__comment">-->
                   <div class="sidebar__item__title" *ngFor="let cmt of comments">
                     <div class="single-post__comment__item__pic">
                       <img src="{{cmt.user.avatar}}" alt="">
                     </div>
                     <div class="single-post__comment__item__text">
-                      <a [routerLink]="['/profile/',cmt.user.id]"><h6>{{cmt.user.fullName}}</h6></a>
-                      <span>{{cmt.createAt}}</span>
+                      <a style="margin-left: 0" [routerLink]="['/profile/',cmt.user.id]"><h6>{{cmt.user.fullName}}</h6>
+                      </a>
+                      <span>{{cmt.createAt.toString().split('T')[0]}} {{cmt.createAt.toString().split('T')[1]}}</span>
                       <p>{{cmt.content}}</p>
                     </div>
                   </div>
                   <app-rating></app-rating>
                   <!--                    </div>-->
                   <div class="single-post__leave__comment">
-<!--                    <div class="widget__title">-->
-<!--                      <h4>Bình luận bài viết</h4>-->
-<!--                    </div>-->
+                    <!--                    <div class="widget__title">-->
+                    <!--                      <h4>Bình luận bài viết</h4>-->
+                    <!--                    </div>-->
                     <form [formGroup]="commentForm" (ngSubmit)="createComment()">
                       <textarea formControlName="content" placeholder="Viết bình luận..."
                                 style="height: 80px"></textarea>
-                      <button type="submit" class="site-btn" *ngIf="!isLogin">Đăng</button>
-                      <button class="site-btn" *ngIf="isLogin" (click)="requestLogin()">Đăng</button>
+                      <button style="width: 100px" type="submit" class="site-btn" *ngIf="!isLogin">Đăng</button>
+                      <button style="width: 100px" class="site-btn" *ngIf="isLogin" (click)="requestLogin()">Đăng
+                      </button>
                     </form>
                   </div>
 

@@ -34,13 +34,15 @@ export class DetailComponent implements OnInit {
               private commentsService: CommentsService,
               private router: Router,
               private toast : NgToastService) {
+
+
   }
 
   ngOnInit(): void {
     this.getBlog()
     this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
-    this.likedChecker()
+    this.likePost()
   }
 
 
@@ -121,25 +123,34 @@ export class DetailComponent implements OnInit {
     this.userId = localStorage.getItem('ID')
     this.postId = this.obj.id
     this.postService.likePost(this.postId, this.userId).subscribe((countLike) => {
+      this.likedChecker()
       this.getBlog();
       console.log(this.postId, this.userId)
-
+      console.log("like",this.likedCheck)
       // window.location.reload();
       // this.totalLike = countLike;
     })
   }
 
   likedChecker() {
+    console.log(this.likedCheck)
     this.userId = localStorage.getItem('ID')
     this.postService.likedCheck(this.obj.id, this.userId).subscribe((liked) => {
       console.log("data: " , liked)
       if (liked == null) {
-        this.likedCheck = false
+       return  this.likedCheck = false
       } else {
-        this.likedCheck = true
+        return this.likedCheck = true
       }
-      console.log("liked ", this.likedCheck)
     })
+  }
+
+  toComment() {
+    window.scroll({
+      top: 1120,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 }
 

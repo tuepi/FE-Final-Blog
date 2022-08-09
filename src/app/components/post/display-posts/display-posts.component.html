@@ -25,11 +25,13 @@
         <ul class="post__widget">
           <li>từ <span [routerLink]="['/profile/',post.user.id]">{{post.user.fullName}}</span></li>
           <li>   {{post.numberOfLike}} Lượt thích</li>
-          <!--            <li>20 Bình luận</li>-->
+          <!--                      <li>20 Bình luận</li>-->
+          <li>Ngày đăng: {{post.createAt.toString().split('T')[0]}} {{post.createAt.toString().split('T')[1]}} </li>
         </ul>
         <p class="description-small">{{post.description}}</p>
       </div>
-      <button *ngIf="adminCheck" type="button" [routerLink]="['/delete/', post.id]" class="btn site-btn" data-toggle="modal" data-target="#deleteByAdmin" style="padding: 7px 12px">
+      <button *ngIf="adminCheck" type="button" [routerLink]="['/delete/', post.id]" class="btn site-btn"
+              data-toggle="modal" data-target="#deleteByAdmin" style="padding: 7px 12px">
         XÓA
       </button>
     </div>
