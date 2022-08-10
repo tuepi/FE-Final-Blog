@@ -12,6 +12,6 @@ listPostLabel : any = []
   constructor(private httpClient: HttpClient) { }
 
   getAllPostLabel(labelId: any) : Observable<any>{
-    return this.httpClient.get<any>(API_URL + "label/" + labelId);
+    return this.httpClient.get<any>(environment.apiUrl + "/api/guest/label/" + labelId);
   }
 }
