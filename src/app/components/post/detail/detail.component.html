@@ -251,17 +251,18 @@
                       <p>{{cmt.content}}</p>
                     </div>
                   </div>
-                  <app-rating></app-rating>
+<!--                  <app-rating></app-rating>-->
                   <!--                    </div>-->
+                  <hr style="margin: 16px 0 30px 0">
                   <div class="single-post__leave__comment">
-                    <!--                    <div class="widget__title">-->
-                    <!--                      <h4>Bình luận bài viết</h4>-->
-                    <!--                    </div>-->
                     <form #comment [formGroup]="commentForm" (ngSubmit)="createComment()">
-                      <textarea formControlName="content" placeholder="Viết bình luận..."
-                                style="height: 80px"></textarea>
-                      <button  style="width: 100px" type="submit" class="site-btn" *ngIf="!isLogin">Đăng</button>
-                      <button  style="width: 100px" class="site-btn" *ngIf="isLogin" (click)="requestLogin()">Đăng
+                      <img src="{{avatar}}" style="width: 50px; height: 50px; border-radius: 50%; margin: 0 30px 3px 25px">
+<!--                      <textarea formControlName="content" placeholder="Viết bình luận..."-->
+<!--                                style="height: 80px; width: 80%"></textarea>-->
+                      <input type="text" formControlName="content"style="height: 48px;width: 444px;" placeholder="Viết bình luận...">
+
+                      <button  style="width: 100px; margin-left: 30px" type="submit" class="site-btn" *ngIf="!isLogin">Đăng</button>
+                      <button  style="width: 100px; margin-left: 30px" class="site-btn" *ngIf="isLogin" (click)="requestLogin()">Đăng
                       </button>
                     </form>
                   </div>

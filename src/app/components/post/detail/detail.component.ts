@@ -20,6 +20,7 @@ export class DetailComponent implements OnInit {
   id: any;
   comments: Comment[] = []
   userId = localStorage.getItem('ID');
+  avatar = localStorage.getItem('AVATAR')
   postId: any;
   likedCheck = false;
   toDay: any;
