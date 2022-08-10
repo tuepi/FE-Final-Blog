@@ -124,23 +124,17 @@ export class DetailComponent implements OnInit {
     this.postService.likePost(this.postId, this.userId).subscribe((countLike) => {
       this.likedChecker()
       this.getBlog();
-      console.log(this.postId, this.userId)
-
-      // window.location.reload();
-      // this.totalLike = countLike;
     })
   }
 
   likedChecker() {
     this.userId = localStorage.getItem('ID')
     this.postService.likedCheck(this.obj.id, this.userId).subscribe((liked) => {
-      console.log("data: " , liked)
       if (liked == null) {
        return  this.likedCheck = false
       } else {
         return this.likedCheck = true
       }
-      console.log("liked ", this.likedCheck)
     })
   }
 
@@ -154,7 +148,6 @@ export class DetailComponent implements OnInit {
 
   //tự động lăn cmt
   scrollToElement( $element: any ): void {
-    console.log($element);
     $element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
   }
 }

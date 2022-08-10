@@ -10,19 +10,18 @@ export class GetByLabelComponent implements OnInit {
   listPostByLabel : any = []
 
   constructor(private postLabelService: PostLabelService) {
+    this.getPostByLabel()
   }
 
   ngOnInit(): void {
+    localStorage.removeItem('labelId')
     this.getPostByLabel()
   }
 
   getPostByLabel() {
     let labelId = localStorage.getItem('labelId')
-    this.listPostByLabel = []
     this.postLabelService.getAllPostLabel(labelId).subscribe((data) => {
       this.scanData(data)
-      console.log(this.listPostByLabel)
-      localStorage.removeItem('labelId')
     } )
   }
 

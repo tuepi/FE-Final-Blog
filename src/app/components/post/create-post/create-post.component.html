@@ -18,7 +18,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br /> White Peach Mug
+                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br/> White Peach Mug
                     Cobbler With Cardamom</h4>
                   <ul class="widget">
                     <li>by <span>Admin</span></li>
@@ -42,7 +42,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>How to Make a Milkshake With Any <br />Ice Cream, Any Toppings...</h5>
+                  <h5>How to Make a Milkshake With Any <br/>Ice Cream, Any Toppings...</h5>
                 </div>
               </div>
             </div>
@@ -58,7 +58,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>Vintage Copper Preserve Pan with <br />Brass Handles, Mid 19th Century</h5>
+                  <h5>Vintage Copper Preserve Pan with <br/>Brass Handles, Mid 19th Century</h5>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>Marinated Lentil Salad with Zucch <br />ini and Tomatoes</h5>
+                  <h5>Marinated Lentil Salad with Zucch <br/>ini and Tomatoes</h5>
                 </div>
               </div>
             </div>
@@ -99,7 +99,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br /> White Peach Mug
+                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br/> White Peach Mug
                     Cobbler With Cardamom</h4>
                   <ul class="widget">
                     <li>by <span>Admin</span></li>
@@ -123,7 +123,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>How to Make a Milkshake With Any <br />Ice Cream, Any Toppings...</h5>
+                  <h5>How to Make a Milkshake With Any <br/>Ice Cream, Any Toppings...</h5>
                 </div>
               </div>
             </div>
@@ -139,7 +139,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>Vintage Copper Preserve Pan with <br />Brass Handles, Mid 19th Century</h5>
+                  <h5>Vintage Copper Preserve Pan with <br/>Brass Handles, Mid 19th Century</h5>
                 </div>
               </div>
             </div>
@@ -156,7 +156,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>Marinated Lentil Salad with Zucch <br />ini and Tomatoes</h5>
+                  <h5>Marinated Lentil Salad with Zucch <br/>ini and Tomatoes</h5>
                 </div>
               </div>
             </div>
@@ -179,14 +179,16 @@
         <div class="col-lg-8 col-md-8 custom-box-shadow">
           <div class="contact__form">
             <div class="contact__form__title">
-              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)"><span>ĐĂNG BÀI VIẾT MỚI</span></h2>
+              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)"><span>ĐĂNG BÀI VIẾT MỚI</span>
+              </h2>
               <p>Hãy tạo bài viết và chia sẻ cho mọi người {{fullName}} nhé!!!</p>
             </div>
             <form [formGroup]="createForm" (ngSubmit)="savePost()">
               <div class="sidebar__item__title" style="margin: 0 0">
                 <h6>TIÊU ĐỀ:</h6>
               </div>
-              < type="text" style="width: 80%; margin: 0 0" formControlName="title" [(ngModel)]="titleValue" placeholder="Tiêu đề">
+              <input type="text" style="width: 80%; margin: 0 0" formControlName="title" [(ngModel)]="titleValue"
+                     placeholder="Tiêu đề">
               <select formControlName="status" style="margin: 20px; border: none" value="1">
                 <option selected="selected" value="1">Công khai</option>
                 <option value="0">Chỉ mình tôi</option>
@@ -199,22 +201,39 @@
               <div class="sidebar__item__title" style="margin: 0 0">
                 <h6>MÔ TẢ:</h6>
               </div>
-              <input type="text"  formControlName="description" placeholder="Mô tả ngắn" style="margin: 0 0" [(ngModel)]="descriptionValue">
+              <input type="text" formControlName="description" placeholder="Mô tả ngắn" style="margin: 0 0"
+                     [(ngModel)]="descriptionValue">
               <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
                 <div style="color: red; margin-left: 10px" *ngIf="description?.errors?.['required']">
                   <small>*Mô tả không được bỏ trống</small>
                 </div>
               </div>
-              <div style="margin: 10px 30px; text-align: center">
-                <div class="form-check-inline" *ngFor="let label of labels; index as i">
-                  <input #check type="checkbox"
-                         style="width: 16px; height: 16px;margin-bottom: 0px"
-                         id="{{i + 1}}" [value]="label[0]"
-                         (change)="changeLabel($event, label[0])"
-                         (click)="checkBox(check)">
-                  <label class="label" style="margin: 0 20px 0 3px" for="{{i + 1}}">{{label[1]}}</label>
-                  <label class = "label" for="{{label.id}}">{{label.name}}</label>
-                </div>
+              <div style=" text-align: center">
+
+                <!--                CHECKBOX-->
+                                <div class="form-check-inline" *ngFor="let label of labels; index as i">
+                                  <input #check type="checkbox"
+                                         style="width: 16px; height: 16px;margin-bottom: 0px"
+                                         id="{{i + 1}}" [value]="label[0]"
+                                         (change)="changeLabel($event, label[0])"
+                                         (click)="checkBox(check)">
+                                  <label class="label" style="margin: 0 20px 0 3px" for="{{i + 1}}">{{label[1]}}</label>
+                                  <label class = "label" for="{{label.id}}">{{label.name}}</label>
+                                </div>
+
+
+<!--                <ng-multiselect-dropdown-->
+<!--                  [placeholder]="'Thể loại'"-->
+<!--                  [settings]="dropdownSettings"-->
+<!--                  [data]="dropdownList"-->
+<!--                  [(ngModel)]="selectedItems"-->
+<!--                  (onSelect)="changeLabel($event)"-->
+<!--                  (onSelectAll)="onSelectAll($event)"-->
+<!--                >-->
+<!--                </ng-multiselect-dropdown>-->
+
+
+
               </div>
               <div>
 
@@ -231,7 +250,7 @@
               </div>
               <hr style="border-color: #ffffff">
               <div class="sidebar__item__title" style="margin: 0 0">
-                      <h6>NỘI DUNG BÀI VIẾT:</h6>
+                <h6>NỘI DUNG BÀI VIẾT:</h6>
               </div>
               <editor formControlName="content" [init]="{plugins :  'link'}" [(ngModel)]="contentValue"></editor>
               <div *ngIf="content?.invalid && (content?.dirty || content?.touched)">
@@ -240,7 +259,9 @@
                 </div>
               </div>
               <br>
-              <button [disabled]="checkForm() ? 'disabled' : null" type="submit" class="site-btn" style="width: 150px; margin: 30px 0px 50px 300px">Đăng bài</button>
+              <button [disabled]="checkForm() ? 'disabled' : null" type="submit" class="site-btn"
+                      style="width: 150px; margin: 30px 0px 50px 300px">Đăng bài
+              </button>
             </form>
           </div>
 
@@ -254,7 +275,6 @@
 <!-- Categories Section End -->
 
 <app-footer></app-footer>
-
 
 
 <!-- Search Begin -->
