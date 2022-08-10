@@ -19,12 +19,12 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-6">
-      <div class="categories__post__item__text">
+      <div class="categories__post__item__text" style="text-align: justify">
         <!--          <span class="post__label">Nhãn</span>-->
         <h3><strong><a class="title-small" [routerLink]="['/detail', post.id]">{{post.title}}</a></strong></h3>
         <ul class="post__widget">
-          <li>từ <span [routerLink]="['/profile/',post.user.id]">{{post.user.fullName}}</span></li>
-          <li>   {{post.numberOfLike}} Lượt thích</li>
+          <li>từ <span>{{post.user.fullName}}</span></li>
+          <li style="width: 40px">   {{post.numberOfLike}} <i class="fa fa-heart"></i></li>
           <!--                      <li>20 Bình luận</li>-->
           <li>Ngày đăng: {{post.createAt.toString().split('T')[0]}} {{post.createAt.toString().split('T')[1]}} </li>
         </ul>
