@@ -210,30 +210,16 @@
                   <hr #cmt>
 
                   <div class="post__social" style="margin-left: 450px; padding: 0 0 40px 0">
-<!--                    <span (click)="likePost()">-->
-<!--                      <a>-->
-<!--                        <i *ngIf="likedCheck" class="fa fa-heart" style="color: #f4952f" title="Bỏ thích"></i>-->
-<!--                        <i *ngIf="!likedCheck" class="fa fa-heart-o" style="color: #f4952f" title="Thích"></i>-->
-<!--                      </a>-->
-<!--                      {{obj.numberOfLike}}-->
-<!--                    </span>-->
-<!--                    <span>-->
-<!--                      <a href="#"><i class="fa fa-comment-o" style="color: #f4952f"></i>-->
-<!--                      </a>{{comments.length}}-->
-<!--                    </span>-->
-                    <!--                    <button (click)="likedChecker()">check</button>-->
-                    <!--                    <a href="#"><i class="fa fa-share-square-o"></i></a><span></span>-->
 
-                    <span (click)="likePost()" *ngIf="likedCheck" title="Bỏ thích" >
+                    <span (click)="likePost()" *ngIf="likedCheck" title="Bỏ thích" id="like" >
                       <a><i class="fa fa-heart"></i></a>{{obj.numberOfLike}}
                     </span>
-                    <span (click)="likePost()" *ngIf="!likedCheck" title="Thích" >
+                    <span (click)="likePost()" *ngIf="!likedCheck" title="Thích" id="unlike"  >
                       <a><i class="fa fa-heart-o"></i></a>{{obj.numberOfLike}}
                     </span>
 
-                    <span (click)="scrollToElement(comment)" title="Bình luận"><a><i class="fa fa-comment-o"></i></a>{{comments.length}} </span>
-<!--                    <button (click)="likedChecker()">check</button>-->
-<!--                    <a href="#"><i class="fa fa-share-square-o"></i></a><span></span>-->
+                    <span id="comment" (click)="scrollToElement(comment)" title="Bình luận"><a><i class="fa fa-comment-o"></i></a>{{comments.length}} </span>
+
                     <span title="Chỉnh sửa"><a *ngIf="postOwner" [routerLink]="['/edit/',obj.id]"><i class="fa fa-pencil-square-o"></i></a></span>
                     <span title="Xóa"><a *ngIf="postOwner" data-toggle="modal" data-target="#staticBackdrop"><i class="fa fa-trash"></i></a></span>
 

@@ -69,7 +69,14 @@ export class DetailComponent implements OnInit {
   getBlog() {
     this.acctiveRouter.paramMap.subscribe((param) => {
       this.id = param.get('id');
-      this.getAllPostIdLabelBy(this.id)
+      this.postService.allLabelsByPostId(this.id).subscribe((result) => {
+        this.labelsList = result;
+        this.labelId= result[0].label.id;
+        this.postService.relativePost(this.labelId).subscribe((result) => {
+          console.log("aa :", result[0].post.title)
+          this.postList = result;
+        });
+      })
       this.postService.likedCheck(this.id, this.userId).subscribe((liked) => {
         console.log("data like: " , liked)
         if (liked == null) {
@@ -90,20 +97,18 @@ export class DetailComponent implements OnInit {
   }
 
 
-  getAllPostIdLabelBy(id : any) {
-    this.postService.allLabelsByPostId(id).subscribe((result) => {
-      this.labelsList = result;
-      console.log("so 1 : ",result[0].label.id)
-      this.labelId= result[0].label.id;
-      this.postService.relativePost(this.labelId).subscribe((result) => {
-        this.postList = result;
-        console.log("aaa",result[0].post.title)
-      });
-    }, error => {
-      console.log("Lỗi");
-    });
-
-  }
+  // getAllPostIdLabelBy(id : any) {
+  //   this.postService.allLabelsByPostId(id).subscribe((result) => {
+  //     this.labelsList = result;
+  //     this.labelId= result[0].label.id;
+  //     this.postService.relativePost(this.labelId).subscribe((result) => {
+  //       this.postList = result;
+  //     });
+  //   }, error => {
+  //     console.log("Lỗi");
+  //   });
+  //
+  // }
 
   displayContent(content: any) {
     // @ts-ignore

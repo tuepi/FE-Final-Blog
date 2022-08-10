@@ -1,3 +1,6 @@
 a::after {
   content: "" !important;
 }
+#like:hover, #unlike:hover, #comment:hover {
+  cursor: pointer !important;
+}
