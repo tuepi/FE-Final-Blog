@@ -33,7 +33,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
 import { Top5ByLikesComponent } from './components/post/top5-by-likes/top5-by-likes.component';
-import { ListLabelComponent } from './components/post/list-label/list-label.component';
+
 import { GetAllComponent } from './components/admin/get-all/get-all.component';
 import { GetPublicAndMyPrivateComponent } from './components/user/get-public-and-my-private/get-public-and-my-private.component';
 import {UpdateUserComponent} from "./components/user/update-user/update-user.component";
@@ -46,6 +46,8 @@ import { ChangePasswordComponent } from './components/user/change-password/chang
 import { CommentComponent } from './components/post/comment/comment.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RatingComponent } from './components/post/rating/rating.component';
+import { GetByLabelComponent } from './components/post/get-by-label/get-by-label.component';
+import { SearchComponent } from './components/post/search/search.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,7 @@ import { RatingComponent } from './components/post/rating/rating.component';
     GetMyPostsComponent,
     CreatePostComponent,
     Top5ByLikesComponent,
-    ListLabelComponent,
+    // ListLabelComponent,
     GetAllComponent,
     GetPublicAndMyPrivateComponent,
     UpdateUserComponent,
@@ -74,6 +76,8 @@ import { RatingComponent } from './components/post/rating/rating.component';
     CommentComponent,
     ProfileComponent,
     RatingComponent,
+    GetByLabelComponent,
+    SearchComponent,
   ],
     imports: [
         BrowserModule,
@@ -98,6 +102,7 @@ import { RatingComponent } from './components/post/rating/rating.component';
         AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
         FormsModule
     ],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

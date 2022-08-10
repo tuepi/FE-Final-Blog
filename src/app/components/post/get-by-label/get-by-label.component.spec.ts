@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListLabelComponent } from './list-label.component';
+import { GetByLabelComponent } from './get-by-label.component';
 
-describe('ListLabelComponent', () => {
-  let component: ListLabelComponent;
-  let fixture: ComponentFixture<ListLabelComponent>;
+describe('GetByLabelComponent', () => {
+  let component: GetByLabelComponent;
+  let fixture: ComponentFixture<GetByLabelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListLabelComponent ]
+      declarations: [ GetByLabelComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ListLabelComponent);
+    fixture = TestBed.createComponent(GetByLabelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

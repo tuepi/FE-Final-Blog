@@ -21,7 +21,6 @@ export class GetPublicAndMyPrivateComponent implements OnInit {
 
   getPublicAndMyPrivate() {
     this.postService.getPublicAndMyPrivate().subscribe(data => {
-        console.log(data)
         this.posts = data;
       },
       error => {

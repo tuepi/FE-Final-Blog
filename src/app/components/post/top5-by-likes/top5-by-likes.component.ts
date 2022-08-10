@@ -4,6 +4,7 @@ import {Post} from "../../../models/post";
 import {Label} from "../../../models/label";
 import {LabelService} from "../../../services/label.service";
 import {PostLabelService} from "../../../services/post-label.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-top5-by-likes',
@@ -14,7 +15,6 @@ export class Top5ByLikesComponent implements OnInit {
 
   top5Posts : Post[] | any
   listLabel: any = []
-  listPostByLabel : any = []
 
   constructor(private postService : PostService,
               private labelService: LabelService,
@@ -27,7 +27,6 @@ export class Top5ByLikesComponent implements OnInit {
 
   top5ByLikes() {
     this.postService.top5ByLikes().subscribe(data => {
-        console.log(data)
         this.top5Posts = data;
       },
       error => {
@@ -41,11 +40,9 @@ export class Top5ByLikesComponent implements OnInit {
     })
   }
 
-  getPostByLabel(labelId: any) {
-    this.postLabelService.getAllPostLabel(labelId).subscribe((data) => {
-      this.listPostByLabel = data;
-    } )
-  }
+setLabel(labelId: any) {
+    localStorage.setItem('labelId', labelId)
+}
 
 
 

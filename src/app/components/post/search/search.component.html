@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+
 <!-- Hero Section Begin -->
 <section class="hero">
   <div class="hero__slider owl-carousel">
@@ -18,7 +19,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br /> White Peach Mug
+                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br/> White Peach Mug
                     Cobbler With Cardamom</h4>
                   <ul class="widget">
                     <li>by <span>Admin</span></li>
@@ -42,7 +43,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>How to Make a Milkshake With Any <br />Ice Cream, Any Toppings...</h5>
+                  <h5>How to Make a Milkshake With Any <br/>Ice Cream, Any Toppings...</h5>
                 </div>
               </div>
             </div>
@@ -58,7 +59,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>Vintage Copper Preserve Pan with <br />Brass Handles, Mid 19th Century</h5>
+                  <h5>Vintage Copper Preserve Pan with <br/>Brass Handles, Mid 19th Century</h5>
                 </div>
               </div>
             </div>
@@ -75,7 +76,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>Marinated Lentil Salad with Zucch <br />ini and Tomatoes</h5>
+                  <h5>Marinated Lentil Salad with Zucch <br/>ini and Tomatoes</h5>
                 </div>
               </div>
             </div>
@@ -99,7 +100,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br /> White Peach Mug
+                  <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br/> White Peach Mug
                     Cobbler With Cardamom</h4>
                   <ul class="widget">
                     <li>by <span>Admin</span></li>
@@ -123,7 +124,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>How to Make a Milkshake With Any <br />Ice Cream, Any Toppings...</h5>
+                  <h5>How to Make a Milkshake With Any <br/>Ice Cream, Any Toppings...</h5>
                 </div>
               </div>
             </div>
@@ -139,7 +140,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>Vintage Copper Preserve Pan with <br />Brass Handles, Mid 19th Century</h5>
+                  <h5>Vintage Copper Preserve Pan with <br/>Brass Handles, Mid 19th Century</h5>
                 </div>
               </div>
             </div>
@@ -156,7 +157,7 @@
                     <li>Vegan</li>
                     <li>Desserts</li>
                   </ul>
-                  <h5>Marinated Lentil Salad with Zucch <br />ini and Tomatoes</h5>
+                  <h5>Marinated Lentil Salad with Zucch <br/>ini and Tomatoes</h5>
                 </div>
               </div>
             </div>
@@ -169,92 +170,34 @@
 <!-- Hero Section End -->
 
 <!-- Categories Section Begin -->
-<section class="categories spad" style="background-color: rgba(255,253,253,0.87); padding: 60px">
+<section class="categories spad" style="background-color: #fffbf569; padding: 60px">
   <div class="container">
   </div>
   <div class="categories__post">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-2 col-md-2"></div>
-        <div class="col-lg-8 col-md-8 custom-box-shadow">
-          <div class="contact__form">
-            <div class="contact__form__title">
-              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)"><span>ĐĂNG BÀI VIẾT MỚI</span></h2>
-              <p>Hãy tạo bài viết và chia sẻ cho mọi người {{fullName}} nhé!!!</p>
-            </div>
-            <form [formGroup]="createForm" (ngSubmit)="savePost()">
-              <div class="sidebar__item__title" style="margin: 0 0">
-                <h6>TIÊU ĐỀ:</h6>
-              </div>
-              <input type="text" style="width: 80%; margin: 0 0" formControlName="title" [(ngModel)]="titleValue" placeholder="Tiêu đề">
-              <select formControlName="status" style="margin: 20px; border: none" value="1">
-                <option selected="selected" value="1">Công khai</option>
-                <option value="0">Chỉ mình tôi</option>
-              </select>
-              <div *ngIf="title?.invalid && (title?.dirty || title?.touched)">
-                <div style="color: red; margin-left: 10px" *ngIf="title?.errors?.['required']">
-                  <small>*Tiêu đề không được bỏ trống</small>
-                </div>
-              </div>
-              <div class="sidebar__item__title" style="margin: 0 0">
-                <h6>MÔ TẢ:</h6>
-              </div>
-              <input type="text"  formControlName="description" placeholder="Mô tả ngắn" style="margin: 0 0" [(ngModel)]="descriptionValue">
-              <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
-                <div style="color: red; margin-left: 10px" *ngIf="description?.errors?.['required']">
-                  <small>*Mô tả không được bỏ trống</small>
-                </div>
-              </div>
-              <div style="margin: 10px 30px; text-align: center">
-                <div class="form-check-inline" *ngFor="let label of labels; index as i">
-                  <input #check type="checkbox"
-                         style="width: 16px; height: 16px;margin-bottom: 0px"
-                         id="{{i + 1}}" [value]="label[0]"
-                         (change)="changeLabel($event, label[0])"
-                         (click)="checkBox(check)">
-                  <label class="label" style="margin: 0 20px 0 3px" for="{{i + 1}}">{{label[1]}}</label>
-                  <label class = "label" for="{{label.id}}">{{label.name}}</label>
-                </div>
-              </div>
-              <div>
-
-                <input type="file"
-                       id="file"
-                       #userPhoto
-                       (change)="onFileSelected($event)"
-                       name="image"
-                       autocomplete="off"
-                       formControlName="image"
-                       style="padding: 10px 3px 3px 0; width: 80%"
-                />
-                <span *ngIf="checkImage"><img src="{{fb}}" style="height: 80px; width: 80px; margin-left: 30px"></span>
-              </div>
-              <hr style="border-color: #ffffff">
-              <div class="sidebar__item__title" style="margin: 0 0">
-                      <h6>NỘI DUNG BÀI VIẾT:</h6>
-              </div>
-              <editor formControlName="content" [init]="{plugins :  'link'}" [(ngModel)]="contentValue"></editor>
-              <div *ngIf="content?.invalid && (content?.dirty || content?.touched)">
-                <div style="color: red; margin-left: 10px" *ngIf="content?.errors?.['required']">
-                  <small>*Nội dung không được bỏ trống</small>
-                </div>
-              </div>
-              <br>
-              <button [disabled]="checkForm() ? 'disabled' : null" type="submit" class="site-btn" style="width: 150px; margin: 30px 0px 50px 300px">Đăng bài</button>
-            </form>
-          </div>
-
-        </div>
-        <div class="col-lg-2 col-md-2">
+    <!--    <div class="container-fluid">-->
+    <div class="row">
+      <div class="col-lg-1 col-md-1"></div>
+      <div class="col-lg-7 col-md-7 custom-box-shadow">
+        <div>
+          <app-display-posts></app-display-posts>
+          Sử dụng dòng 184 truyền danh dánh (posts) tìm được để hiển thị ra
+          <!--          <app-display-posts [posts]="posts"></app-display-posts>-->
         </div>
       </div>
+
+      <div class="col-lg-3 col-md-3 custom-box-shadow">
+        <div>
+          <app-top5-by-likes></app-top5-by-likes>
+        </div>
+      </div>
+      <div class="col-lg-1 col-md-1"></div>
     </div>
+    <!--    </div>-->
   </div>
 </section>
 <!-- Categories Section End -->
 
 <app-footer></app-footer>
-
 
 
 <!-- Search Begin -->
@@ -267,8 +210,3 @@
   </div>
 </div>
 <!-- Search End -->
-
-
-
-
-
