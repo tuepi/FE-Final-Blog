@@ -29,7 +29,7 @@
             </li>
             <li><a href="./about.html">About</a></li>
             <li><a href="./contact.html">Contact</a></li>
-            <li class="dropdown"><a href="#"><i class="fa fa-user"></i></a>
+            <li class="dropdown"><a href="#">Tài khoản</a>
               <ul class="dropdown__menu" *ngIf="!isLogin">
                 <li><a routerLink="/login">Đăng nhập</a></li>
                 <li><a routerLink="/register">Đăng ký</a></li>
@@ -46,12 +46,18 @@
       <div class=" col-lg-3 col-md-1 col-6 order-md-3 order-2">
         <!--            <input type="text" [(ngModel)]="title" >-->
         <!--            <i class="fa fa-search search-switch" (click)="findPostByTitle()"></i>-->
-        <div class="footer__instagram__avatar" style="" *ngIf="isLogin">
+        <div class="footer__instagram__avatar" style="
+    left: 120px;
+    top: 45px;
+    padding-bottom: 0px;
+    height: 80px;
+    width: 310px;
+" *ngIf="isLogin">
           <div class="footer__instagram__avatar--pic">
             <img src="{{avatar}}" alt="">
           </div>
-          <div class="footer__instagram__avatar--text" style="padding: 10px">
-            <h5 [routerLink]="['/profile', currentUserId]">{{fullName}}</h5>
+          <div class="footer__instagram__avatar--text control-pointer" style="padding: 10px">
+            <h5 [routerLink]="['/profile', currentUserId]" >{{fullName}}</h5>
 <!--            <span>23 bài viết</span>-->
           </div>
         </div>

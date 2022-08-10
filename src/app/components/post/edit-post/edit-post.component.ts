@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {NgToastService} from "ng-angular-popup";
 import {PostService} from "../../../services/post.service";
+import {LabelService} from "../../../services/label.service";
 
 @Component({
   selector: 'app-edit-post',
@@ -26,6 +27,7 @@ export class EditPostComponent implements OnInit {
     numberOfLike: new FormControl(''),
     user: new FormControl('')
   })
+
   postId: any;
   post: Post | any;
   jsToday: any = '';
@@ -34,16 +36,23 @@ export class EditPostComponent implements OnInit {
   labels: Label[] = []
   fb : any
   content : any;
+  labelSelected: number[] = [];
+  titleValue: any;
+  descriptionValue: any;
+  contentValue: any;
+  listLabelValue: any = [];
 
   constructor(private postService: PostService,
               private router: Router,
               private storage: AngularFireStorage,
               private toast: NgToastService,
+              private labelService: LabelService,
               private activatedRoute: ActivatedRoute) {
   }
 
 
   ngOnInit(): void {
+    this.getAllLabels()
     this.activatedRoute.paramMap.subscribe(parammap => {
       this.postId = parammap.get('id');
       console.log("post: ", this.postId)
@@ -65,6 +74,33 @@ export class EditPostComponent implements OnInit {
         console.log(error);
       });
     });
+  }
+
+  getAllLabels() {
+    this.labelService.getAllLabels().subscribe((data) => {
+      console.log("data: ", data)
+      this.labels = data
+    })
+  }
+
+  changeLabel(event: any, label: number) {
+    if (event.target.checked) {
+      this.labelSelected = [...this.labelSelected, label];
+    } else {
+      this.labelSelected = this.labelSelected.filter(el => el != label);
+    }
+    return this.labelSelected;
+  }
+
+  checkForm() {
+    if (this.titleValue != null && this.descriptionValue != null && this.contentValue != null) {
+      return false
+    }
+    return true
+  }
+
+  checkBox(event: any) {
+    this.listLabelValue.push(event.value)
   }
 
   onFileSelected(event: any) {

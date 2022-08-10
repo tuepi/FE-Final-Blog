@@ -231,7 +231,7 @@
                       <img src="{{cmt.user.avatar}}" alt="">
                     </div>
                     <div class="single-post__comment__item__text">
-                      <a style="margin-left: 0" [routerLink]="['/profile/',cmt.user.id]"><h6>{{cmt.user.fullName}}</h6>
+                      <a style="margin-left: 0"><h6>{{cmt.user.fullName}}</h6>
                       </a>
                       <span>{{cmt.createAt.toString().split('T')[0]}} {{cmt.createAt.toString().split('T')[1]}}</span>
                       <p>{{cmt.content}}</p>

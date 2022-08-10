@@ -133,7 +133,6 @@ export class CreatePostComponent implements OnInit {
 
   savePost() {
     const post = this.setNewPost()
-
     this.postService.save(post).subscribe((data) => {
       this.sendLabel(data.id)
       this.toast.success({detail: "THÔNG BÁO", summary: "Đăng bài thành công!!!", duration: 2000})
@@ -142,7 +141,6 @@ export class CreatePostComponent implements OnInit {
       this.toast.error({detail: "THÔNG BÁO", summary: "Lỗi khi đăng bài!!!", duration: 2000})
       console.log(error)
     })
-
   }
 
   checkForm() {
