@@ -6,6 +6,7 @@ import {NgToastModule, NgToastService} from "ng-angular-popup";
 import {CommentsService} from "../../../services/comments.service";
 import {Comment} from "../../../models/comment";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {PostLabel} from "../../../models/post-label";
 
 @Component({
   selector: 'app-detail',
@@ -13,7 +14,10 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  adminCheck=false;
+  postList:any;
+  labelId:any;
+  labelsList: PostLabel[]=[];
+  adminCheck = false;
   isLogin = false;
   postOwner = false;
   obj: Post | any;
@@ -35,11 +39,12 @@ export class DetailComponent implements OnInit {
               private commentsService: CommentsService,
               private router: Router,
               private toast : NgToastService) {
+
+
   }
 
   ngOnInit(): void {
     this.getBlog()
-    // this.likedChecker()
     this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
     this.likePost()
@@ -64,6 +69,7 @@ export class DetailComponent implements OnInit {
   getBlog() {
     this.acctiveRouter.paramMap.subscribe((param) => {
       this.id = param.get('id');
+      this.getAllPostIdLabelBy(this.id)
       this.postService.likedCheck(this.id, this.userId).subscribe((liked) => {
         console.log("data like: " , liked)
         if (liked == null) {
@@ -81,6 +87,22 @@ export class DetailComponent implements OnInit {
         this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
       });
     });
+  }
+
+
+  getAllPostIdLabelBy(id : any) {
+    this.postService.allLabelsByPostId(id).subscribe((result) => {
+      this.labelsList = result;
+      console.log("so 1 : ",result[0].label.id)
+      this.labelId= result[0].label.id;
+      this.postService.relativePost(this.labelId).subscribe((result) => {
+        this.postList = result;
+        console.log("aaa",result[0].post.title)
+      });
+    }, error => {
+      console.log("Lỗi");
+    });
+
   }
 
   displayContent(content: any) {
@@ -108,7 +130,6 @@ export class DetailComponent implements OnInit {
       this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã bình luận!!!", duration: 2000})
       // this.router.navigate(['/detail', this.id]);
       window.location.reload()
-
       this.commentForm.reset()
     }, error => {
       console.log(error)
@@ -135,21 +156,21 @@ export class DetailComponent implements OnInit {
       this.likedChecker()
       this.getBlog();
       console.log(this.postId, this.userId)
-
+      console.log("like",this.likedCheck)
       // window.location.reload();
       // this.totalLike = countLike;
     })
   }
 
   likedChecker() {
+    this.userId = localStorage.getItem('ID')
     this.postService.likedCheck(this.obj.id, this.userId).subscribe((liked) => {
-      console.log("data like: " , liked)
+      console.log("data: " , liked)
       if (liked == null) {
         this.likedCheck = false
       } else {
         this.likedCheck = true
       }
-
     })
   }
 

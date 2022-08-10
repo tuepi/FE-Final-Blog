@@ -12,7 +12,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./top5-by-likes.component.css']
 })
 export class Top5ByLikesComponent implements OnInit {
-
+  labelsList:any;
+  posts: Post | any;
+  relativeList: any
   top5Posts : Post[] | any
   listLabel: any = []
 
@@ -39,6 +41,24 @@ export class Top5ByLikesComponent implements OnInit {
       this.listLabel = data;
     })
   }
+  // getAllPostRelative() {
+  //   this.postService.relativePost(this.posts.post).subscribe((result) => {
+  //     console.log(result)
+  //     this.relativeList = result;
+  //   }, error => {
+  //     console.log("Lỗi");
+  //   });
+  // }
+  // getAllLabelByPostId() {
+  //   this.postService.allLabelsByPostId(this.posts.post).subscribe((result) => {
+  //     console.log(result)
+  //     this.labelsList = result;
+  //   }, error => {
+  //     console.log("Lỗi");
+  //   });
+  // }
+
+
 
 setLabel(labelId: any) {
     localStorage.setItem('labelId', labelId)
