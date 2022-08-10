@@ -9,6 +9,7 @@ import {PostService} from "../../../services/post.service";
 import {Router} from "@angular/router";
 import {NgToastService} from "ng-angular-popup";
 import {formatDate} from "@angular/common";
+import {IDropdownSettings} from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-create-post',
@@ -16,9 +17,9 @@ import {formatDate} from "@angular/common";
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
-  listLabelValue : any = [];
+  listLabelValue: any = [];
 
-  jsToday : any = '';
+  jsToday: any = '';
   // title = "cloudsSorage";
   selectedFile: File | any;
   fb: any;
@@ -28,14 +29,15 @@ export class CreatePostComponent implements OnInit {
   titleValue: any;
   descriptionValue: any;
   contentValue: any;
-
-
-  today : number = Date.now();
-
+  today: number = Date.now();
   fullName = localStorage.getItem('FULLNAME');
-  labels: any[] = [];
-  labelSelected: number[] = [];
 
+  labelSelected: number[] = [];
+  labels: any = [];
+  dropdownList: any = [] ;
+  selectedItems: any = [];
+  dropdownSettings: IDropdownSettings = {};
+  item: any = {}
   createForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
     description: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
@@ -48,22 +50,21 @@ export class CreatePostComponent implements OnInit {
   })
 
   constructor(private storage: AngularFireStorage,
-              private postService : PostService,
-              private router : Router,
+              private postService: PostService,
+              private router: Router,
               private labelService: LabelService,
               private toast: NgToastService) {
     this.checkForm()
   }
 
   ngOnInit(): void {
-    this.getAllLabels()
     if (this.title != null) {
       this.isNull = true
     }
+    this.getAllLabels()
   }
 
   changeLabel(event: any, label: number) {
-    console.log(event.target.checked);
     if (event.target.checked) {
       this.labelSelected = [...this.labelSelected, label];
     } else {
@@ -73,27 +74,22 @@ export class CreatePostComponent implements OnInit {
   }
 
 
-  get title(){
+  get title() {
     return this.createForm.get('title')
   }
 
-  get status(){
+  get status() {
     return this.createForm.get('status')
   }
 
-  get description(){
+  get description() {
     return this.createForm.get('description')
   }
 
-  get content(){
+  get content() {
     return this.createForm.get('content')
   }
 
-  getAllLabels() {
-    this.labelService.getAllLabels().subscribe((data) => {
-      this.labels = data;
-    })
-  }
 
   onFileSelected(event: any) {
     var n = Date.now();
@@ -126,15 +122,15 @@ export class CreatePostComponent implements OnInit {
 
   private setNewPost() {
     const post: Post = {
-      title : this.createForm.value.title,
-      description : this.createForm.value.description,
+      title: this.createForm.value.title,
+      description: this.createForm.value.description,
       image: this.fb,
       content: this.createForm.value.content,
-      status : this.createForm.value.status,
-      user : {
-        id : localStorage.getItem('ID')
+      status: this.createForm.value.status,
+      user: {
+        id: localStorage.getItem('ID')
       },
-      numberOfLike : 0,
+      numberOfLike: 0,
       // createAt : this.today
     };
     return post;
@@ -155,22 +151,29 @@ export class CreatePostComponent implements OnInit {
   }
 
   checkForm() {
-    if(this.titleValue != null && this.descriptionValue != null && this.contentValue != null) {
+    if (this.titleValue != null && this.descriptionValue != null && this.contentValue != null) {
       return false
     }
     return true
   }
 
-  checkBox( event: any) {
+  checkBox(event: any) {
     this.listLabelValue.push(event.value)
   }
 
   sendLabel(id: any) {
-   this.postService.getAllLabels(id, this.listLabelValue).subscribe((data) => {
-   },error => {
+    this.postService.getAllLabels(id, this.listLabelValue).subscribe((data) => {
+    }, error => {
       console.log(error)
 
-   })
+    })
   }
+
+  getAllLabels() {
+    this.labelService.getAllLabels().subscribe((data) => {
+      this.labels = data
+    })
+  }
+
 
 }

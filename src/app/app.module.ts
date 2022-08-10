@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
@@ -11,11 +10,11 @@ import {JwtInterceptor} from "./helper/jwt-interceptor";
 import {ErrorInterceptor} from "./helper/error-interceptor";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgToastModule} from "ng-angular-popup";
-import { DisplayPostsComponent } from './components/post/display-posts/display-posts.component';
-import { GetAllPublicStatusComponent } from './components/post/get-all-public-status/get-all-public-status.component';
-import { GetMyPostsComponent } from './components/user/get-my-posts/get-my-posts.component';
+import {DisplayPostsComponent} from './components/post/display-posts/display-posts.component';
+import {GetAllPublicStatusComponent} from './components/post/get-all-public-status/get-all-public-status.component';
+import {GetMyPostsComponent} from './components/user/get-my-posts/get-my-posts.component';
 import {DetailComponent} from "./components/post/detail/detail.component";
-import { CreatePostComponent } from './components/post/create-post/create-post.component';
+import {CreatePostComponent} from './components/post/create-post/create-post.component';
 import {EditorModule} from "@tinymce/tinymce-angular";
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
@@ -32,10 +31,11 @@ import {MatIconModule} from "@angular/material/icon";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
-import { Top5ByLikesComponent } from './components/post/top5-by-likes/top5-by-likes.component';
-
-import { GetAllComponent } from './components/admin/get-all/get-all.component';
-import { GetPublicAndMyPrivateComponent } from './components/user/get-public-and-my-private/get-public-and-my-private.component';
+import {Top5ByLikesComponent} from './components/post/top5-by-likes/top5-by-likes.component';
+import {GetAllComponent} from './components/admin/get-all/get-all.component';
+import {
+  GetPublicAndMyPrivateComponent
+} from './components/user/get-public-and-my-private/get-public-and-my-private.component';
 import {UpdateUserComponent} from "./components/user/update-user/update-user.component";
 import { EditPostComponent } from './components/post/edit-post/edit-post.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -81,29 +81,29 @@ import {RelativePostComponent} from "./components/post/relative-post/relative-po
     SearchComponent,
     RelativePostComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        NgToastModule,
-        EditorModule,
-        MatInputModule,
-        MatCardModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatRadioModule,
-        MatCheckboxModule,
-        MatSlideToggleModule,
-        MatButtonModule,
-        MatProgressSpinnerModule,
-        MatProgressBarModule,
-        MatPaginatorModule,
-        NgxPaginationModule,
-        AngularFireStorageModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgToastModule,
+    EditorModule,
+    MatInputModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatPaginatorModule,
+    NgxPaginationModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    FormsModule
+  ],
 
   providers: [
     {

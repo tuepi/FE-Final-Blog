@@ -26,7 +26,6 @@ export class GetMyPostsComponent implements OnInit {
 
   getMyPosts() {
     this.postService.getMyPosts(this.id).subscribe(data => {
-        console.log(data)
         this.posts = data;
       },
       error => {

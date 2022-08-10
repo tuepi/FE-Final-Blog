@@ -24,7 +24,6 @@ export class GetAllPublicStatusComponent implements OnInit {
 
   getAllByPublicStatus() {
     this.postService.getAllByPublicStatus().subscribe(result => {
-      console.log(result)
       this.posts = result;
     }, error => {
       console.log("Lỗi");

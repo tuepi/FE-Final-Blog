@@ -100,13 +100,11 @@ export class UpdateUserComponent implements OnInit {
             if (url) {
               this.fb = url;
             }
-            console.log(this.fb);
           });
         })
       )
       .subscribe(url => {
         if (url) {
-          console.log(url);
         }
       });
   }

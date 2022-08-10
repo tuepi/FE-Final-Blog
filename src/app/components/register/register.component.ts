@@ -73,7 +73,6 @@ export class RegisterComponent implements OnInit {
 
   getAll() {
     this.userService.getAll().subscribe(result => {
-      console.log(result)
       this.usernames = result;
     }, error => {
       console.log("Lỗi");

@@ -15,17 +15,16 @@ export class GetByLabelComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    localStorage.removeItem('labelId')
     this.getPostByLabel()
   }
 
   getPostByLabel() {
     let labelId = localStorage.getItem('labelId')
-    console.log("lab", labelId)
     this.listPostByLabel = []
     this.postLabelService.getAllPostLabel(labelId).subscribe((data) => {
       this.scanData(data)
       this.router.navigate(['/by-label/', labelId])
-      console.log(this.listPostByLabel)
       localStorage.removeItem('labelId')
     } )
   }
