@@ -19,7 +19,7 @@ export class DetailComponent implements OnInit {
   obj: Post | any;
   id: any;
   comments: Comment[] = []
-  userId: any;
+  userId = localStorage.getItem('ID');
   postId: any;
   likedCheck = false;
   toDay: any;
@@ -37,8 +37,8 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("cmt : ", this.comments)
     this.getBlog()
+    // this.likedChecker()
     this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
     this.likePost()
@@ -63,6 +63,14 @@ export class DetailComponent implements OnInit {
   getBlog() {
     this.acctiveRouter.paramMap.subscribe((param) => {
       this.id = param.get('id');
+      this.postService.likedCheck(this.id, this.userId).subscribe((liked) => {
+        console.log("data like: " , liked)
+        if (liked == null) {
+          this.likedCheck = false
+        } else {
+          this.likedCheck = true
+        }
+      })
       this.commentsService.getAllByPostId(this.id).subscribe(list =>
         this.comments = list);
       this.postService.findById(this.id).subscribe((data) => {
@@ -99,6 +107,7 @@ export class DetailComponent implements OnInit {
       this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã bình luận!!!", duration: 2000})
       // this.router.navigate(['/detail', this.id]);
       window.location.reload()
+
       this.commentForm.reset()
     }, error => {
       console.log(error)
@@ -132,15 +141,14 @@ export class DetailComponent implements OnInit {
   }
 
   likedChecker() {
-    this.userId = localStorage.getItem('ID')
     this.postService.likedCheck(this.obj.id, this.userId).subscribe((liked) => {
-      console.log("data: " , liked)
+      console.log("data like: " , liked)
       if (liked == null) {
-       return  this.likedCheck = false
+        this.likedCheck = false
       } else {
-        return this.likedCheck = true
+        this.likedCheck = true
       }
-      console.log("liked ", this.likedCheck)
+
     })
   }
 

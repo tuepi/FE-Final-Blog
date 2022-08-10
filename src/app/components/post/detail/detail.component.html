@@ -207,7 +207,7 @@
                   </div>
                   <div class="typography__last__text" id="content">
                   </div>
-                  <hr >
+                  <hr #cmt>
 
                   <div class="post__social" style="margin-left: 450px; padding: 0 0 40px 0">
 <!--                    <span (click)="likePost()">-->
@@ -224,12 +224,14 @@
                     <!--                    <button (click)="likedChecker()">check</button>-->
                     <!--                    <a href="#"><i class="fa fa-share-square-o"></i></a><span></span>-->
 
-                    <a (click)="likePost()" >
-                      <i *ngIf="likedCheck" class="fa fa-heart" ></i>
-                      <i *ngIf="!likedCheck" class="fa fa-heart-o"></i>
-                    </a><span>{{obj.numberOfLike}} </span>
+                    <span (click)="likePost()" *ngIf="likedCheck" title="Bỏ thích" >
+                      <a><i class="fa fa-heart"></i></a>{{obj.numberOfLike}}
+                    </span>
+                    <span (click)="likePost()" *ngIf="!likedCheck" title="Thích" >
+                      <a><i class="fa fa-heart-o"></i></a>{{obj.numberOfLike}}
+                    </span>
 
-                    <a (click)="scrollToElement(comment)"><i class="fa fa-comment-o"></i></a><span>{{comments.length}} </span>
+                    <span (click)="scrollToElement(comment)" title="Bình luận"><a><i class="fa fa-comment-o"></i></a>{{comments.length}} </span>
 <!--                    <button (click)="likedChecker()">check</button>-->
 <!--                    <a href="#"><i class="fa fa-share-square-o"></i></a><span></span>-->
                     <span title="Chỉnh sửa"><a *ngIf="postOwner" [routerLink]="['/edit/',obj.id]"><i class="fa fa-pencil-square-o"></i></a></span>
@@ -302,7 +304,7 @@
 
       <div class="col-lg-3 col-md-3 custom-box-shadow">
 
-        <app-top5-by-likes></app-top5-by-likes>
+        <app-top5-by-likes ></app-top5-by-likes>
 
       </div>
     </div>

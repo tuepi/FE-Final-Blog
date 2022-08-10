@@ -4,6 +4,7 @@ import {Post} from "../../../models/post";
 import {Label} from "../../../models/label";
 import {LabelService} from "../../../services/label.service";
 import {PostLabelService} from "../../../services/post-label.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-top5-by-likes',
