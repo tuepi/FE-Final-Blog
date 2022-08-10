@@ -186,12 +186,11 @@
                   <div class="breadcrumb__text">
                     <h2 style="color: #f4952f">{{obj.title}}</h2>
                     <div class="breadcrumb__option">
-                      <a [routerLink]="['/profile/',obj.user.id]">Tác giả: {{obj.user.fullName}} </a>
-                      <span>Ngày đăng: {{toDay}} {{nowTime}}</span>
+                      <a [routerLink]="['/profile/',obj.user.id]">Author: {{obj.user.fullName}} </a>
+                      <span>Publish date: {{toDay}} {{nowTime}}</span>
                     </div>
                   </div>
                   <div class="typography__top__text">
-                    <!--            <p>Mô tả: {{obj.description}}</p>-->
                   </div>
                   <div class="typography__desc">
                     <div class="row">
@@ -200,7 +199,7 @@
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="typography__desc__text">
-                          <p>Mô tả: {{obj.description}}</p>
+                          <p>Description: {{obj.description}}</p>
                         </div>
                       </div>
                     </div>
@@ -208,38 +207,21 @@
                   <div class="typography__last__text" id="content">
                   </div>
                   <hr #cmt>
-
                   <div class="post__social" style="margin-left: 450px; padding: 0 0 40px 0">
-<!--                    <span (click)="likePost()">-->
-<!--                      <a>-->
-<!--                        <i *ngIf="likedCheck" class="fa fa-heart" style="color: #f4952f" title="Bỏ thích"></i>-->
-<!--                        <i *ngIf="!likedCheck" class="fa fa-heart-o" style="color: #f4952f" title="Thích"></i>-->
-<!--                      </a>-->
-<!--                      {{obj.numberOfLike}}-->
-<!--                    </span>-->
-<!--                    <span>-->
-<!--                      <a href="#"><i class="fa fa-comment-o" style="color: #f4952f"></i>-->
-<!--                      </a>{{comments.length}}-->
-<!--                    </span>-->
-                    <!--                    <button (click)="likedChecker()">check</button>-->
-                    <!--                    <a href="#"><i class="fa fa-share-square-o"></i></a><span></span>-->
-
-                    <span (click)="likePost()" *ngIf="likedCheck" title="Bỏ thích" >
+                    <span (click)="likePost()" *ngIf="likedCheck" title="Unlike">
                       <a><i class="fa fa-heart"></i></a>{{obj.numberOfLike}}
                     </span>
-                    <span (click)="likePost()" *ngIf="!likedCheck" title="Thích" >
+                    <span (click)="likePost()" *ngIf="!likedCheck" title="Like">
                       <a><i class="fa fa-heart-o"></i></a>{{obj.numberOfLike}}
                     </span>
-
-                    <span (click)="scrollToElement(comment)" title="Bình luận"><a><i class="fa fa-comment-o"></i></a>{{comments.length}} </span>
-<!--                    <button (click)="likedChecker()">check</button>-->
-<!--                    <a href="#"><i class="fa fa-share-square-o"></i></a><span></span>-->
-                    <span title="Chỉnh sửa"><a *ngIf="postOwner" [routerLink]="['/edit/',obj.id]"><i class="fa fa-pencil-square-o"></i></a></span>
-                    <span title="Xóa"><a *ngIf="postOwner" data-toggle="modal" data-target="#staticBackdrop"><i class="fa fa-trash"></i></a></span>
-
+                    <span (click)="scrollToElement(comment)" title="Comment"><a><i
+                      class="fa fa-comment-o"></i></a>{{comments.length}} </span>
+                    <span title="Edit Post"><a *ngIf="postOwner" [routerLink]="['/edit/',obj.id]"><i
+                      class="fa fa-pencil-square-o"></i></a></span>
+                    <span title="Delete Post"><a *ngIf="postOwner" data-toggle="modal" data-target="#staticBackdrop"><i
+                      class="fa fa-trash"></i></a></span>
                   </div>
                   <!--  COMMENT-->
-                  <!--  <div class="single-post__comment">-->
                   <div class="sidebar__item__title" *ngFor="let cmt of comments">
                     <div class="single-post__comment__item__pic">
                       <img src="{{cmt.user.avatar}}" alt="">
@@ -251,18 +233,20 @@
                       <p>{{cmt.content}}</p>
                     </div>
                   </div>
-<!--                  <app-rating></app-rating>-->
+                  <!--                  <app-rating></app-rating>-->
                   <!--                    </div>-->
                   <hr style="margin: 16px 0 30px 0">
                   <div class="single-post__leave__comment">
                     <form #comment [formGroup]="commentForm" (ngSubmit)="createComment()">
-                      <img src="{{avatar}}" style="width: 50px; height: 50px; border-radius: 50%; margin: 0 30px 3px 25px">
-<!--                      <textarea formControlName="content" placeholder="Viết bình luận..."-->
-<!--                                style="height: 80px; width: 80%"></textarea>-->
-                      <input type="text" formControlName="content"style="height: 48px;width: 444px;" placeholder="Viết bình luận...">
-
-                      <button  style="width: 100px; margin-left: 30px" type="submit" class="site-btn" *ngIf="!isLogin">Đăng</button>
-                      <button  style="width: 100px; margin-left: 30px" class="site-btn" *ngIf="isLogin" (click)="requestLogin()">Đăng
+                      <img src="{{avatar}}"
+                           style="width: 50px; height: 50px; border-radius: 50%; margin: 0 30px 3px 25px">
+                      <input type="text" formControlName="content" style="height: 48px;width: 444px;"
+                             placeholder="Write your comment...">
+                      <button style="width: 100px; margin-left: 30px" type="submit" class="site-btn" *ngIf="!isLogin">
+                        Login
+                      </button>
+                      <button style="width: 100px; margin-left: 30px" class="site-btn" *ngIf="isLogin"
+                              (click)="requestLogin()">Post
                       </button>
                     </form>
                   </div>
@@ -276,7 +260,7 @@
                         <div class="modal-header">
                           <h5 class="modal-title" id="staticBackdropLabel">
                             <div class="sidebar__item__title" style="margin: 0 0">
-                              <h6>XÁC NHẬN</h6>
+                              <h6>CONFIRM</h6>
                             </div>
                           </h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -284,12 +268,12 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          Bạn chắc chắn muốn xóa không?
+                          DO YOU SURE THAT YOU WANT TO DELETE THIS???
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">HỦY</button>
                           <button type="button" class="btn site-btn" data-dismiss="modal"
-                                  (click)="deletePost(obj.id)" style="padding: 7px 12px">XÓA
+                                  (click)="deletePost(obj.id)" style="padding: 7px 12px">DELETE
                           </button>
                         </div>
                       </div>

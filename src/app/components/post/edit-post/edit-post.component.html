@@ -183,21 +183,21 @@
 
           <div class="contact__form">
             <div class="contact__form__title">
-              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)">CHỈNH SỬA BÀI VIẾT</h2>
+              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)">EDIT POST</h2>
             </div>
             <form [formGroup]="postForm" (ngSubmit)="editPost()">
               <div class="sidebar__item__title" style="margin: 0 0">
-                <h6>TIÊU ĐỀ:</h6>
+                <h6>TITLE:</h6>
               </div>
-              <input type="text" style="width: 80%;" formControlName="title" placeholder="Tiêu đề" value="{{postId.title}}">
+              <input type="text" style="width: 80%;" formControlName="title" placeholder="Title" value="{{postId.title}}">
               <select formControlName="status" style="margin: 20px">
-                <option selected="selected" value="1">Công khai</option>
-                <option value="0">Chỉ mình tôi</option>
+                <option selected="selected" value="1">Public</option>
+                <option value="0">Private</option>
               </select>
               <div class="sidebar__item__title" style="margin: 0 0">
-                <h6>MÔ TẢ:</h6>
+                <h6>Breif Description:</h6>
               </div>
-              <input type="text" formControlName="description" placeholder="Mô tả ngắn" value="{{postId.description}}">
+              <input type="text" formControlName="description" placeholder="brief description" value="{{postId.description}}">
               <div style="margin: 10px 30px;  text-align: center">
                 <div class="form-check-inline" *ngFor="let label of labels; index as i">
                   <input type="checkbox" style="width: 16px; height: 16px;margin-bottom: 0px" id="{{i + 1}}" value="{{label.id}}">
@@ -219,7 +219,7 @@
               </div>
               <hr style="border-color: #ffffff">
               <div class="sidebar__item__title" style="margin: 0 0">
-                <h6>NỘI DUNG BÀI VIẾT:</h6>
+                <h6>POST CONTENT:</h6>
               </div>
               <editor formControlName="content" [init]="{plugins :  'link'}" [initialValue]="content"></editor>
               <br>
@@ -231,9 +231,6 @@
         <div class="col-lg-2 col-md-2">
         </div>
 
-<!--        <div class="col-lg-4 col-md-4">-->
-<!--          <app-top5-by-likes></app-top5-by-likes>-->
-<!--        </div>-->
       </div>
     </div>
   </div>

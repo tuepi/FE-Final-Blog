@@ -182,7 +182,7 @@
 
           <div class="contact__form">
             <div class="contact__form__title">
-              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)">CHỈNH SỬA THÔNG TIN</h2>
+              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)">User Information Update</h2>
             </div>
             <form [formGroup]="updateForm" (ngSubmit)="updateUser()">
 
@@ -190,32 +190,33 @@
               <div class="sidebar__item__title" style="margin: 0 0">
                 <h6>Họ Tên:</h6>
               </div>
-              <input type="text" style="width: 80%;" formControlName="fullName" placeholder="Họ tên"
+              <input type="text" style="width: 80%;" formControlName="fullName" placeholder="Full Name"
                      value="{{userId.fullName}}">
               <div *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)">
                 <div style="color: red" *ngIf="fullName?.errors?.['minlength']">
-                  <small>Tên phải ít nhất 6 kí tự</small>
+                  <small>Your full name must have at least 6 characters, please re-enter your full name</small>
                 </div>
                 <div style="color: red" *ngIf="fullName?.errors?.['maxlength']">
-                  <small>Tên tối đa 32 kí tự</small>
+                  <small>*Your full name have a maximum of 32 characters, please re-enter your full name</small>
                 </div>
                 <div style="color: red" *ngIf="fullName?.errors?.['required']">
-                  <small>Tên không được để trống</small>
+                  <small>*Your full name is empty, please re-enter your full name </small>
                 </div>
               </div>
 
 
               <div class="sidebar__item__title" style="margin: 0 0">
-                <h6>Số điện thoại:</h6>
+                <h6>Phone Number:</h6>
               </div>
-              <input type="text" style="width: 80%;" formControlName="numberPhone" placeholder="Số điện thoại"
+              <input type="text" style="width: 80%;" formControlName="numberPhone" placeholder="Phone Number"
                      value="{{userId.numberPhone}}">
               <div *ngIf="numberPhone?.invalid && (numberPhone?.dirty || numberPhone?.touched)">
                 <div style="color: red" *ngIf="numberPhone?.errors?.['required']">
-                  <small>*Số điện thoại không được bỏ trống</small>
+                  <small>*Your phonenumber must have at least 6 characters, please re-enter your phonenumber</small>
                 </div>
                 <div style="color: red" *ngIf="numberPhone?.errors?.['pattern']">
-                  <small>*Số điện thoại không đúng định dạng</small>
+                  <small>*Your Phonenumber is incorrect format, please re-enter your phonenumber to the correct
+                    format</small>
                 </div>
               </div>
 
@@ -227,38 +228,32 @@
                      value="{{userId.email}}">
               <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
                 <div style="color: red" *ngIf="email?.errors?.['minlength']">
-                  <small>Tên phải ít nhất 15 kí tự</small>
+                  <small>*Your email must have at least 6 characters, please re-enter your email</small>
                 </div>
                 <div style="color: red" *ngIf="email?.errors?.['maxlength']">
-                  <small>Tên tối đa 32 kí tự</small>
+                  <small>*Your email have a maximum of 32 characters, please re-enter your email</small>
                 </div>
                 <div style="color: red" *ngIf="fullName?.errors?.['required']">
-                  <small>Email không được để trống</small>
+                  <small>*Your email is empty, please re-enter your email</small>
                 </div>
               </div>
 
 
               <div class="sidebar__item__title" style="margin: 0 0">
-                <h6>Địa chỉ:</h6>
+                <h6>Address:</h6>
               </div>
-              <input type="text" formControlName="address" placeholder="địa chỉ" value="{{userId.address}}">
+              <input type="text" formControlName="address" placeholder="Address" value="{{userId.address}}">
               <div *ngIf="address?.invalid && (address?.dirty || address?.touched)">
                 <div style="color: red" *ngIf="address?.errors?.['minlength']">
-                  <small>Tên phải ít nhất 6 kí tự</small>
+                  <small>*Your address must have at least 6 characters, please re-enter your address</small>
                 </div>
                 <div style="color: red" *ngIf="address?.errors?.['maxlength']">
-                  <small>Tên tối đa 32 kí tự</small>
+                  <small>*Your address have a maximum of 32 characters, please re-enter your address</small>
                 </div>
                 <div style="color: red" *ngIf="fullName?.errors?.['required']">
-                  <small>Địa chỉ không được để trống</small>
+                  <small>*Your address is empty, please re-enter your address</small>
                 </div>
               </div>
-              <!--    <div style="margin: 10px 30px;  text-align: center">-->
-              <!--      <div class="form-check-inline" *ngFor="let label of labels; index as i">-->
-              <!--        <input type="checkbox" style="width: 16px; height: 16px;margin-bottom: 0px" id="{{i + 1}}" value="{{label.id}}">-->
-              <!--        <label class="label" style="margin: 0 20px 0 3px" for="{{i + 1}}">{{label.name}}</label>-->
-              <!--      </div>-->
-              <!--    </div>-->
               <div>
                 <input type="file"
                        id="file"
@@ -268,16 +263,10 @@
                        autocomplete="off"
                        formControlName="avatar"
                        style="padding: 10px 3px 3px 0; width: 80%"
-
                 />
                 <img src="{{fb}}" value style="height: 80px; width: 80px">
               </div>
               <hr style="border-color: #ffffff">
-              <!--    <div class="sidebar__item__title" style="margin: 0 0">-->
-              <!--      <h6>NỘI DUNG BÀI VIẾT:</h6>-->
-              <!--    </div>-->
-              <!--&lt;!&ndash;    <editor formControlName="content" [init]="{plugins :  'link'}" [initialValue]="content"></editor>&ndash;&gt;-->
-              <!--    <br>-->
               <button type="submit" class="site-btn" style="width: 150px; margin: 30px 0px 50px 300px">Lưu</button>
             </form>
           </div>
@@ -285,9 +274,6 @@
         <div class="col-lg-2 col-md-2">
         </div>
 
-        <!--        <div class="col-lg-4 col-md-4">-->
-        <!--          <app-top5-by-likes></app-top5-by-likes>-->
-        <!--        </div>-->
       </div>
     </div>
   </div>

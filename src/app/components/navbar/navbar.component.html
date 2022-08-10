@@ -14,30 +14,22 @@
             <!--              <li class="active" *ngIf="!isLogin"><a routerLink="/"><i class="fa fa-home"></i></a></li>-->
             <!--              <li class="active" *ngIf="isLogin"><a routerLink="/user"><i class="fa fa-home"></i></a></li>-->
             <li>
-              <a *ngIf="isLogin" routerLink="/create">Đăng bài</a>
-              <a (click)="requestLogin()" *ngIf="!isLogin">Đăng bài</a>
+              <a *ngIf="isLogin" routerLink="/create">New post</a>
+                <a (click)="requestLogin()" *ngIf="!isLogin">Đăng bài</a>
             </li>
-            <li class="dropdown"><a href="#">Thể loại</a>
-              <ul class="dropdown__menu">
-                <li><a href="./categories-grid.html">Categories Grid</a></li>
-                <li><a href="./categories-list.html">Categories List</a></li>
-                <li><a href="./single-post.html">Single Post</a></li>
-                <li><a href="./signin.html">Sign In</a></li>
-                <li><a href="./404.html">404</a></li>
-                <li><a href="./typography.html">Typography</a></li>
-              </ul>
+            <li ><a href="#">Category</a>
             </li>
             <li><a href="./about.html">About</a></li>
             <li><a href="./contact.html">Contact</a></li>
             <li class="dropdown"><a href="#"><i class="fa fa-user"></i></a>
               <ul class="dropdown__menu" *ngIf="!isLogin">
-                <li><a routerLink="/login">Đăng nhập</a></li>
-                <li><a routerLink="/register">Đăng ký</a></li>
+                <li><a routerLink="/login">Login</a></li>
+                <li><a routerLink="/register">Register</a></li>
               </ul>
 
               <ul class="dropdown__menu" *ngIf="isLogin">
-                <li><a [routerLink]="['/profile/',currentUserId]">Trang cá nhân</a></li>
-                <li><a (click)="logout()">Đăng xuất</a></li>
+                <li><a [routerLink]="['/profile/',currentUserId]">Profile</a></li>
+                <li><a (click)="logout()">Logout</a></li>
               </ul>
             </li>
           </ul>

@@ -179,30 +179,30 @@
         <div class="col-lg-8 col-md-8 custom-box-shadow">
           <div class="contact__form">
             <div class="contact__form__title">
-              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)"><span>ĐĂNG BÀI VIẾT MỚI</span></h2>
-              <p>Hãy tạo bài viết và chia sẻ cho mọi người {{fullName}} nhé!!!</p>
+              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)"><span>UPLOAD NEW POST</span></h2>
+              <p>Create new post and share it with other {{fullName}} nhé!!!</p>
             </div>
             <form [formGroup]="createForm" (ngSubmit)="savePost()">
               <div class="sidebar__item__title" style="margin: 0 0">
-                <h6>TIÊU ĐỀ:</h6>
+                <h6>Title</h6>
               </div>
-              <input type="text" style="width: 80%; margin: 0 0" formControlName="title" [(ngModel)]="titleValue" placeholder="Tiêu đề">
+              <input type="text" style="width: 80%; margin: 0 0" formControlName="title" [(ngModel)]="titleValue" placeholder="Title">
               <select formControlName="status" style="margin: 20px; border: none" value="1">
-                <option selected="selected" value="1">Công khai</option>
-                <option value="0">Chỉ mình tôi</option>
+                <option selected="selected" value="1">Public</option>
+                <option value="0">Private</option>
               </select>
               <div *ngIf="title?.invalid && (title?.dirty || title?.touched)">
                 <div style="color: red; margin-left: 10px" *ngIf="title?.errors?.['required']">
-                  <small>*Tiêu đề không được bỏ trống</small>
+                  <small>*Your title is empty, please enter the password</small>
                 </div>
               </div>
               <div class="sidebar__item__title" style="margin: 0 0">
-                <h6>MÔ TẢ:</h6>
+                <h6>Brief description:</h6>
               </div>
-              <input type="text"  formControlName="description" placeholder="Mô tả ngắn" style="margin: 0 0" [(ngModel)]="descriptionValue">
+              <input type="text"  formControlName="description" placeholder="Brief description" style="margin: 0 0" [(ngModel)]="descriptionValue">
               <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
                 <div style="color: red; margin-left: 10px" *ngIf="description?.errors?.['required']">
-                  <small>*Mô tả không được bỏ trống</small>
+                  <small>*The brief description empty, please enter the post brief description </small>
                 </div>
               </div>
               <div style="margin: 10px 30px; text-align: center">
@@ -231,12 +231,12 @@
               </div>
               <hr style="border-color: #ffffff">
               <div class="sidebar__item__title" style="margin: 0 0">
-                      <h6>NỘI DUNG BÀI VIẾT:</h6>
+                      <h6>Post content:</h6>
               </div>
               <editor formControlName="content" [init]="{plugins :  'link'}" [(ngModel)]="contentValue"></editor>
               <div *ngIf="content?.invalid && (content?.dirty || content?.touched)">
                 <div style="color: red; margin-left: 10px" *ngIf="content?.errors?.['required']">
-                  <small>*Nội dung không được bỏ trống</small>
+                  <small>*The Content must not be empty, please enter the post content</small>
                 </div>
               </div>
               <br>
