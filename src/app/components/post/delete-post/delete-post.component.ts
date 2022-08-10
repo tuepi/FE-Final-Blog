@@ -3,6 +3,7 @@ import {PostService} from "../../../services/post.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NgToastService} from "ng-angular-popup";
 import {Post} from "../../../models/post";
+import {PostLabelService} from "../../../services/post-label.service";
 
 @Component({
   selector: 'app-delete-post',
@@ -17,7 +18,8 @@ export class DeletePostComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private postService: PostService,
               private router: Router,
-              private toast : NgToastService) { }
+              private toast : NgToastService,
+              private postLabelService: PostLabelService) { }
 
   ngOnInit(): void {
     this.getBlog()
@@ -25,8 +27,8 @@ export class DeletePostComponent implements OnInit {
 
   deletePost() {
     this.postService.deletePostByAdmin(this.id).subscribe(() => {
-      this.router.navigate(['/admin']) //sửa chỗ này của mạnh
-      this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã xóa bài!!!", duration: 1500})
+        this.router.navigate(['/admin']) //sửa chỗ này của mạnh
+        this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã xóa bài!!!", duration: 1500})
     }, error => {
       console.log(error);
     });

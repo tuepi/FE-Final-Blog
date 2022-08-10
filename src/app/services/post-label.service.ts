@@ -14,4 +14,8 @@ listPostLabel : any = []
   getAllPostLabel(labelId: any) : Observable<any>{
     return this.httpClient.get<any>(environment.apiUrl + "/api/guest/label/" + labelId);
   }
+
+  deletePostLabel(id: any) : Observable<any>{
+    return this.httpClient.delete<any>(API_URL + id);
+  }
 }

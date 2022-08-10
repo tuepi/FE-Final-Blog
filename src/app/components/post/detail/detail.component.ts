@@ -6,6 +6,7 @@ import {NgToastModule, NgToastService} from "ng-angular-popup";
 import {CommentsService} from "../../../services/comments.service";
 import {Comment} from "../../../models/comment";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {PostLabelService} from "../../../services/post-label.service";
 
 @Component({
   selector: 'app-detail',
@@ -33,7 +34,8 @@ export class DetailComponent implements OnInit {
               private postService: PostService,
               private commentsService: CommentsService,
               private router: Router,
-              private toast : NgToastService) {
+              private toast : NgToastService,
+              private postLabelService: PostLabelService) {
   }
 
   ngOnInit(): void {
@@ -52,6 +54,7 @@ export class DetailComponent implements OnInit {
 
   deletePost(id: any) {
     this.postService.deletePost(id).subscribe(() => {
+
       this.router.navigate(['/user']) //sửa chỗ này của mạnh
       this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã xóa bài!!!", duration: 1500})
     }, error => {
