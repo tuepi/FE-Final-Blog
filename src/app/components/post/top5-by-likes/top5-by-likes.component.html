@@ -1,16 +1,15 @@
-<div class="sidebar__item">
+<div class="sidebar__item" style="text-align: justify; margin: 10px 10px">
   <div class="sidebar__feature__item">
     <div class="sidebar__item__title">
       <h6 style="margin-top: 20px">Bài viết hay</h6>
     </div>
     <div class="sidebar__feature__item__list">
-      <div class="sidebar__feature__item__list__single" *ngFor="let p of top5Posts; index as i">
-        <div class="post__meta">
+      <div class="sidebar__feature__item__list__single" *ngFor="let p of top5Posts; index as i" >
+        <div class="post__meta" style="background-color: #fff; padding: 10px 0 0 ">
           <img src="{{p.image}}">
         </div>
         <div class="post__text">
-          <span>Dinner</span>
-          <h5><a [routerLink]="['/detail', p.id]">{{p.title}} </a></h5>
+          <h5><a style="text-align: justify; margin: auto" [routerLink]="['/detail/', p.id]">{{p.title}}</a></h5>
         </div>
       </div>
     </div>
@@ -23,4 +22,14 @@
       <li><a [href]="['/by-label/', item[0]]" (click)="setLabel(item[0])">{{item[1]}} <span>{{item[2]}}</span></a></li>
     </ul>
   </div>
+  <div class="sidebar__item__categories">
+<!--    <div class="sidebar__item__title">-->
+<!--      <h6>Loại bài viết</h6>-->
+<!--    </div>-->
+    <ul *ngFor="let item of listLabel">
+<!--      <li><a href="#">{{item[1]}} <span>{{item[2]}}</span> </a></li>-->
+
+    </ul>
+  </div>
+
 </div>

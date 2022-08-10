@@ -37,16 +37,18 @@ import {
   GetPublicAndMyPrivateComponent
 } from './components/user/get-public-and-my-private/get-public-and-my-private.component';
 import {UpdateUserComponent} from "./components/user/update-user/update-user.component";
-import {EditPostComponent} from './components/post/edit-post/edit-post.component';
-import {NavbarComponent} from './components/navbar/navbar.component';
-import {FooterComponent} from './components/footer/footer.component';
-import {TopPostComponent} from './components/post/top-post/top-post.component';
-import {DeletePostComponent} from './components/post/delete-post/delete-post.component';
-import {ChangePasswordComponent} from './components/user/change-password/change-password.component';
-import {CommentComponent} from './components/post/comment/comment.component';
-import {ProfileComponent} from './components/user/profile/profile.component';
-import {RatingComponent} from './components/post/rating/rating.component';
-import {GetByLabelComponent} from './components/post/get-by-label/get-by-label.component';
+import { EditPostComponent } from './components/post/edit-post/edit-post.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { TopPostComponent } from './components/post/top-post/top-post.component';
+import { DeletePostComponent } from './components/post/delete-post/delete-post.component';
+import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
+import { CommentComponent } from './components/post/comment/comment.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import { RatingComponent } from './components/post/rating/rating.component';
+import { GetByLabelComponent } from './components/post/get-by-label/get-by-label.component';
+import { SearchComponent } from './components/post/search/search.component';
+import {RelativePostComponent} from "./components/post/relative-post/relative-post.component";
 
 @NgModule({
   declarations: [
@@ -76,6 +78,8 @@ import {GetByLabelComponent} from './components/post/get-by-label/get-by-label.c
     ProfileComponent,
     RatingComponent,
     GetByLabelComponent,
+    SearchComponent,
+    RelativePostComponent
   ],
   imports: [
     BrowserModule,

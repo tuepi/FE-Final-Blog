@@ -9,7 +9,6 @@ import {PostService} from "../../../services/post.service";
 import {Router} from "@angular/router";
 import {NgToastService} from "ng-angular-popup";
 import {formatDate} from "@angular/common";
-import {IDropdownSettings} from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-create-post',
@@ -34,10 +33,6 @@ export class CreatePostComponent implements OnInit {
 
   labelSelected: number[] = [];
   labels: any = [];
-  dropdownList: any = [] ;
-  selectedItems: any = [];
-  dropdownSettings: IDropdownSettings = {};
-  item: any = {}
   createForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
     description: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
@@ -138,7 +133,6 @@ export class CreatePostComponent implements OnInit {
 
   savePost() {
     const post = this.setNewPost()
-
     this.postService.save(post).subscribe((data) => {
       this.sendLabel(data.id)
       this.toast.success({detail: "THÔNG BÁO", summary: "Đăng bài thành công!!!", duration: 2000})
@@ -147,7 +141,6 @@ export class CreatePostComponent implements OnInit {
       this.toast.error({detail: "THÔNG BÁO", summary: "Lỗi khi đăng bài!!!", duration: 2000})
       console.log(error)
     })
-
   }
 
   checkForm() {

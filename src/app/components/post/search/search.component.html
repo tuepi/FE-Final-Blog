@@ -1,4 +1,4 @@
-<app-navbar (onSearch)="getList($event)"></app-navbar>
+<app-navbar></app-navbar>
 
 <!-- Hero Section Begin -->
 <section class="hero">
@@ -178,9 +178,10 @@
     <div class="row">
       <div class="col-lg-1 col-md-1"></div>
       <div class="col-lg-7 col-md-7 custom-box-shadow">
-        <div #content  style="padding: 50px; margin: auto">
-          <app-top-post></app-top-post>
-          <app-get-all-public-status></app-get-all-public-status>
+        <div>
+          <app-display-posts></app-display-posts>
+          Sử dụng dòng 184 truyền danh dánh (posts) tìm được để hiển thị ra
+          <!--          <app-display-posts [posts]="posts"></app-display-posts>-->
         </div>
       </div>
 

@@ -1,0 +1,14 @@
+<div class="sidebar__feature__item" style="text-align: justify; margin: 10px 10px">
+  <div class="sidebar__item__title">
+    <h6>Bài viết liên quan</h6>
+  </div>
+  <div *ngFor="let item of relativePosts">
+    <div class="sidebar__feature__item__large set-bg" style="margin: 50px 0">
+          <img src="{{item.post.image}}" style="width: 347.300px; height: 195.350px">
+      <div class="sidebar__feature__item__large--text">
+<!--        <span>Các nhãn</span>-->
+        <h5 class="title-title"><a style="color: #cccccc; background-color: black" [routerLink]="['/detail/', item.post.id]">{{item.post.title}}</a></h5>
+      </div>
+    </div>
+  </div>
+</div>
