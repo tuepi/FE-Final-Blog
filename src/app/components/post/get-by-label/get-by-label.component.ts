@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PostLabelService} from "../../../services/post-label.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-get-by-label',
@@ -9,8 +10,8 @@ import {PostLabelService} from "../../../services/post-label.service";
 export class GetByLabelComponent implements OnInit {
   listPostByLabel : any = []
 
-  constructor(private postLabelService: PostLabelService) {
-    this.getPostByLabel()
+  constructor(private postLabelService: PostLabelService,
+              private router: Router,) {
   }
 
   ngOnInit(): void {
@@ -20,8 +21,11 @@ export class GetByLabelComponent implements OnInit {
 
   getPostByLabel() {
     let labelId = localStorage.getItem('labelId')
+    this.listPostByLabel = []
     this.postLabelService.getAllPostLabel(labelId).subscribe((data) => {
       this.scanData(data)
+      this.router.navigate(['/by-label/', labelId])
+      localStorage.removeItem('labelId')
     } )
   }
 

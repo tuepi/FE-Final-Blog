@@ -4,8 +4,8 @@
     <div class="row">
       <div class="col-lg-3 col-md-1 col-6 order-md-1 order-1" style="text-align: center">
         <div class="header__humberger" style="margin-left: 50px">
-          <a *ngIf="!isLogin" routerLink="/"><img src="assets/img/logo.png"></a>
-          <a *ngIf="isLogin" routerLink="/user"><img src="assets/img/logo.png"></a>
+          <a *ngIf="!isLogin" routerLink="/" class="control-pointer"><img src="assets/img/logo.png"></a>
+          <a *ngIf="isLogin" routerLink="/user" class="control-pointer"><img src="assets/img/logo.png"></a>
         </div>
       </div>
       <div class="col-lg-6 col-md-10 order-md-2 order-3">
@@ -14,10 +14,10 @@
             <!--              <li class="active" *ngIf="!isLogin"><a routerLink="/"><i class="fa fa-home"></i></a></li>-->
             <!--              <li class="active" *ngIf="isLogin"><a routerLink="/user"><i class="fa fa-home"></i></a></li>-->
             <li>
-              <a *ngIf="isLogin" routerLink="/create">Đăng bài</a>
-              <a (click)="requestLogin()" *ngIf="!isLogin">Đăng bài</a>
+              <a *ngIf="isLogin" routerLink="/create" class="control-pointer">Đăng bài</a>
+              <a (click)="requestLogin()" *ngIf="!isLogin" class="control-pointer">Đăng bài</a>
             </li>
-            <li class="dropdown"><a href="#">Thể loại</a>
+            <li class="dropdown"><a href="#" class="control-pointer">Thể loại</a>
               <ul class="dropdown__menu">
                 <li><a href="./categories-grid.html">Categories Grid</a></li>
                 <li><a href="./categories-list.html">Categories List</a></li>
@@ -29,7 +29,7 @@
             </li>
             <li><a href="./about.html">About</a></li>
             <li><a href="./contact.html">Contact</a></li>
-            <li class="dropdown"><a href="#"><i class="fa fa-user"></i></a>
+            <li class="dropdown"><a href="#">Tài khoản</a>
               <ul class="dropdown__menu" *ngIf="!isLogin">
                 <li><a routerLink="/login">Đăng nhập</a></li>
                 <li><a routerLink="/register">Đăng ký</a></li>
@@ -37,21 +37,28 @@
 
               <ul class="dropdown__menu" *ngIf="isLogin">
                 <li><a [routerLink]="['/profile/',currentUserId]">Trang cá nhân</a></li>
-                <li><a (click)="logout()">Đăng xuất</a></li>
+                <li><a (click)="logout()"  class="control-pointer">Đăng xuất</a></li>
               </ul>
             </li>
           </ul>
         </nav>
       </div>
-      <div class="header__search col-lg-3 col-md-1 col-6 order-md-3 order-2">
+      <div class=" col-lg-3 col-md-1 col-6 order-md-3 order-2">
         <!--            <input type="text" [(ngModel)]="title" >-->
         <!--            <i class="fa fa-search search-switch" (click)="findPostByTitle()"></i>-->
-        <div class="footer__instagram__avatar" style="" *ngIf="isLogin">
+        <div class="footer__instagram__avatar" style="
+    left: 120px;
+    top: 45px;
+    padding-bottom: 0px;
+    height: 80px;
+    width: 310px;
+" *ngIf="isLogin">
           <div class="footer__instagram__avatar--pic">
             <img src="{{avatar}}" alt="">
           </div>
-          <div class="footer__instagram__avatar--text" style="padding: 10px">
-            <h5 [routerLink]="['/profile', currentUserId]">{{fullName}}</h5>
+          <div class="footer__instagram__avatar--text control-pointer" style="padding: 10px">
+            <h5 [routerLink]="['/profile', currentUserId]" >{{fullName}}</h5>
+<!--            <span>23 bài viết</span>-->
           </div>
         </div>
       </div>

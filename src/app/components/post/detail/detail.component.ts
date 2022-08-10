@@ -7,6 +7,7 @@ import {CommentsService} from "../../../services/comments.service";
 import {Comment} from "../../../models/comment";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PostLabelService} from "../../../services/post-label.service";
+import {PostLabel} from "../../../models/post-label";
 
 @Component({
   selector: 'app-detail',
@@ -14,13 +15,17 @@ import {PostLabelService} from "../../../services/post-label.service";
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  adminCheck=false;
+  postList:any;
+  labelId:any;
+  labelsList: PostLabel[]=[];
+  adminCheck = false;
   isLogin = false;
   postOwner = false;
   obj: Post | any;
   id: any;
   comments: Comment[] = []
-  userId: any;
+  userId = localStorage.getItem('ID');
+  avatar = localStorage.getItem('AVATAR')
   postId: any;
   likedCheck = false;
   toDay: any;
@@ -54,7 +59,6 @@ export class DetailComponent implements OnInit {
 
   deletePost(id: any) {
     this.postService.deletePost(id).subscribe(() => {
-
       this.router.navigate(['/user']) //sửa chỗ này của mạnh
       this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã xóa bài!!!", duration: 1500})
     }, error => {
@@ -66,6 +70,22 @@ export class DetailComponent implements OnInit {
   getBlog() {
     this.acctiveRouter.paramMap.subscribe((param) => {
       this.id = param.get('id');
+      this.postService.allLabelsByPostId(this.id).subscribe((result) => {
+        this.labelsList = result;
+        this.labelId= result[0].label.id;
+        this.postService.relativePost(this.labelId).subscribe((result) => {
+          console.log("aa :", result[0].post.title)
+          this.postList = result;
+        });
+      })
+      this.postService.likedCheck(this.id, this.userId).subscribe((liked) => {
+        console.log("data like: " , liked)
+        if (liked == null) {
+          this.likedCheck = false
+        } else {
+          this.likedCheck = true
+        }
+      })
       this.commentsService.getAllByPostId(this.id).subscribe(list =>
         this.comments = list);
       this.postService.findById(this.id).subscribe((data) => {
@@ -134,9 +154,9 @@ export class DetailComponent implements OnInit {
     this.userId = localStorage.getItem('ID')
     this.postService.likedCheck(this.obj.id, this.userId).subscribe((liked) => {
       if (liked == null) {
-       return  this.likedCheck = false
+        this.likedCheck = false
       } else {
-        return this.likedCheck = true
+        this.likedCheck = true
       }
     })
   }

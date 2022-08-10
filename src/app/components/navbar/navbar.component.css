@@ -13,3 +13,7 @@ a{
   font-family: "Calibri Light" !important;
   margin-right: 40px !important;
 }
+
+.control-pointer:hover {
+  cursor: pointer !important;
+}
