@@ -6,3 +6,6 @@ size {
 button:disabled {
   background-color: gray;
 }
+.margin-bot-cus {
+  margin-bottom: 20px;
+}

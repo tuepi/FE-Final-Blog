@@ -176,7 +176,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-2 col-md-2"></div>
-        <div class="col-lg-8 col-md-8 custom-box-shadow">
+        <div class="col-lg-8 col-md-8 custom-box-shadow" style="padding: 25px 65px">
           <div class="contact__form">
             <div class="contact__form__title">
               <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)"><span>ĐĂNG BÀI VIẾT MỚI</span>
@@ -187,11 +187,8 @@
               <div class="sidebar__item__title" style="margin: 0 0">
                 <h6>TIÊU ĐỀ:</h6>
               </div>
-              < type="text" style="width: 80%; margin: 0 0" formControlName="title" [(ngModel)]="titleValue" placeholder="Tiêu đề">
-              <select formControlName="status" style="margin: 20px; border: none" value="1">
-                <option selected="selected" value="1">Công khai</option>
-                <option value="0">Chỉ mình tôi</option>
-              </select>
+              <input class="margin-bot-cus" type="text" style="width: 100%" formControlName="title" [(ngModel)]="titleValue"
+                     placeholder="Tiêu đề">
               <div *ngIf="title?.invalid && (title?.dirty || title?.touched)">
                 <div style="color: red; margin-left: 10px" *ngIf="title?.errors?.['required']">
                   <small>*Tiêu đề không được bỏ trống</small>
@@ -200,7 +197,7 @@
               <div class="sidebar__item__title" style="margin: 0 0">
                 <h6>MÔ TẢ:</h6>
               </div>
-              <input type="text" formControlName="description" placeholder="Mô tả ngắn" style="margin: 0 0"
+              <input type="text" formControlName="description" placeholder="Mô tả ngắn" class="margin-bot-cus"
                      [(ngModel)]="descriptionValue">
               <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
                 <div style="color: red; margin-left: 10px" *ngIf="description?.errors?.['required']">
@@ -208,58 +205,48 @@
                 </div>
               </div>
               <div style=" text-align: center">
-
-                <!--                CHECKBOX-->
-                                <div class="form-check-inline" *ngFor="let label of labels; index as i">
-                                  <input #check type="checkbox"
-                                         style="width: 16px; height: 16px;margin-bottom: 0px"
-                                         id="{{i + 1}}" [value]="label[0]"
-                                         (change)="changeLabel($event, label[0])"
-                                         (click)="checkBox(check)">
-                                  <label class="label" style="margin: 0 20px 0 3px" for="{{i + 1}}">{{label[1]}}</label>
-                                  <label class = "label" for="{{label.id}}">{{label.name}}</label>
-                                </div>
-
-
-<!--                <ng-multiselect-dropdown-->
-<!--                  [placeholder]="'Thể loại'"-->
-<!--                  [settings]="dropdownSettings"-->
-<!--                  [data]="dropdownList"-->
-<!--                  [(ngModel)]="selectedItems"-->
-<!--                  (onSelect)="changeLabel($event)"-->
-<!--                  (onSelectAll)="onSelectAll($event)"-->
-<!--                >-->
-<!--                </ng-multiselect-dropdown>-->
-
-
-
               </div>
               <div>
-
-                <input type="file"
+                <input class="margin-bot-cus" type="file"
                        id="file"
                        #userPhoto
                        (change)="onFileSelected($event)"
                        name="image"
                        autocomplete="off"
                        formControlName="image"
-                       style="padding: 10px 3px 3px 0; width: 80%"
+                       style="padding: 10px 3px 3px 10px; width: 100%"
                 />
                 <span *ngIf="checkImage"><img src="{{fb}}" style="height: 80px; width: 80px; margin-left: 30px"></span>
               </div>
-              <hr style="border-color: #ffffff">
               <div class="sidebar__item__title" style="margin: 0 0">
                 <h6>NỘI DUNG BÀI VIẾT:</h6>
               </div>
-              <editor formControlName="content" [init]="{plugins :  'link'}" [(ngModel)]="contentValue"></editor>
+              <editor class="margin-bot-cus" formControlName="content" [init]="{plugins :  'link'}" [(ngModel)]="contentValue"></editor>
               <div *ngIf="content?.invalid && (content?.dirty || content?.touched)">
                 <div style="color: red; margin-left: 10px" *ngIf="content?.errors?.['required']">
                   <small>*Nội dung không được bỏ trống</small>
                 </div>
               </div>
-              <br>
+
+
+              <!--                CHECKBOX-->
+              <div class=" text-center " style="margin-top: 30px">
+              <div class="form-check-inline  " style="text-align: center" *ngFor="let label of labels; index as i">
+                <input #check type="checkbox"
+                       style="width: 16px; height: 16px;margin-bottom: 0px"
+                       id="{{i + 1}}" [value]="label[0]"
+                       (change)="changeLabel($event, label[0])"
+                       (click)="checkBox(check)">
+                <label class="label" style="margin: 0 20px 0 3px" for="{{i + 1}}">{{label[1]}}</label>
+                <label class = "label" for="{{label.id}}">{{label.name}}</label>
+              </div>
+                <select class="margin-bot-cus" formControlName="status" style="margin: 20px; border: 1px solid black" value="1">
+                  <option selected="selected" value="1">Công khai</option>
+                  <option value="0">Chỉ mình tôi</option>
+                </select>
+              </div>
               <button [disabled]="checkForm() ? 'disabled' : null" type="submit" class="site-btn"
-                      style="width: 150px; margin: 30px 0px 50px 300px">Đăng bài
+                      style="width: 150px; margin: 10px 0px 50px 248px">Đăng bài
               </button>
             </form>
           </div>
