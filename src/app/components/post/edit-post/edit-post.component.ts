@@ -33,7 +33,7 @@ export class EditPostComponent implements OnInit {
   jsToday: any = '';
   downloadURL: Observable<string> | any;
   fullName = localStorage.getItem('FULLNAME');
-  labels: Label[] = []
+  labels: any[] = []
   fb : any
   content : any;
   labelSelected: number[] = [];
@@ -80,7 +80,9 @@ export class EditPostComponent implements OnInit {
     this.labelService.getAllLabels().subscribe((data) => {
       console.log("data: ", data)
       this.labels = data
+
     })
+
   }
 
   changeLabel(event: any, label: number) {

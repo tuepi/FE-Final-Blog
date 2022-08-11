@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <!-- Categories Section Begin -->
-<section class="categories spad"  style="background-color: rgba(255,253,253,0.87); padding: 60px">
+<section class="categories spad" style="background-color: rgba(255,253,253,0.87); padding: 60px">
   <div class="container">
   </div>
   <div class="categories__post">
@@ -18,17 +18,13 @@
               <div class="sidebar__item__title" style="margin: 0 0">
                 <h6>TIÊU ĐỀ:</h6>
               </div>
-              <input class="margin-bot-cus" type="text" style="" formControlName="title" placeholder="Tiêu đề" value="{{postId.title}}">
+              <input class="margin-bot-cus" type="text" style="" formControlName="title" placeholder="Tiêu đề"
+                     value="{{postId.title}}">
               <div class="sidebar__item__title" style="margin: 0 0">
                 <h6>MÔ TẢ:</h6>
               </div>
-              <input type="text" formControlName="description" placeholder="Mô tả ngắn" value="{{postId.description}}" class="margin-bot-cus">
-<!--              <div style="margin: 10px 30px;  text-align: center">-->
-<!--                <div class="form-check-inline" *ngFor="let label of labels; index as i">-->
-<!--                  <input type="checkbox" style="width: 16px; height: 16px;margin-bottom: 0px" id="{{i + 1}}" value="{{label.id}}">-->
-<!--                  <label class="label" style="margin: 0 20px 0 3px" for="{{i + 1}}">{{label.name}}</label>-->
-<!--                </div>-->
-<!--              </div>-->
+              <input type="text" formControlName="description" placeholder="Mô tả ngắn" value="{{postId.description}}"
+                     class="margin-bot-cus">
               <div>
                 <input type="file"
                        id="file"
@@ -40,25 +36,29 @@
                        style="padding: 10px 3px 3px 0; width: 100%"
 
                 />
-                <img src="{{fb}}" style="height: 80px; width: 80px;  margin-left: 30px" >
+                <img src="{{fb}}" style="height: 80px; width: 80px;  margin-left: 30px">
               </div>
-<!--              <hr style="border-color: #ffffff">-->
+              <!--              <hr style="border-color: #ffffff">-->
               <div class="sidebar__item__title" style="margin: 0 0">
                 <h6>NỘI DUNG BÀI VIẾT:</h6>
               </div>
-              <editor class="margin-bot-cus" formControlName="content" [init]="{plugins :  'link'}" [initialValue]="content"></editor>
+              <editor class="margin-bot-cus" formControlName="content" [init]="{plugins :  'link'}"
+                      [initialValue]="content"></editor>
               <br>
               <div class=" text-center " style="margin-top: 30px">
-<!--                <div class="form-check-inline  " style="text-align: center" *ngFor="let label of labels; index as i">-->
-<!--                  <input #check type="checkbox"-->
-<!--                         style="width: 16px; height: 16px;margin-bottom: 0px"-->
-<!--                         id="{{i + 1}}" [value]="label[0]"-->
-<!--                         (change)="changeLabel($event, label[0])"-->
-<!--                         (click)="checkBox(check)">-->
-<!--                  <label class="label" style="margin: 0 20px 0 3px" for="{{i + 1}}">{{label[1]}}</label>-->
-<!--                  <label class = "label" for="{{label.id}}">{{label.name}}</label>-->
-<!--                </div>-->
-                <select class="margin-bot-cus" formControlName="status" style="margin: 20px; border: 1px solid black" value="1">
+                <div class=" text-center " style="text-align: center">
+                <div class="form-check-inline  " style="text-align: center" *ngFor="let label of labels; index as i">
+                  <input #check type="checkbox"
+                         style="width: 16px; height: 16px;margin-bottom: 0px"
+                         id="{{i + 1}}" [value]="label[0]"
+                         (change)="changeLabel($event, label[0])"
+                         (click)="checkBox(check)">
+                  <label class="label" style="margin: 0 20px 0 3px" for="{{i + 1}}">{{label[1]}}</label>
+                  <label class="label" for="{{label.id}}">{{label.name}}</label>
+                </div>
+                </div>
+                <select class="margin-bot-cus" formControlName="status" style="margin: 20px; border: 1px solid black"
+                        value="1">
                   <option selected="selected" value="1">Công khai</option>
                   <option value="0">Chỉ mình tôi</option>
                 </select>
