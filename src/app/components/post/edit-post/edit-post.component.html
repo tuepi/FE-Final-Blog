@@ -12,18 +12,18 @@
         <div class="col-lg-8 col-md-8 custom-box-shadow" style="padding: 25px 65px">
           <div class="contact__form">
             <div class="contact__form__title">
-              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)">CHỈNH SỬA BÀI VIẾT</h2>
+              <h2 style="text-align: center; margin: 30px 30px; color: rgb(244, 149, 47)">EDIT POST</h2>
             </div>
             <form [formGroup]="postForm" (ngSubmit)="editPost()">
               <div class="sidebar__item__title" style="margin: 0 0">
-                <h6>TIÊU ĐỀ:</h6>
+                <h6>TITLE:</h6>
               </div>
-              <input class="margin-bot-cus" type="text" style="" formControlName="title" placeholder="Tiêu đề"
+              <input class="margin-bot-cus" type="text" style="" formControlName="title" placeholder="Title"
                      value="{{postId.title}}">
               <div class="sidebar__item__title" style="margin: 0 0">
-                <h6>MÔ TẢ:</h6>
+                <h6>Breif Description:</h6>
               </div>
-              <input type="text" formControlName="description" placeholder="Mô tả ngắn" value="{{postId.description}}"
+              <input type="text" formControlName="description" placeholder="Brief description" value="{{postId.description}}"
                      class="margin-bot-cus">
               <div>
                 <input type="file"
@@ -40,7 +40,7 @@
               </div>
               <!--              <hr style="border-color: #ffffff">-->
               <div class="sidebar__item__title" style="margin: 0 0">
-                <h6>NỘI DUNG BÀI VIẾT:</h6>
+                <h6>POST CONTENT:</h6>
               </div>
               <editor class="margin-bot-cus" formControlName="content" [init]="{plugins :  'link'}"
                       [initialValue]="content"></editor>
@@ -59,12 +59,12 @@
                 </div>
                 <select class="margin-bot-cus" formControlName="status" style="margin: 20px; border: 1px solid black"
                         value="1">
-                  <option selected="selected" value="1">Công khai</option>
-                  <option value="0">Chỉ mình tôi</option>
+                  <option selected="selected" value="1">Public</option>
+                  <option value="0">Private</option>
                 </select>
               </div>
               <button [disabled]="checkForm() ? 'disabled' : null" type="submit" class="site-btn"
-                      style="width: 150px; margin: 10px 0px 50px 248px">Đăng bài
+                      style="width: 150px; margin: 10px 0px 50px 248px">Update Post
               </button>
             </form>
           </div>

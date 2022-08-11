@@ -2,24 +2,18 @@
   <div class="categories__post__item__pic set-bg" style="margin: 0 0"
        data-setbg="">
     <img src="{{topPost.image}}" style="height: 500px; width: 800px">
-<!--    <div class="post__meta">-->
-<!--      <h4>08</h4>-->
-<!--      <span>Aug</span>-->
-<!--    </div>-->
   </div>
   <div class="categories__post__item__text" >
     <ul class="post__label--large">
-<!--      <li>Vegan</li>-->
-<!--      <li>Desserts</li>-->
     </ul>
     <h3><strong><a [routerLink]="['/detail/', topPost.id]" style="color: #f4952f">{{topPost.title}}</a></strong></h3>
     <ul class="post__widget">
       <li><u><i><h6 style="color: #f4952f" >{{topPost.user.fullName}}</h6></i></u></li>
-      <li><h6>Ngày đăng: {{toDay}} {{nowTime}}</h6></li>
+      <li><h6>Publish day: {{toDay}} {{nowTime}}</h6></li>
 <!--      <li>20 Comment</li>-->
     </ul>
     <p style="width: 80%; margin: 40px 70.375px; text-align: justify; ">{{topPost.description}}</p>
-    <a [routerLink]="['/detail/', topPost.id]" class="primary-btn">Đọc tiếp</a>
+    <a [routerLink]="['/detail/', topPost.id]" class="primary-btn">Read more</a>
     <div class="post__social">
       <i class="fa fa-heart" style="color: #f4952f; margin-right: 5px" ></i><span>{{topPost.numberOfLike}}</span>
       <i class="fa fa-comment" style="color: #f4952f; margin-right: 5px"></i><span>{{length}}</span>

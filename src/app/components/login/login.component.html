@@ -10,12 +10,12 @@
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
             <a class="nav-link" style="padding: 16px 16px" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="false">
-              Đăng nhập
+              Login
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" style="padding: 16px 16px" routerLink="/register" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="true">
-              Đăng ký
+              Register
             </a>
           </li>
           <li class="nav-item">
@@ -27,28 +27,28 @@
                 <img src="assets/img/logo.png" alt="">
               </div>
               <form [formGroup]="loginForm" (ngSubmit)="login()" >
-                  <input style="margin: 0 0" type="text" placeholder="Tên đăng nhập" (input)="checkForm()"  [(ngModel)]="usernameValue" formControlName="username">
+                  <input style="margin: 0 0" type="text" placeholder="Username" (input)="checkForm()"  [(ngModel)]="usernameValue" formControlName="username">
                   <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
                     <div style="color: red; margin-left: 10px" *ngIf="username?.errors?.['required']">
-                      <small>*Tên tài khoản không được bỏ trống</small>
+                      <small>*Your username is empty, please enter the username </small>
                     </div>
                     <div style="color: red" *ngIf="username?.errors?.['minlength']">
-                      <small>*Tên tài khoản phải ít nhất 6 kí tự</small>
+                      <small>Your username must have at least 6 characters</small>
                     </div>
                     <div style="color: red" *ngIf="username?.errors?.['maxlength']">
-                      <small>*Tên tài khoản tối đa 32 kí tự</small>
+                      <small>*Your username have a maximum of 32 characters</small>
                     </div>
                   </div>
-                  <input style="margin: 20px 0 0 0" type="password" placeholder="Mật khẩu" (input)="checkForm()"   [(ngModel)]="passwordValue" formControlName="password">
+                  <input style="margin: 20px 0 0 0" type="password" placeholder="Password" (input)="checkForm()"   [(ngModel)]="passwordValue" formControlName="password">
                   <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
                     <div style="color: red" *ngIf="password?.errors?.['required']">
-                      <small>*Mật khẩu không được bỏ trống</small>
+                      <small>*Your pasword is empty, please enter the password </small>
                     </div>
                     <div style="color: red" *ngIf="password?.errors?.['minlength']">
-                      <small>*Mật khẩu phải có ít nhất 6 kí tự</small>
+                      <small>*Your password must have at least 6 characters</small>
                     </div>
                     <div style="color: red" *ngIf="password?.errors?.['maxlength']">
-                      <small>*Mật khẩu tối đa 32 kí tự</small>
+                      <small>*Your password have a maximum of 32 characters</small>
                     </div>
                   </div>
                   <button style="margin: 50px 0 0" type="submit" class="site-btn" [disabled]="checkForm() ? 'dis abled' : null">XÁC NHẬN</button>

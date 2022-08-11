@@ -14,21 +14,21 @@
             <!--              <li class="active" *ngIf="!isLogin"><a routerLink="/"><i class="fa fa-home"></i></a></li>-->
             <!--              <li class="active" *ngIf="isLogin"><a routerLink="/user"><i class="fa fa-home"></i></a></li>-->
             <li>
-              <a *ngIf="isLogin" routerLink="/create" class="control-pointer">Đăng bài</a>
-              <a (click)="requestLogin()" *ngIf="!isLogin" class="control-pointer">Đăng bài</a>
+              <a *ngIf="isLogin" routerLink="/create" class="control-pointer">Create New Post</a>
+              <a (click)="requestLogin()" *ngIf="!isLogin" class="control-pointer">Create New Post</a>
             </li>
-            <li class="dropdown"><a  (click)="toLabel()" class="control-pointer">Thể loại</a>
+            <li class="dropdown"><a  (click)="toLabel()" class="control-pointer">Category</a>
             </li>
             <li><a class="control-pointer" (click)="toAbout()">About</a></li>
-            <li class="dropdown"><a href="#">Tài khoản</a>
+            <li class="dropdown"><a href="#">Account</a>
               <ul class="dropdown__menu" *ngIf="!isLogin">
-                <li><a routerLink="/login">Đăng nhập</a></li>
-                <li><a routerLink="/register">Đăng ký</a></li>
+                <li><a routerLink="/login">Login</a></li>
+                <li><a routerLink="/register">Register</a></li>
               </ul>
 
               <ul class="dropdown__menu" *ngIf="isLogin">
-                <li><a [routerLink]="['/profile/',currentUserId]">Trang cá nhân</a></li>
-                <li><a (click)="logout()"  class="control-pointer">Đăng xuất</a></li>
+                <li><a [routerLink]="['/profile/',currentUserId]">Profile</a></li>
+                <li><a (click)="logout()"  class="control-pointer">Logout</a></li>
               </ul>
             </li>
           </ul>

@@ -1,9 +1,5 @@
 <div class="breadcrumb__text">
-  <h2 style="margin-top: 20px"><span>Bài viết mới</span></h2>
-  <!--    <div class="breadcrumb__option">-->
-  <!--      <a href="#">Trang chủ</a>-->
-  <!--      <span>Recipes</span>-->
-  <!--    </div>-->
+  <h2 style="margin-top: 20px"><span>New Post</span></h2>
 </div>
 <div class="categories__list__post__item"
      *ngFor="let post of posts | paginate: { itemsPerPage: 5, currentPage: p, totalItems: total }">
@@ -12,10 +8,6 @@
       <div class="categories__post__item__pic set-bg"
            data-setbg="img/categories/categories-list/cl-1.jpg">
         <img src="{{post.image}}">
-        <!--          <div class="post__meta">-->
-        <!--            <h4></h4>-->
-        <!--            <span>{{post.createAt}}</span>-->
-        <!--          </div>-->
       </div>
     </div>
     <div class="col-lg-6 col-md-6">
@@ -26,13 +18,13 @@
           <li>từ <span>{{post.user.fullName}}</span></li>
           <li style="width: 40px">   {{post.numberOfLike}} <i class="fa fa-heart"></i></li>
           <!--                      <li>20 Bình luận</li>-->
-          <li>Ngày đăng: {{post.createAt.toString().split('T')[0]}} {{post.createAt.toString().split('T')[1]}} </li>
+          <li>Publish day: {{post.createAt.toString().split('T')[0]}} {{post.createAt.toString().split('T')[1]}} </li>
         </ul>
         <p class="description-small">{{post.description}}</p>
       </div>
       <button *ngIf="adminCheck" type="button" [routerLink]="['/delete/', post.id]" class="btn site-btn"
               data-toggle="modal" data-target="#deleteByAdmin" style="padding: 7px 12px">
-        XÓA
+        DELETE
       </button>
     </div>
   </div>

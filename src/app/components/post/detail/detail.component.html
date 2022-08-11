@@ -1,8 +1,3 @@
-<!--&lt;!&ndash; Page Preloder &ndash;&gt;-->
-<!--<div id="preloder">-->
-<!--  <div class="loader"></div>-->
-<!--</div>-->
-
 <app-navbar></app-navbar>
 
 <!-- Categories Section Begin -->
@@ -23,12 +18,11 @@
                   <div class="breadcrumb__text">
                     <h2 style="color: #f4952f">{{obj.title}}</h2>
                     <div class="breadcrumb__option">
-                      <a [routerLink]="['/profile/',obj.user.id]">Tác giả: {{obj.user.fullName}} </a>
-                      <span>Ngày đăng: {{toDay}} {{nowTime}}</span>
+                      <a [routerLink]="['/profile/',obj.user.id]">Author: {{obj.user.fullName}} </a>
+                      <span>Publish date: {{toDay}} {{nowTime}}</span>
                     </div>
                   </div>
                   <div class="typography__top__text">
-                    <!--            <p>Mô tả: {{obj.description}}</p>-->
                   </div>
                   <div class="typography__desc">
                     <div class="row">
@@ -37,7 +31,7 @@
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="typography__desc__text">
-                          <p>Mô tả: {{obj.description}}</p>
+                          <p>Description: {{obj.description}}</p>
                         </div>
                       </div>
                     </div>
@@ -45,24 +39,22 @@
                   <div class="typography__last__text" id="content">
                   </div>
                   <hr #cmt>
-
                   <div class="post__social" style="margin-left: 450px; padding: 0 0 40px 0">
 
-                    <span (click)="likePost()" *ngIf="likedCheck" title="Bỏ thích" id="like" >
+                    <span (click)="likePost()" *ngIf="likedCheck" title="Unlike" id="like" >
                       <a><i class="fa fa-heart"></i></a>{{obj.numberOfLike}}
                     </span>
-                    <span (click)="likePost()" *ngIf="!likedCheck" title="Thích" id="unlike"  >
+                    <span (click)="likePost()" *ngIf="!likedCheck" title="Like" id="unlike"  >
                       <a><i class="fa fa-heart-o"></i></a>{{obj.numberOfLike}}
                     </span>
 
-                    <span id="comment" (click)="scrollToElement(comment)" title="Bình luận"><a><i class="fa fa-comment-o"></i></a>{{comments.length}} </span>
+                    <span id="comment" (click)="scrollToElement(comment)" title="Comment"><a><i class="fa fa-comment-o"></i></a>{{comments.length}} </span>
 
-                    <span title="Chỉnh sửa"><a *ngIf="postOwner" [routerLink]="['/edit/',obj.id]"><i class="fa fa-pencil-square-o"></i></a></span>
-                    <span title="Xóa"><a *ngIf="postOwner" data-toggle="modal" data-target="#staticBackdrop"><i class="fa fa-trash"></i></a></span>
+                    <span title="Edit"><a *ngIf="postOwner" [routerLink]="['/edit/',obj.id]"><i class="fa fa-pencil-square-o"></i></a></span>
+                    <span title="Delete"><a *ngIf="postOwner" data-toggle="modal" data-target="#staticBackdrop"><i class="fa fa-trash"></i></a></span>
 
                   </div>
                   <!--  COMMENT-->
-                  <!--  <div class="single-post__comment">-->
                   <div class="sidebar__item__title" *ngFor="let cmt of comments">
                     <div class="single-post__comment__item__pic">
                       <img src="{{cmt.user.avatar}}" alt="">
@@ -84,8 +76,8 @@
 <!--                                style="height: 80px; width: 80%"></textarea>-->
                       <input type="text" formControlName="content"style="height: 48px;width: 444px; border-color: rgba(0, 0, 0, .2)" placeholder="Viết bình luận...">
 
-                      <button  style="width: 100px; margin-left: 30px" type="submit" class="site-btn" *ngIf="!isLogin">Đăng</button>
-                      <button  style="width: 100px; margin-left: 30px" class="site-btn" *ngIf="isLogin" (click)="requestLogin()">Đăng
+                      <button  style="width: 100px; margin-left: 30px" type="submit" class="site-btn" *ngIf="!isLogin">Post</button>
+                      <button  style="width: 100px; margin-left: 30px" class="site-btn" *ngIf="isLogin" (click)="requestLogin()">Post
                       </button>
                     </form>
                   </div>
@@ -99,7 +91,7 @@
                         <div class="modal-header">
                           <h5 class="modal-title" id="staticBackdropLabel">
                             <div class="sidebar__item__title" style="margin: 0 0">
-                              <h6>XÁC NHẬN</h6>
+                              <h6>CONFIRM</h6>
                             </div>
                           </h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -107,12 +99,12 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          Bạn chắc chắn muốn xóa không?
+                          DO YOU SURE THAT YOU WANT TO DELETE THIS???
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">HỦY</button>
                           <button type="button" class="btn site-btn" data-dismiss="modal"
-                                  (click)="deletePost(obj.id)" style="padding: 7px 12px">XÓA
+                                  (click)="deletePost(obj.id)" style="padding: 7px 12px">DELETE
                           </button>
                         </div>
                       </div>
