@@ -86,7 +86,9 @@ export class ChangePasswordComponent implements OnInit {
       } else {
         this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu cũ không đúng!", duration: 1500})
       }
-    })
+    }, error => {
+      this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu cũ không đúng!", duration: 1500})
+    });
   }
 
   checkOldPassword() {

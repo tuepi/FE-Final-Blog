@@ -19,8 +19,7 @@ export class Top5ByLikesComponent implements OnInit {
   listLabel: any = []
 
   constructor(private postService : PostService,
-              private labelService: LabelService,
-              private postLabelService: PostLabelService) { }
+              private labelService: LabelService) { }
 
   ngOnInit(): void {
     this.top5ByLikes()
@@ -41,6 +40,7 @@ export class Top5ByLikesComponent implements OnInit {
       this.listLabel = data;
     })
   }
+
   // getAllPostRelative() {
   //   this.postService.relativePost(this.posts.post).subscribe((result) => {
   //     console.log(result)
@@ -59,10 +59,10 @@ export class Top5ByLikesComponent implements OnInit {
   // }
 
 
-
-setLabel(labelId: any) {
-    localStorage.setItem('labelId', labelId)
-}
+//
+// setLabel(labelId: any) {
+//     localStorage.setItem('labelId', labelId)
+// }
 
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PostLabelService} from "../../../services/post-label.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-get-by-label',
@@ -9,29 +9,49 @@ import {Router} from "@angular/router";
 })
 export class GetByLabelComponent implements OnInit {
   listPostByLabel : any = []
+  id : any
 
   constructor(private postLabelService: PostLabelService,
+              private activatedRoute: ActivatedRoute,
               private router: Router,) {
   }
 
   ngOnInit(): void {
-    localStorage.removeItem('labelId')
+    // localStorage.removeItem('labelId')
     this.getPostByLabel()
   }
 
+  // getPostByLabel() {
+  //   let labelId = localStorage.getItem('labelId')
+  //   this.listPostByLabel = []
+  //   this.postLabelService.getAllPostLabel(labelId).subscribe((data) => {
+  //     this.scanData(data)
+  //     this.router.navigate(['/by-label/', labelId])
+  //     localStorage.removeItem('labelId')
+  //   } )
+  // }
+
+
   getPostByLabel() {
-    let labelId = localStorage.getItem('labelId')
-    this.listPostByLabel = []
-    this.postLabelService.getAllPostLabel(labelId).subscribe((data) => {
-      this.scanData(data)
-      this.router.navigate(['/by-label/', labelId])
-      localStorage.removeItem('labelId')
-    } )
+    this.activatedRoute.paramMap.subscribe((param) => {
+      this.id = param.get('id');
+      this.listPostByLabel = []
+      this.postLabelService.getAllPostLabel(this.id).subscribe(data => {
+        for (let i = 0; i < data.length; i++) {
+          this.listPostByLabel.push(data[i].post)
+        }
+      }, error => {
+        console.log(error)
+      });
+    }, error => {
+      console.log(error)
+    });
+
   }
 
-  scanData(data: any[]) {
-    for (let i = 0; i < data.length; i++) {
-      this.listPostByLabel.push(data[i].post)
-    }
-  }
+  // scanData(data: any[]) {
+  //   for (let i = 0; i < data.length; i++) {
+  //     this.listPostByLabel.push(data[i].post)
+  //   }
+  // }
 }

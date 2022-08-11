@@ -19,7 +19,8 @@
       <h6>Loại bài viết</h6>
     </div>
     <ul *ngFor="let item of listLabel">
-      <li><a [href]="['/by-label/', item[0]]" (click)="setLabel(item[0])">{{item[1]}} <span>{{item[2]}}</span></a></li>
+      <li><a routerLink="/by-label/{{item[0]}}">{{item[1]}} <span>{{item[2]}}</span></a></li>
+<!--      <li><a href="/by-label/{{item[0]}}" (click)="setLabel(item[0])">{{item[1]}} <span>{{item[2]}}</span></a></li>-->
     </ul>
   </div>
   <div class="sidebar__item__categories">
@@ -28,7 +29,6 @@
 <!--    </div>-->
     <ul *ngFor="let item of listLabel">
 <!--      <li><a href="#">{{item[1]}} <span>{{item[2]}}</span> </a></li>-->
-
     </ul>
   </div>
 

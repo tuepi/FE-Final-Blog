@@ -17,18 +17,9 @@
               <a *ngIf="isLogin" routerLink="/create" class="control-pointer">Đăng bài</a>
               <a (click)="requestLogin()" *ngIf="!isLogin" class="control-pointer">Đăng bài</a>
             </li>
-            <li class="dropdown"><a href="#" class="control-pointer">Thể loại</a>
-              <ul class="dropdown__menu">
-                <li><a href="./categories-grid.html">Categories Grid</a></li>
-                <li><a href="./categories-list.html">Categories List</a></li>
-                <li><a href="./single-post.html">Single Post</a></li>
-                <li><a href="./signin.html">Sign In</a></li>
-                <li><a href="./404.html">404</a></li>
-                <li><a href="./typography.html">Typography</a></li>
-              </ul>
+            <li class="dropdown"><a  (click)="toLabel()" class="control-pointer">Thể loại</a>
             </li>
-            <li><a href="./about.html">About</a></li>
-            <li><a href="./contact.html">Contact</a></li>
+            <li><a class="control-pointer" (click)="toAbout()">About</a></li>
             <li class="dropdown"><a href="#">Tài khoản</a>
               <ul class="dropdown__menu" *ngIf="!isLogin">
                 <li><a routerLink="/login">Đăng nhập</a></li>
