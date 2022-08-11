@@ -58,6 +58,23 @@ export class NavbarComponent implements OnInit {
      )
   }
 
+  toLabel() {
+    window.scroll({
+      top: 620,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  toAbout() {
+    window.scroll({
+      top: 9999999,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+
 
 
 }

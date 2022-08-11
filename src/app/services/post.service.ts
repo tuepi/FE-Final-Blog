@@ -84,7 +84,7 @@ export class PostService {
     // return this.httpClient.request(`${environment.apiUrl}/api/posts/send-list-label/${id}`);
   }
   relativePost(labelsId:any):Observable<any>{
-    return this.httpClient.get(environment.apiUrl+`/api/post-labels/label/`+labelsId)
+    return this.httpClient.get(environment.apiUrl+`/api/guest/label/`+labelsId)
   }
   allLabelsByPostId(postId:any):Observable<any>{
     return this.httpClient.get(environment.apiUrl+`/api/post-labels/post/`+postId)

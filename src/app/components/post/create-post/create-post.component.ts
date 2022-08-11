@@ -33,6 +33,10 @@ export class CreatePostComponent implements OnInit {
 
   labelSelected: number[] = [];
   labels: any = [];
+  // dropdownList: any = [] ;
+  selectedItems: any = [];
+  // dropdownSettings: IDropdownSettings = {};
+  // item: any = {}
   createForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.maxLength(2000)]),
     description: new FormControl('', [Validators.required, Validators.maxLength(2000)]),

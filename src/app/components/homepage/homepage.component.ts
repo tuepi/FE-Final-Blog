@@ -44,7 +44,25 @@ export class HomepageComponent implements OnInit {
   getList($event: any) {
     this.post.push($event)
   }
+  scrollToElement( $element: any ): void {
+    $element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  }
 
+  toLabel() {
+    window.scroll({
+      top: 1120,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  toAbout() {
+    window.scroll({
+      top: 1120,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
 
 
 }

@@ -6,6 +6,7 @@ import {NgToastModule, NgToastService} from "ng-angular-popup";
 import {CommentsService} from "../../../services/comments.service";
 import {Comment} from "../../../models/comment";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {PostLabelService} from "../../../services/post-label.service";
 import {PostLabel} from "../../../models/post-label";
 
 @Component({
@@ -38,16 +39,27 @@ export class DetailComponent implements OnInit {
               private postService: PostService,
               private commentsService: CommentsService,
               private router: Router,
-              private toast : NgToastService) {
-
-
+              private toast : NgToastService,
+              private postLabelService: PostLabelService) {
   }
 
   ngOnInit(): void {
+    this.delay()
     this.getBlog()
     this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
     this.likePost()
+  }
+
+
+  delay() {
+    // @ts-ignore
+    $(window).on('load', function () {
+      // @ts-ignore
+      $(".loader").fadeOut();
+      // @ts-ignore
+      $("#preloder").delay(200).fadeOut("slow");
+    });
   }
 
 
@@ -73,12 +85,10 @@ export class DetailComponent implements OnInit {
         this.labelsList = result;
         this.labelId= result[0].label.id;
         this.postService.relativePost(this.labelId).subscribe((result) => {
-          console.log("aa :", result[0].post.title)
           this.postList = result;
         });
       })
       this.postService.likedCheck(this.id, this.userId).subscribe((liked) => {
-        console.log("data like: " , liked)
         if (liked == null) {
           this.likedCheck = false
         } else {
@@ -95,20 +105,6 @@ export class DetailComponent implements OnInit {
       });
     });
   }
-
-
-  // getAllPostIdLabelBy(id : any) {
-  //   this.postService.allLabelsByPostId(id).subscribe((result) => {
-  //     this.labelsList = result;
-  //     this.labelId= result[0].label.id;
-  //     this.postService.relativePost(this.labelId).subscribe((result) => {
-  //       this.postList = result;
-  //     });
-  //   }, error => {
-  //     console.log("Lỗi");
-  //   });
-  //
-  // }
 
   displayContent(content: any) {
     // @ts-ignore
@@ -130,7 +126,6 @@ export class DetailComponent implements OnInit {
 
   createComment() {
     const comment = this.setNewComment()
-    console.log('comt', comment);
     this.commentsService.save(comment).subscribe((data) => {
       this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã bình luận!!!", duration: 2000})
       // this.router.navigate(['/detail', this.id]);
