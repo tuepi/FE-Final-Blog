@@ -63,45 +63,45 @@
                   </div>
                 </div>
 
-                <input type="text" style="margin: 20px 0 0 0" [(ngModel)]="numberPhone" placeholder="Số điện thoại"
+                <input type="text" style="margin: 20px 0 0 0" [(ngModel)]="numberPhone" placeholder="Phone Number"
                        formControlName="numberPhone">
                 <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
                   <div style="color: red" *ngIf="phone?.errors?.['required']">
-                    <small>*Số điện thoại không được bỏ trống</small>
+                    <small>*Your phone number is not allowed to be empty ,please enter the phone number</small>
                   </div>
                   <div style="color: red" *ngIf="phone?.errors?.['pattern']">
-                    <small>*Số điện thoại không đúng định dạng</small>
+                    <small>*Your phone number is not the correct format, please re-enter the phone number</small>
                   </div>
                 </div>
 
-                <input type="password" style="margin: 20px 0 0 0" [(ngModel)]="passwordValue" placeholder="Mật khẩu"
+                <input type="password" style="margin: 20px 0 0 0" [(ngModel)]="passwordValue" placeholder="Password"
                        formControlName="password">
                 <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
                   <div style="color: red" *ngIf="password?.errors?.['required']">
-                    <small>*Mật khẩu không được bỏ trống</small>
+                    <small>*Your password is empty, please enter your password</small>
                   </div>
                   <div style="color: red" *ngIf="password?.errors?.['minlength']">
-                    <small>*Mật khẩu phải có ít nhất 6 kí tự</small>
+                    <small>*Your password must have at least 6 characters ,please enter your password</small>
                   </div>
                   <div style="color: red" *ngIf="password?.errors?.['maxlength']">
-                    <small>*Mật khẩu tối đa 32 kí tự</small>
+                    <small>*Your full name have a maximum of 32 characters ,please enter your password</small>
                   </div>
                 </div>
                 <input type="password" style="margin: 20px 0 0 0" [(ngModel)]="confirmPasswordValue"
-                       placeholder="Nhập lại mật khẩu" formControlName="confirmPassword">
+                       placeholder="Please re-enter the password" formControlName="confirmPassword">
                 <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">
                   <div style="color: red" *ngIf="password?.errors?.['required']">
-                    <small>*Hãy nhập lại mật khẩu</small>
+                    <small>*Your password is empty, please enter your password</small>
                   </div>
                   <div style="color: red" *ngIf="password?.errors?.['minlength']">
-                    <small>*Mật khẩu nhập lại phải có ít nhất 6 kí tự</small>
+                    <small>*Your password must have at least 6 characters ,please enter your password</small>
                   </div>
                   <div style="color: red" *ngIf="password?.errors?.['maxlength']">
-                    <small>*Mật khẩu nhập lại tối đa 12 kí tự</small>
+                    <small>**Your full name have a maximum of 12 characters ,please enter your password</small>
                   </div>
                 </div>
                 <button style="margin: 50px 0 0" type="submit" [disabled]="checkForm() ? 'disabled' : null"
-                        class="site-btn">Đăng ký
+                        class="site-btn">Register
                 </button>
               </form>
             </div>

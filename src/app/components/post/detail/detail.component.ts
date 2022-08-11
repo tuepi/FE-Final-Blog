@@ -44,24 +44,11 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.delay()
     this.getBlog()
     this.adminCheck = localStorage.getItem('ROLE') == 'ROLE_ADMIN' ? true : false;
     this.postOwner = localStorage.getItem('ID') == this.obj.user.id ? true : false;
     this.likePost()
   }
-
-
-  delay() {
-    // @ts-ignore
-    $(window).on('load', function () {
-      // @ts-ignore
-      $(".loader").fadeOut();
-      // @ts-ignore
-      $("#preloder").delay(200).fadeOut("slow");
-    });
-  }
-
 
 
   checkLogin() {
@@ -71,7 +58,7 @@ export class DetailComponent implements OnInit {
   deletePost(id: any) {
     this.postService.deletePost(id).subscribe(() => {
       this.router.navigate(['/user']) //sửa chỗ này của mạnh
-      this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã xóa bài!!!", duration: 1500})
+      this.toast.success({detail: "SUCCESS", summary: "YOU HAD DELETE THIS POST!!!", duration: 1500})
     }, error => {
       console.log(error);
     });
@@ -127,10 +114,9 @@ export class DetailComponent implements OnInit {
   createComment() {
     const comment = this.setNewComment()
     this.commentsService.save(comment).subscribe((data) => {
-      this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã bình luận!!!", duration: 2000})
+      this.toast.success({detail: "ALERT", summary: "YOU HAVE COMMENT!!!", duration: 2000})
       // this.router.navigate(['/detail', this.id]);
       window.location.reload()
-      this.commentForm.reset()
     }, error => {
       console.log(error)
     })
@@ -139,7 +125,7 @@ export class DetailComponent implements OnInit {
 
   requestLogin() {
     if (!this.isLogin) {
-      this.toast.warning({detail: "YÊU CẦU", summary: "Bạn cần đăng nhập!!!", duration: 2000})
+      this.toast.warning({detail: "REQUIRE", summary: "YOU NEED TO LOGIN TO COMMENT!!!", duration: 2000})
       this.router.navigate(['/login'])
     }
   }
@@ -181,6 +167,7 @@ export class DetailComponent implements OnInit {
   scrollToElement( $element: any ): void {
     $element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
   }
+
 }
 
 

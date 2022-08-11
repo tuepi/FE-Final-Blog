@@ -146,8 +146,8 @@ export class EditPostComponent implements OnInit {
       numberOfLike: 0
     }
     this.postService.updatePost(this.postId, this.post).subscribe(() => {
-      this.toast.success({detail: "Thong Bao", summary: "Sua Thanh Cong", duration: 3000})
-      this.router.navigateByUrl("/")
+      this.toast.success({detail: "ALERT", summary: "POST UPDATE SUCCESS", duration: 2000})
+      this.router.navigate(['/detail/', this.postId])
     }, error => {
       console.log(error)
     })

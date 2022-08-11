@@ -28,7 +28,7 @@ export class DeletePostComponent implements OnInit {
   deletePost() {
     this.postService.deletePostByAdmin(this.id).subscribe(() => {
         this.router.navigate(['/admin']) //sửa chỗ này của mạnh
-        this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã xóa bài!!!", duration: 1500})
+        this.toast.success({detail: "ALERT", summary: "YOU HAVE DELETE THE POST!!", duration: 1500})
     }, error => {
       console.log(error);
     });

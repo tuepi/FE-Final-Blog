@@ -32,14 +32,14 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     localStorage.clear();
-    this.toast.success({detail: "THÔNG BÁO", summary: "Bạn đã đăng xuất khỏi hệ thống!!!", duration: 2000})
+    this.toast.success({detail: "ALERT", summary: "YOU HAVE LOGOUT!!!", duration: 2000})
     this.isLogin = false;
     this.router.navigate(['/'])
   }
 
   requestLogin() {
     if (!this.isLogin) {
-      this.toast.warning({detail: "YÊU CẦU", summary: "Bạn cần đăng nhập!!!", duration: 2000})
+      this.toast.warning({detail: " REQUIRED  ", summary: "LOGIN REQUIRED TO DO THIS!!!", duration: 2000})
       this.router.navigate(['/login'])
     }
   }

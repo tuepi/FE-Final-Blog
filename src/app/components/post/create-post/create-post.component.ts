@@ -139,10 +139,10 @@ export class CreatePostComponent implements OnInit {
     const post = this.setNewPost()
     this.postService.save(post).subscribe((data) => {
       this.sendLabel(data.id)
-      this.toast.success({detail: "THÔNG BÁO", summary: "Đăng bài thành công!!!", duration: 2000})
+      this.toast.success({detail: "ALERT", summary: "UPLOAD SUCCESS!!!", duration: 2000})
       this.router.navigate(['/']);
     }, error => {
-      this.toast.error({detail: "THÔNG BÁO", summary: "Lỗi khi đăng bài!!!", duration: 2000})
+      this.toast.error({detail: "ALERT", summary: "UPLOAD FAIlED!!!", duration: 2000})
       console.log(error)
     })
   }

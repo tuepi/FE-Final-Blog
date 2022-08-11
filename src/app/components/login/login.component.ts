@@ -49,15 +49,15 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('FULLNAME', data.fullName);
       localStorage.setItem('AVATAR', data.avatar);
       if (data.roles[0].authority == 'ROLE_USER') {
-        this.toast.success({detail: "THÔNG BÁO", summary: "Đăng nhập thành công!!!", duration: 2000});
+        this.toast.success({detail: "SUCCESS", summary: "Login Succsess!!!", duration: 2000});
         this.route.navigate(['/user']);
         this.route.navigate(['/user']);
       } else {
-        this.toast.success({detail: "THÔNG BÁO", summary: "Đăng nhập Admin thành công!!!", duration: 2000})
+        this.toast.success({detail: "ALERT", summary: "Login as Admin Succsess!!!", duration: 2000})
         this.route.navigate(['/admin']);
       }
     }, error => {
-      this.toast.error({detail: "LỖI", summary: "Đăng nhập thất bại!!!", duration: 2000})
+      this.toast.error({detail: "ERROR", summary: "Login Fail!!!", duration: 2000})
       this.route.navigate(['/login'])
     })
   }

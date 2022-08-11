@@ -6,19 +6,19 @@
     <div class="modal-content" style="background-color: #ffffff">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel"><div class="sidebar__item__title" style="margin: 0 0">
-          <h6>XÁC NHẬN</h6>
+          <h6>CONFIRM</h6>
         </div></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Bạn chắc chắn muốn xóa không?
+        DO YOU SURE YOU WANT TO DELETE THIS?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" routerLink="/admin">HỦY</button>
+        <button style="background-color: #461818" type="button" class="btn btn-secondary" data-dismiss="modal" routerLink="/admin">CANCEL</button>
         <button type="button" class="btn site-btn" data-dismiss="modal"
-                (click)="deletePost()" style="padding: 7px 12px">XÓA
+                (click)="deletePost()" style="padding: 7px 12px">DELETE
         </button>
       </div>
     </div>
