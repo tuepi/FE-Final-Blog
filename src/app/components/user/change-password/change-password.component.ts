@@ -66,7 +66,7 @@ export class ChangePasswordComponent implements OnInit {
           if (this.changeForm.value.password == this.changeForm.value.confirmPassword) {
             this.userService.changePassword(this.currentUserId, this.changeForm.value.oldPassword, user).subscribe(data => {
               if (data.id != null) {
-                this.toast.success({detail: "THÔNG BÁO", summary: "Thay đổi mật khẩu thành công", duration: 1500});
+                this.toast.success({detail: "SUCCESS", summary: "CHANGE PASSWORD SUCCSESS", duration: 1500});
                 localStorage.clear();
                 this.route.navigate(['/login']);
               }
@@ -76,29 +76,29 @@ export class ChangePasswordComponent implements OnInit {
               console.log(error)
             });
           } else {
-            this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu nhập lại không giống!", duration: 1500})
+            this.toast.warning({detail: "ALERT", summary: "THE PASSWORD IS NOT THE SAME", duration: 1500})
           }
         } else {
-          this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu mới giống mật khẩu cũ!", duration: 1500})
+          this.toast.warning({detail: "ALERT", summary: "THE NEW PASSWORD IS DUPLICATE!", duration: 1500})
         }
 
 
       } else {
-        this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu cũ không đúng!", duration: 1500})
+        this.toast.warning({detail: "ALERT", summary: "THE OLD PASSWORD IS INCORECT", duration: 1500})
       }
     }, error => {
-      this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu cũ không đúng!", duration: 1500})
+      this.toast.warning({detail: "ALERT", summary: "THE OLD PASSWORD IS INCORECT!", duration: 1500})
     });
   }
 
   checkOldPassword() {
     this.userService.checkOldPassword(this.currentUserId, this.oldPasswordValue).subscribe(data => {
       if (data.id != null) {
-        this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu cũ đúng!", duration: 1500})
+        this.toast.warning({detail: "SUCCESS", summary: "THE PASSWORD IS CORRECT!", duration: 1500})
         localStorage.clear();
         this.route.navigate(['/login']);
       } else {
-        this.toast.warning({detail: "THÔNG BÁO", summary: "Mật khẩu cũ không đúng!", duration: 1500})
+        this.toast.warning({detail: "ALERT", summary: "THE OLD PASSWORD IS INCORRECT  ", duration: 1500})
       }
     })
     }

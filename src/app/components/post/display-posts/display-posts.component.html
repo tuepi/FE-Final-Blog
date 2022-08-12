@@ -15,7 +15,7 @@
         <!--          <span class="post__label">Nhãn</span>-->
         <h3><strong><a class="title-small" [routerLink]="['/detail', post.id]">{{post.title}}</a></strong></h3>
         <ul class="post__widget">
-          <li>từ <span>{{post.user.fullName}}</span></li>
+          <li>by <span>{{post.user.fullName}}</span></li>
           <li style="width: 40px">   {{post.numberOfLike}} <i class="fa fa-heart"></i></li>
           <!--                      <li>20 Bình luận</li>-->
           <li>Publish day: {{post.createAt.toString().split('T')[0]}} {{post.createAt.toString().split('T')[1]}} </li>

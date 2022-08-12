@@ -47,15 +47,15 @@
               <br>
               <div class=" text-center " style="margin-top: 30px">
                 <div class=" text-center " style="text-align: center">
-                <div class="form-check-inline  " style="text-align: center" *ngFor="let label of labels; index as i">
-                  <input #check type="checkbox"
-                         style="width: 16px; height: 16px;margin-bottom: 0px"
-                         id="{{i + 1}}" [value]="label[0]"
-                         (change)="changeLabel($event, label[0])"
-                         (click)="checkBox(check)">
-                  <label class="label" style="margin: 0 20px 0 3px" for="{{i + 1}}">{{label[1]}}</label>
-                  <label class="label" for="{{label.id}}">{{label.name}}</label>
-                </div>
+<!--                <div class="form-check-inline  " style="text-align: center" *ngFor="let label of labels; index as i">-->
+<!--                  <input #check type="checkbox"-->
+<!--                         style="width: 16px; height: 16px;margin-bottom: 0px"-->
+<!--                         id="{{i + 1}}" [value]="label[0]"-->
+<!--                         (change)="changeLabel($event, label[0])"-->
+<!--                         (click)="checkBox(check)">-->
+<!--                  <label class="label" style="margin: 0 20px 0 3px" for="{{i + 1}}">{{label[1]}}</label>-->
+<!--                  <label class="label" for="{{label.id}}">{{label.name}}</label>-->
+<!--                </div>-->
                 </div>
                 <select class="margin-bot-cus" formControlName="status" style="margin: 20px; border: 1px solid black"
                         value="1">

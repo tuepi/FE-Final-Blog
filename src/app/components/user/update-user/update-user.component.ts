@@ -130,7 +130,7 @@ export class UpdateUserComponent implements OnInit {
       localStorage.removeItem('AVATAR');
       localStorage.setItem('FULLNAME', this.user.fullName);
       localStorage.setItem('AVATAR', this.user.avatar);
-      this.toast.success({detail:"Thong Bao",summary:"Sua Thanh Cong",duration:2000});
+      this.toast.success({detail:"SUCCESS",summary:"UPDATED",duration:2000});
       this.router.navigate(["/profile", this.userId])
     },error => {
       console.log(error);

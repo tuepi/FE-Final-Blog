@@ -41,12 +41,12 @@
                   <hr #cmt>
                   <div class="post__social" style="margin-left: 450px; padding: 0 0 40px 0">
 
-                    <span (click)="likePost()" *ngIf="likedCheck" title="Unlike" id="like" >
-                      <a><i class="fa fa-heart"></i></a>{{obj.numberOfLike}}
-                    </span>
-                    <span (click)="likePost()" *ngIf="!likedCheck" title="Like" id="unlike"  >
-                      <a><i class="fa fa-heart-o"></i></a>{{obj.numberOfLike}}
-                    </span>
+<!--                    <span (click)="likePost()" *ngIf="likedCheck" title="Unlike" id="like" >-->
+<!--                      <a><i class="fa fa-heart"></i></a>{{obj.numberOfLike}}-->
+<!--                    </span>-->
+<!--                    <span (click)="likePost()" *ngIf="!likedCheck" title="Like" id="unlike"  >-->
+<!--                      <a><i class="fa fa-heart-o"></i></a>{{obj.numberOfLike}}-->
+<!--                    </span>-->
 
                     <span id="comment" (click)="scrollToElement(comment)" title="Comment"><a><i class="fa fa-comment-o"></i></a>{{comments.length}} </span>
 
@@ -121,7 +121,7 @@
       <div class="col-lg-3 col-md-3 custom-box-shadow">
 
         <app-top5-by-likes></app-top5-by-likes>
-        <app-relative-post [relativePosts]="postList"></app-relative-post>
+<!--        <app-relative-post [relativePosts]="postList"></app-relative-post>-->
 
       </div>
     </div>
